@@ -2,4 +2,5 @@
 
 echo ">> Building contract"
 
-near-sdk-js build src/contract.ts build/contract.wasm
+rustup target add wasm32-unknown-unknown
+cargo build --all --target wasm32-unknown-unknown --release

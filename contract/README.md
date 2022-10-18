@@ -1,25 +1,35 @@
-# Guest Book Contract
+# Hello NEAR Contract
 
-The smart contract stores messages from users. Messages can be `premium` if the user attaches sufficient money (0.1 $NEAR).
+The smart contract exposes two methods to enable storing and retrieving a greeting in the NEAR network.
 
-```ts
-this.messages = [];
+```rust
+const DEFAULT_GREETING: &str = "Hello";
 
-@call
-// Public - Adds a new message.
-add_message({ text }: { text: string }) {
-  // If the user attaches more than 0.01N the message is premium
-  const premium = near.attachedDeposit() >= BigInt(POINT_ONE);
-  const sender = near.predecessorAccountId();
-
-  const message = new PostedMessage({premium, sender, text});
-  this.messages.push(message);
+#[near_bindgen]
+#[derive(BorshDeserialize, BorshSerialize)]
+pub struct Contract {
+    greeting: String,
 }
-  
-@view
-// Returns an array of messages.
-get_messages({ fromIndex = 0, limit = 10 }: { fromIndex: number, limit: number }): PostedMessage[] {
-  return this.messages.slice(fromIndex, fromIndex + limit);
+
+impl Default for Contract {
+    fn default() -> Self {
+        Self{greeting: DEFAULT_GREETING.to_string()}
+    }
+}
+
+#[near_bindgen]
+impl Contract {
+    // Public: Returns the stored greeting, defaulting to 'Hello'
+    pub fn get_greeting(&self) -> String {
+        return self.greeting.clone();
+    }
+
+    // Public: Takes a greeting, such as 'howdy', and records it
+    pub fn set_greeting(&mut self, greeting: String) {
+        // Record a log permanently to the blockchain!
+        log!("Saving greeting {}", greeting);
+        self.greeting = greeting;
+    }
 }
 ```
 
@@ -27,7 +37,7 @@ get_messages({ fromIndex = 0, limit = 10 }: { fromIndex: number, limit: number }
 
 # Quickstart
 
-1. Make sure you have installed [node.js](https://nodejs.org/en/download/package-manager/) >= 16.
+1. Make sure you have installed [rust](https://rust.org/).
 2. Install the [`NEAR CLI`](https://github.com/near/near-cli#setup)
 
 <br />
@@ -36,7 +46,7 @@ get_messages({ fromIndex = 0, limit = 10 }: { fromIndex: number, limit: number }
 You can automatically compile and deploy the contract in the NEAR testnet by running:
 
 ```bash
-npm run deploy
+./deploy.sh
 ```
 
 Once finished, check the `neardev/dev-account` file to find the address in which the contract was deployed:
@@ -48,28 +58,30 @@ cat ./neardev/dev-account
 
 <br />
 
-## 2. Retrieve the Stored Messages
-`get_messages` is a read-only method (`view` method) that returns a slice of the vector `messages`.
+## 2. Retrieve the Greeting
+
+`get_greeting` is a read-only method (aka `view` method).
 
 `View` methods can be called for **free** by anyone, even people **without a NEAR account**!
 
 ```bash
-near view <dev-account> get_messages '{"from_index":0, "limit":10}'
+# Use near-cli to get the greeting
+near view <dev-account> get_greeting
 ```
 
 <br />
 
-## 3. Add a Message
-`add_message` adds a message to the vector of `messages` and marks it as premium if the user attached more than `0.1 NEAR`.
+## 3. Store a New Greeting
+`set_greeting` changes the contract's state, for which it is a `change` method.
 
-`add_message` is a payable method for which can only be invoked using a NEAR account. The account needs to attach money and pay GAS for the transaction.
+`Change` methods can only be invoked using a NEAR account, since the account needs to pay GAS for the transaction.
 
 ```bash
-# Use near-cli to donate 1 NEAR
-near call <dev-account> add_message '{"text": "a message"}' --amount 0.1 --accountId <account>
+# Use near-cli to set a new greeting
+near call <dev-account> set_greeting '{"greeting":"howdy"}' --accountId <dev-account>
 ```
 
-**Tip:** If you would like to add a message using your own account, first login into NEAR using:
+**Tip:** If you would like to call `set_greeting` using your own account, first login into NEAR using:
 
 ```bash
 # Use near-cli to login your NEAR account
