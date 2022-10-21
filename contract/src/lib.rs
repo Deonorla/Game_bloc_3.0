@@ -26,6 +26,7 @@ pub struct GameBloc {
 
 #[derive(BorshDeserialize, BorshSerialize, Debug)]
 pub struct Tournament {
+    owner_id: AccountId,
     status: TournamentStatus,  // ⟵ An enum we'll get to soon
     user: Vec<User>, // ⟵ Another struct we've defined
     total_prize: u128,
@@ -84,6 +85,7 @@ pub enum TournamentStatus {
 }
 
 
+// user that creates a tournament shouldnt be allowed to join the tournament
 
 
 
@@ -102,7 +104,7 @@ impl GameBloc {
         }
     }
     
-    pub fn new_tournament(&mut self, tournament_id_hash: String, users: Vec<User>, prize: u128) {
+    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<User>, prize: u128) {
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
@@ -111,6 +113,7 @@ impl GameBloc {
         let existing = self.tournaments.insert(
             &tournament_id_hash,
             &Tournament {
+                owner_id,
                 status: TournamentStatus::AcceptingPlayers,
                 user: users,
                 total_prize: prize,
@@ -145,12 +148,22 @@ impl GameBloc {
     }
 
     pub fn join_tournament(&self,user_id: AccountId, age: u8, wins: u8, username: String, tournament_id: String){
+        assert_eq!(
+            env::predecessor_account_id(),
+            self.owner_id,
+            "Only the owner may call this method"
+        );
         let hashed_input = env::sha256(tournament_id.as_bytes());
         let hashed_input_hex = hex::encode(&hashed_input);
         let mut tournament = self
             .tournaments
             .get(&hashed_input_hex)
             .expect("ERR_NOT_CORRECT_USER");
+        assert_eq!(
+            env::predecessor_account_id(),
+            tournament.owner_id,
+            "Tournament owner cannot join this tournament"
+        );
         let mut user =  User {
             user_id,
             age,
@@ -226,7 +239,7 @@ impl GameBloc {
     }
 
 
-    pub fn new_crowd_funded_tournament(&mut self, tournament_id_hash: String, users: Vec<User>, prize: u128) {
+    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<User>, prize: u128) {
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
@@ -235,6 +248,7 @@ impl GameBloc {
         let existing = self.tournaments.insert(
             &tournament_id_hash,
             &Tournament {
+                owner_id,
                 status: TournamentStatus::AcceptingPlayers,
                 user: users,
                 total_prize: prize,
