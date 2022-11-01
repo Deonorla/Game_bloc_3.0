@@ -7,7 +7,7 @@ import './index.css';
 // NEAR
 import { GuestBook } from './near-interface';
 import { Wallet } from './near-wallet';
-import  store  from './store';
+import store from './store';
 import { Provider } from 'react-redux';
 
 // When creating the wallet you can choose to create an access key, so the user
@@ -24,7 +24,7 @@ window.onload = async () => {
   root.render(
     <React.StrictMode>
       {/* <Provider store={store}> */}
-      <App isSignedIn={isSignedIn} wallet={wallet} />  
+      <App isSignedIn={isSignedIn} wallet={wallet} />
       {/* </Provider> */}
     </React.StrictMode>
   );

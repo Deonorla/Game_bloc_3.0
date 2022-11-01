@@ -17,9 +17,13 @@
     "near-cli": "^3.3.0"
   },
   "dependencies": {
+<<<<<<< HEAD
     "env-cmd": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4"
+=======
+    "env-cmd": "^10.1.0"
+>>>>>>> 7411f42592ece510eb23d4f4e56a7d2fdd9fe7b6
   }
 }
