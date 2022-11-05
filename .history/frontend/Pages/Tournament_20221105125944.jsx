@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
+import TournamentData from "../Features/TournamentData";
+import { AiOutlineEye } from "react-icons/ai";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
-
 const Tournament = () => {
   const navigate = useNavigate();
   const tournamentImg = useContext(UserContext);
-
   return (
     <Container>
       <BackButton onClick={() => navigate(-1)}>
@@ -17,13 +16,9 @@ const Tournament = () => {
       </BackButton>
       <Heading>Choose a Tournament</Heading>
       <TournamentCard>
-        {tournamentImg.map((data) => (
-          <Link
-            to={`/tournament/${data.id}`}
-            key={data.id}
-            style={{ textDecoration: "none" }}
-          >
-            <Imgslide>
+        {tournamentImg.map((data, index) => {
+          return (
+            <Imgslide key={index}>
               <Img style={{ backgroundImage: `url(${data.background})` }}>
                 <h4>{data.title}</h4>
                 <Create>
@@ -31,8 +26,8 @@ const Tournament = () => {
                 </Create>
               </Img>
             </Imgslide>
-          </Link>
-        ))}
+          );
+        })}
       </TournamentCard>
     </Container>
   );

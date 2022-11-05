@@ -16,16 +16,16 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
   const [userName, setUserName] = useState("");
   let accountJSON
 
-  useEffect(() => {
-    if (account === "Username") {
-      setUserName("Username")
-    } else {
-      accountJSON = JSON.parse(account);
-      const accountID = accountJSON.accountId;
+  if (account === "Username") {
+    setUserName("Username")
+  } else {
+    accountJSON = JSON.parse(account);
+    const accountID = accountJSON.accountId;
+    useEffect(() => {
       setUserName(accountID.substring(0, accountID.length - 8));
+    }, [userName])
 
-    }
-  }, [userName])
+  }
 
 
   // gamebloc.new(accountID).then((e) => console.log(e)

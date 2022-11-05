@@ -7,6 +7,8 @@ import './index.css';
 // NEAR
 import { GameBloc } from './near-interface';
 import { Wallet } from './near-wallet';
+import store from './store';
+import { Provider } from 'react-redux';
 import { UserProvider } from './Context/UserContext';
 
 // When creating the wallet you can choose to create an access key, so the user

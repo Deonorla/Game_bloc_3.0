@@ -109,7 +109,6 @@ const AvatarContainer = styled(motion.div)`
     border-radius: 12px;
     position: relative;
     width: 20vw;
-    height: 30vh;
 
     img {
       border-top-right-radius: 12px;

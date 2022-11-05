@@ -8,7 +8,7 @@ import { UserContext } from "../Context/UserContext";
 const Tournament = () => {
   const navigate = useNavigate();
   const tournamentImg = useContext(UserContext);
-
+  console.log(tournamentImg);
   return (
     <Container>
       <BackButton onClick={() => navigate(-1)}>

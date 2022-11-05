@@ -7,7 +7,7 @@ import { UserContext } from "../Context/UserContext";
 
 const Tournament = () => {
   const navigate = useNavigate();
-  const tournamentImg = useContext(UserContext);
+  const { tournamentImg } = useContext(UserContext);
 
   return (
     <Container>

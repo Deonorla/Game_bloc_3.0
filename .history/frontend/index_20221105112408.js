@@ -7,7 +7,8 @@ import './index.css';
 // NEAR
 import { GameBloc } from './near-interface';
 import { Wallet } from './near-wallet';
-import { UserProvider } from './Context/UserContext';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 // When creating the wallet you can choose to create an access key, so the user
 // can skip signing non-payable methods when talking wth the  contract
@@ -22,9 +23,9 @@ window.onload = async () => {
   const isSignedIn = await wallet.startUp()
   root.render(
     <React.StrictMode>
-      <UserProvider>
+      <Provider store={store}>
         <App isSignedIn={isSignedIn} wallet={wallet} gamebloc={gamebloc} />
-      </UserProvider>
+      </Provider>
     </React.StrictMode>
   );
 }

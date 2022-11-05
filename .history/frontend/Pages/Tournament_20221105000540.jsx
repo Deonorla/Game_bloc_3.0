@@ -1,38 +1,26 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
-import { IoIosArrowRoundBack } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../Context/UserContext";
+import TournamentData from "../Features/TournamentData";
+import { AiOutlineEye } from "react-icons/ai";
 
 const Tournament = () => {
-  const navigate = useNavigate();
-  const tournamentImg = useContext(UserContext);
-
   return (
     <Container>
-      <BackButton onClick={() => navigate(-1)}>
-        <Back />
-        <p>Back</p>
-      </BackButton>
       <Heading>Choose a Tournament</Heading>
       <TournamentCard>
-        {tournamentImg.map((data) => (
-          <Link
-            to={`/tournament/${data.id}`}
-            key={data.id}
-            style={{ textDecoration: "none" }}
-          >
-            <Imgslide>
+        {TournamentData.map((data, index) => {
+          return (
+            <Imgslide key={index}>
               <Img style={{ backgroundImage: `url(${data.background})` }}>
+                <Seen>
+                  <Eye />
+                  <p>{data.view}</p>
+                </Seen>
                 <h4>{data.title}</h4>
-                <Create>
-                  <p>Create</p>
-                </Create>
               </Img>
             </Imgslide>
-          </Link>
-        ))}
+          );
+        })}
       </TournamentCard>
     </Container>
   );
@@ -52,12 +40,13 @@ const Container = styled.div`
 const Heading = styled.h2`
   color: #df78e3;
   font-size: 22px;
-  margin: 2rem 1rem;
+  margin-left: 1rem;
   font-weight: 500;
 `;
 
 const TournamentCard = styled.div`
   display: grid;
+
   grid-template-columns: repeat(1, 1fr);
   gap: 1rem;
   padding: 1rem;
@@ -68,8 +57,11 @@ const TournamentCard = styled.div`
 
 const Imgslide = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
   gap: 1rem;
+  margin-right: 1rem;
 `;
 
 const Img = styled.div`
@@ -78,7 +70,7 @@ const Img = styled.div`
   justify-content: space-between;
   padding: 0 0 0 0.5rem;
   width: 100%;
-  height: 15rem;
+  height: 12rem;
   border-radius: 12px;
 
   h4 {
@@ -86,25 +78,20 @@ const Img = styled.div`
     font-size: 1.2rem;
     margin-left: 8px;
   }
-  &:hover {
-    transform: scale(1.05);
-    translate: 5s ease in;
-  }
 `;
 
-const Create = styled.div`
+const Seen = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  align-self: flex-end;
   background: rgba(255, 255, 255, 0.34);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   border-radius: 9999px;
   padding: 0.1rem 0.5rem;
   width: fit-content;
-  margin: 1rem;
-  cursor: pointer;
+  margin-top: 1rem;
+
   p {
     color: #fff;
     font-size: 1rem;
@@ -112,25 +99,9 @@ const Create = styled.div`
   }
 `;
 
-const BackButton = styled.div`
-  display: flex;
-  width: fit-content;
-  flex-direction: row;
-  margin-top: 1rem;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  p {
-    color: #df78e3;
-    font-size: 1rem;
-    margin: 0 0 0 8px;
-  }
-`;
-
-const Back = styled(IoIosArrowRoundBack)`
-  color: #df78e3;
-  margin-left: 1rem;
-  font-size: larger;
+const Eye = styled(AiOutlineEye)`
+  color: #fff;
+  font-size: 21px;
 `;
 
 export default Tournament;

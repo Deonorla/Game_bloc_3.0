@@ -2,6 +2,7 @@ import 'regenerator-runtime/runtime';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from "./Pages/Dashbard";
+import styled from "styled-components";
 import Home from "./Pages/Home";
 import Header from './Components/Header';
 import Chathome from './Components/Chathome';
@@ -12,20 +13,19 @@ import CreateTournament from './Pages/CreateTournament';
 
 
 const App = ({ isSignedIn, wallet, gamebloc }) => {
-  const account = localStorage.getItem('near_app_wallet_auth_key') === null ? "Username" : localStorage.getItem('near_app_wallet_auth_key');
-  const [userName, setUserName] = useState("");
-  let accountJSON
+  const account = localStorage.getItem('near_app_wallet_auth_key');
 
-  useEffect(() => {
-    if (account === "Username") {
-      setUserName("Username")
-    } else {
-      accountJSON = JSON.parse(account);
-      const accountID = accountJSON.accountId;
+  if (account === null || undefined) {
+    account = ""
+  } else {
+    const accountJSON = JSON.parse(account);
+    const accountID = accountJSON.accountId;
+    const [userName, setUserName] = useState("");
+
+    useEffect(() => {
       setUserName(accountID.substring(0, accountID.length - 8));
-
-    }
-  }, [userName])
+    }, [userName])
+  }
 
 
   // gamebloc.new(accountID).then((e) => console.log(e)

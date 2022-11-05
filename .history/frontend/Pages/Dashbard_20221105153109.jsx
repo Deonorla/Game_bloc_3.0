@@ -20,7 +20,7 @@ const Dashboard = ({ userName }) => {
               <img src={user} alt="" />
             </Red>
             <Yellow>
-              <h4>{userName}</h4>
+              <h4>{userName === null ? "" : userName}</h4>
             </Yellow>
 
             <Green>

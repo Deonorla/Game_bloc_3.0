@@ -4,8 +4,8 @@ import detailReducer from "./Features/detailSlice";
 
 
 export default configureStore({
-    reducer: {
-        // card: cardReducer,
-        // detail: detailReducer,
+    reducer:{
+        card: cardReducer,
+        detail: detailReducer,
     },
 })

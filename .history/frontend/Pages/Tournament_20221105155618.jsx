@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import { UserContext } from "../Context/UserContext";
 const Tournament = () => {
   const navigate = useNavigate();
   const tournamentImg = useContext(UserContext);
+  const { id } = useParams();
 
   return (
     <Container>
