@@ -45,6 +45,4 @@ const Img = styled.div`
   border-radius: 12px;
 `;
 
-const Details = styled.div``;
-
 export default CreateTournament;

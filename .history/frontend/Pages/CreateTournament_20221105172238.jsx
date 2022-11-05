@@ -13,9 +13,10 @@ const CreateTournament = () => {
         {tournamentImg
           .filter((list) => list.id == id)
           .map((list) => (
-            <Details key={list.id}>
-              <Img style={{ backgroundImage: `url(${list.background})` }}></Img>
-            </Details>
+            <Img
+              key={list.id}
+              style={{ backgroundImage: `url(${list.background})` }}
+            ></Img>
           ))}
       </div>
     </Container>
@@ -39,12 +40,9 @@ const Img = styled.div`
   justify-content: space-between;
   padding: 0 0 0 0.5rem;
   /* background-repeat: no-repeat; */
-  background-size: 100% 100%;
-  width: 99%;
+  width: 100%;
   height: 20rem;
   border-radius: 12px;
 `;
-
-const Details = styled.div``;
 
 export default CreateTournament;
