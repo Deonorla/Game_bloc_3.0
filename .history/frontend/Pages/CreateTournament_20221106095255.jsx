@@ -15,7 +15,6 @@ const CreateTournament = () => {
     const id = ulid();
     setTournamentID(id);
   }
-  console.log(tournamentID);
 
   return (
     <Container>
@@ -54,7 +53,7 @@ const CreateTournament = () => {
               </Form>
             </InputLabel>
           </InputContainer>
-          <Submit onClick={generateId}>Create Tournament</Submit>
+          <Submit>Create Tournament</Submit>
         </TournamentContainer>
       </div>
     </Container>
@@ -216,19 +215,18 @@ const Input = styled.input`
 `;
 
 const Submit = styled.button`
-  background: #4646e2;
+  background: #4040b2;
   font-size: 16px;
   border-radius: 10px;
-  color: whitesmoke;
+  color: gray;
   cursor: pointer;
   border: none;
   width: fit-content;
-  padding: 0.5rem 1rem;
-  margin: 1rem;
-  align-self: end;
+  padding: 0.3rem 1rem;
+  align-items: flex-end;
 
   &:hover {
-    background: #4b4bf3;
+    background: #4242ba;
   }
 `;
 

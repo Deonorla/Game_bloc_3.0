@@ -1,21 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ulid } from "ulid";
 import styled from "styled-components";
 import { UserContext } from "../Context/UserContext";
 import near_logo from "../assets/near-logo.png";
-import user from "../assets/user.png";
 
 const CreateTournament = () => {
   const { id } = useParams();
-  const [tournamentID, setTournamentID] = useState("");
   const tournamentImg = useContext(UserContext);
-
-  function generateId() {
-    const id = ulid();
-    setTournamentID(id);
-  }
-  console.log(tournamentID);
 
   return (
     <Container>
@@ -46,15 +37,7 @@ const CreateTournament = () => {
                 <Input type="number" placeholder="Input amount in Near" />
               </Form>
             </InputLabel>
-            <InputLabel>
-              <h3>Number of Participants</h3>
-              <Form>
-                <Logo src={user} alt="" />
-                <Input type="number" placeholder="Input number of users" />
-              </Form>
-            </InputLabel>
           </InputContainer>
-          <Submit onClick={generateId}>Create Tournament</Submit>
         </TournamentContainer>
       </div>
     </Container>
@@ -160,8 +143,6 @@ const Tag3 = styled.div`
 `;
 
 const TournamentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
   background-color: #41417c;
   border-top-left-radius: 1.4rem;
   border-top-right-radius: 1.4rem;
@@ -171,7 +152,7 @@ const TournamentContainer = styled.div`
   h2 {
     text-align: center;
     color: #ffffff;
-    padding: 1rem 0;
+    margin: 3rem 0;
   }
 `;
 
@@ -181,23 +162,13 @@ const InputContainer = styled.div`
   gap: 1rem;
 `;
 
-const InputLabel = styled.div`
-  h3 {
-    color: white;
-    margin-left: 1rem;
-  }
-`;
-
+const InputLabel = styled.div``;
 const Logo = styled.img`
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  width: 25px;
-  height: 25px;
+  width: 40px;
+  height: 40px;
 `;
 
 const Form = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
 `;
@@ -208,27 +179,9 @@ const Input = styled.input`
   margin: 10px;
   background: #393963;
   border: none;
-  padding-left: 50px;
   border-radius: 8px;
   ::placeholder {
     color: gray;
-  }
-`;
-
-const Submit = styled.button`
-  background: #4646e2;
-  font-size: 16px;
-  border-radius: 10px;
-  color: whitesmoke;
-  cursor: pointer;
-  border: none;
-  width: fit-content;
-  padding: 0.5rem 1rem;
-  margin: 1rem;
-  align-self: end;
-
-  &:hover {
-    background: #4b4bf3;
   }
 `;
 

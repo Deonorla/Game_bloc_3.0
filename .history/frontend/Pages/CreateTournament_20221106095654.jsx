@@ -219,11 +219,11 @@ const Submit = styled.button`
   background: #4646e2;
   font-size: 16px;
   border-radius: 10px;
-  color: whitesmoke;
+  color: gray;
   cursor: pointer;
   border: none;
   width: fit-content;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
   margin: 1rem;
   align-self: end;
 
