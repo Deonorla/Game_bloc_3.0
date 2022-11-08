@@ -28,7 +28,7 @@ pub struct GameBloc {
 pub struct Tournament {
     owner_id: AccountId,
     status: TournamentStatus,  // ⟵ An enum we'll get to soon
-    user: Vec<User>, // ⟵ Another struct we've defined
+    user: Vec<AccountId>, // ⟵ Another struct we've defined
     total_prize: u128,
 }
 
@@ -104,18 +104,19 @@ impl GameBloc {
         }
     }
     
-    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<User>, prize: u128) {
+    pub fn new_tournament(&mut self, owner_id:AccountId, tournament_id_hash: String, no_of_users: u128, prize: u128) {
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
             "Only the owner may call this method"
         );
+
         let existing = self.tournaments.insert(
             &tournament_id_hash,
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
-                user: users,
+                user: Vec::with_capacity(no_of_users.try_into().unwrap()),
                 total_prize: prize,
             },
         );
@@ -147,7 +148,7 @@ impl GameBloc {
         tournament.status;
     }
 
-    pub fn join_tournament(&self,user_id: AccountId, age: u8, wins: u8, username: String, tournament_id: String){
+    pub fn join_tournament(&self,user_id: AccountId,tournament_id: String){
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
@@ -155,6 +156,7 @@ impl GameBloc {
         );
         let hashed_input = env::sha256(tournament_id.as_bytes());
         let hashed_input_hex = hex::encode(&hashed_input);
+
         let mut tournament = self
             .tournaments
             .get(&hashed_input_hex)
@@ -164,14 +166,7 @@ impl GameBloc {
             tournament.owner_id,
             "Tournament owner cannot join this tournament"
         );
-        let mut user =  User {
-            user_id,
-            age,
-            status: Status::Online,  // ⟵ Another struct we've defined
-            wins,
-            username,
-        };
-       tournament.user.push(user);
+       tournament.user.push(user_id);
     }
 
     pub fn end_tournament(&mut self, users: Vec<User>, tournament_id: String,) {
@@ -239,12 +234,13 @@ impl GameBloc {
     }
 
 
-    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<User>, prize: u128) {
+    pub fn new_crowd_funded_tournament(&mut self, owner_id:AccountId, tournament_id_hash: String, users: Vec<AccountId>, prize: u128) {
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
             "Only the owner may call this method"
         );
+
         let existing = self.tournaments.insert(
             &tournament_id_hash,
             &Tournament {
@@ -283,21 +279,25 @@ impl GameBloc {
         tournament.status;
     }
 
-    pub fn join_crowd_funded_tournament(&self,user_id: AccountId, age: u8, wins: u8, username: String, tournament_id: String){
+    pub fn join_crowd_funded_tournament(&self,user_id: AccountId,tournament_id: String){
+        assert_eq!(
+            env::predecessor_account_id(),
+            self.owner_id,
+            "Only the owner may call this method"
+        );
         let hashed_input = env::sha256(tournament_id.as_bytes());
         let hashed_input_hex = hex::encode(&hashed_input);
+
         let mut tournament = self
             .tournaments
             .get(&hashed_input_hex)
             .expect("ERR_NOT_CORRECT_USER");
-        let mut user =  User {
-            user_id,
-            age,
-            status: Status::Online,  // ⟵ Another struct we've defined
-            wins,
-            username,
-        };
-        tournament.user.push(user);
+        assert_eq!(
+            env::predecessor_account_id(),
+            tournament.owner_id,
+            "Tournament owner cannot join this tournament"
+        );
+        tournament.user.push(user_id);
     }
 
     pub fn end_crowd_funded_tournament(&mut self, users: Vec<User>, tournament_id: String,) {
