@@ -14,7 +14,6 @@ import CreateTournament from './Pages/CreateTournament';
 const App = ({ isSignedIn, wallet, gamebloc }) => {
   const account = localStorage.getItem('near_app_wallet_auth_key') === null ? "Username" : localStorage.getItem('near_app_wallet_auth_key');
   const [userName, setUserName] = useState("");
-
   let accountJSON
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
       accountJSON = JSON.parse(account);
       const accountID = accountJSON.accountId;
       setUserName(accountID.substring(0, accountID.length - 8));
-      setUserID(accountID)
+
     }
   }, [userName])
 

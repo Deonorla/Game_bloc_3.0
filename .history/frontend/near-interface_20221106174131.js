@@ -9,8 +9,8 @@ export class GameBloc {
     this.wallet = walletToUse
   }
 
-  async new_tournament(userID, tournamentID, users, prize) {
-    return await this.wallet.callMethod({ contractId: this.contractId, method: "new_tournament", args: { owner_id: userID, tournament_id_hash: tournamentID, users: users, prize: prize } })
+  async new_tournament(accountID, ) {
+    return await this.wallet.callMethod({ contractId: this.contractId, method: "new", args: { owner_id: accountID, String: tournament_id_hash  } })
   }
 
   // async getMessages() {

@@ -14,7 +14,7 @@ import CreateTournament from './Pages/CreateTournament';
 const App = ({ isSignedIn, wallet, gamebloc }) => {
   const account = localStorage.getItem('near_app_wallet_auth_key') === null ? "Username" : localStorage.getItem('near_app_wallet_auth_key');
   const [userName, setUserName] = useState("");
-
+  const [userID, setUserID] = useState("")
   let accountJSON
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
           <Route path="/" element={<Home />} />
           <Route path="/chatbox" element={<Chat />} />
           <Route path="/tournament" element={<Tournament />} />
-          <Route path="/tournament/:id" element={<CreateTournament gamebloc={gamebloc} />} />
+          <Route path="/tournament/:id" element={<CreateTournament gamebloc={gamebloc} userID={userID} />} />
         </Routes>
 
         <Chathome />

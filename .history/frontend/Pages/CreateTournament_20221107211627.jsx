@@ -6,19 +6,15 @@ import { UserContext } from "../Context/UserContext";
 import near_logo from "../assets/near-logo.png";
 import user from "../assets/user.png";
 
-const CreateTournament = ({ gamebloc }) => {
+const CreateTournament = ({ gamebloc, userID }) => {
   const { id } = useParams();
   const [tournamentID, setTournamentID] = useState("");
   const [prize, setPrize] = useState(0);
   const [noOfUsers, setNoOfUsers] = useState(0);
   const tournamentImg = useContext(UserContext);
-  const [userID, setUserID] = useState("");
-  const account = localStorage.getItem("near_app_wallet_auth_key");
-  console.log(userID);
+
   useEffect(() => {
-    accountJSON = JSON.parse(account);
-    const accountID = accountJSON.accountId;
-    setUserID(accountID);
+    console.log(userID);
   }, []);
 
   function generateId() {

@@ -1,29 +1,22 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ulid } from "ulid";
 import styled from "styled-components";
 import { UserContext } from "../Context/UserContext";
 import near_logo from "../assets/near-logo.png";
 import user from "../assets/user.png";
+import { GameBloc } from "../near-interface";
 
-const CreateTournament = ({ gamebloc }) => {
+const CreateTournament = () => {
   const { id } = useParams();
   const [tournamentID, setTournamentID] = useState("");
   const [prize, setPrize] = useState(0);
   const [noOfUsers, setNoOfUsers] = useState(0);
   const tournamentImg = useContext(UserContext);
-  const [userID, setUserID] = useState("");
-  const account = localStorage.getItem("near_app_wallet_auth_key");
-  console.log(userID);
-  useEffect(() => {
-    accountJSON = JSON.parse(account);
-    const accountID = accountJSON.accountId;
-    setUserID(accountID);
-  }, []);
 
   function generateId() {
     const id = ulid();
-    setTournamentID(JSON.parse(id));
+    setTournamentID(id);
   }
   function getPrize(event) {
     setPrize(event.target.value);
@@ -32,14 +25,11 @@ const CreateTournament = ({ gamebloc }) => {
     setNoOfUsers(event.target.value);
   };
 
-  const setTournament = async () => {
-    try {
-      await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   console.log(setTournament());
+
+  const setTournament = async () => {
+    await GameBloc.new_tournament(tournamentID, noOfUsers, prize);
+  };
 
   return (
     <Container>

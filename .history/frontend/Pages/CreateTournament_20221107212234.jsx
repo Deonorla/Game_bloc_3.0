@@ -14,7 +14,7 @@ const CreateTournament = ({ gamebloc }) => {
   const tournamentImg = useContext(UserContext);
   const [userID, setUserID] = useState("");
   const account = localStorage.getItem("near_app_wallet_auth_key");
-  console.log(userID);
+
   useEffect(() => {
     accountJSON = JSON.parse(account);
     const accountID = accountJSON.accountId;
