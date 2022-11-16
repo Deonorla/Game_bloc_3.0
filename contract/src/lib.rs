@@ -141,25 +141,25 @@ impl GameBloc {
     }
     
     pub fn start_tournament(&mut self,tournament_id: String) -> () {
-            let hashed_input = env::sha256(tournament_id.as_bytes());
-            let hashed_input_hex = hex::encode(&hashed_input);
+            // let hashed_input = env::sha256(tournament_id.as_bytes());
+            // let hashed_input_hex = hex::encode(&hashed_input);
         let mut tournament = self
                 .tournaments
-                .get(&hashed_input_hex)
+                .get(&tournament_id)
                 .expect("ERR_NOT_CORRECT_USER");
         
         
         tournament.status = match tournament.status {
-                    TournamentStatus::GameInProgress => TournamentStatus::GameInProgress,
+                    TournamentStatus::AcceptingPlayers => TournamentStatus::GameInProgress,
                     _ => {
                         env::panic_str("ERR_GAME_IN_PROGRESS");
                     }
                 };
 
         // Reinsert the tournament back in after we modified the status:
-        self.tournaments.insert(&hashed_input_hex, &tournament);
+        self.tournaments.insert(&tournament_id, &tournament);
         // Remove from the list of unsolved ones
-        self.open_tournaments.remove(&hashed_input_hex);
+        self.open_tournaments.remove(&tournament_id);
         tournament.status;
     }
 
