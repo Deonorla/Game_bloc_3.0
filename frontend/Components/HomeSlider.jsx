@@ -14,16 +14,16 @@ const HomeSlider = ()=>{
      {  
         id:'1',
         img:`${gotham}`,
-        title:'Gotham Knight coming soon. Get Access!',
-        description:'The game will be released on July 5th 2022 and will be available on Ps5, X-box and PC '
+        title:'Gotham Knight',
+        description:'Triva actions and fun in playing this marvel game with other game players. Join to win cool prizes.'
 
      },
 
      {  
         id:'2',
         img:'https://images5.alphacoders.com/314/thumbbig-314472.webp',
-        title:'Get premium access to Call of Duty V',
-        description:' Available on Ps5, X-box and PC, Order yours now!'
+        title:'Play funded tournaments on Call of Duty V',
+        description:' Become the first and win cool cash prizes in Battle royale  '
 
      },
 
@@ -31,7 +31,7 @@ const HomeSlider = ()=>{
         id:'3',
         img: `${mortal}`,
         title:'Mortal Kombat 11 finally Here',
-        description:'The game will be released on July 25th 2022 and will be available only on Ps5 and X-box. '
+        description:'Want a one on one fight off, play mortal kombat and finish off your opponent. '
 
      }
   ]
@@ -67,11 +67,13 @@ const HomeSlider = ()=>{
                   
                  
                </Details>
+                 {/* <Link to="/tournament">
                <ButtonContainer>
                        <div>
-                          <p>$59</p><PreOrder>Pre-order</PreOrder>
+                          <p>Join</p><PreOrder>Tournament</PreOrder>
                        </div>  
                   </ButtonContainer>
+                 </Link> */}
            </Background>
            
      )
@@ -205,9 +207,6 @@ padding-right: 1rem;
 bottom: .5rem;
 right: 2px;
 
-&:hover{
-cursor: pointer;
-}
 
 
 div{
@@ -222,9 +221,10 @@ div{
   backdrop-filter: blur(5px);
   height: 25px;
   top: 0;
+  cursor: pointer;
   p{
-     font-size: 20px;
-     margin: 0 10px 0 6px;
+     font-size: 16px;
+     margin: 2px 10px 2px 6px;
      color: #FFFFFF;
 
      

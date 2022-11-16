@@ -15,11 +15,11 @@ import { RiSendPlaneFill } from "react-icons/ri";
     return(
  
         <Container>
-                <Title>
+                {/* <Title>
                 <h3>Chat</h3>
                 <h3>Online</h3>
                   
-                </Title>
+                </Title> */}
 
             <Chatheader>
                 <Avatar>

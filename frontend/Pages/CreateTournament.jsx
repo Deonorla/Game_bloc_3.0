@@ -9,12 +9,12 @@ import user from "../assets/user.png";
 const CreateTournament = ({ gamebloc }) => {
   const { id } = useParams();
   const [tournamentID, setTournamentID] = useState("");
-  const [prize, setPrize] = useState(0);
-  const [noOfUsers, setNoOfUsers] = useState(0);
+  const [prize, setPrize] = useState("");
+  const [noOfUsers, setNoOfUsers] = useState("");
   const tournamentImg = useContext(UserContext);
   const [userID, setUserID] = useState("");
   const account = localStorage.getItem("near_app_wallet_auth_key");
-  console.log(userID);
+
   useEffect(() => {
     accountJSON = JSON.parse(account);
     const accountID = accountJSON.accountId;
@@ -23,23 +23,27 @@ const CreateTournament = ({ gamebloc }) => {
 
   function generateId() {
     const id = ulid();
-    setTournamentID(JSON.parse(id));
+    setTournamentID(id);
   }
   function getPrize(event) {
+    event.preventDefault()
     setPrize(event.target.value);
   }
   const getNoOfUsers = (event) => {
+    event.preventDefault()
     setNoOfUsers(event.target.value);
   };
 
   const setTournament = async () => {
     try {
+      gamebloc.getAllTournaments().then(e =>console.log(e));
       await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
+      console.log("Success");
     } catch (error) {
       console.log(error);
+      console.log("Failed");
     }
   };
-  console.log(setTournament());
 
   return (
     <Container>
@@ -92,7 +96,7 @@ const CreateTournament = ({ gamebloc }) => {
           </InputContainer>
           <Submit
             onClick={() => {
-              generateId, setTournament;
+              generateId(); setTournament();
             }}
           >
             Create Tournament
@@ -149,6 +153,7 @@ const Tags = styled.div`
 
 const Tag1 = styled.div`
   display: flex;
+  color: white; 
   flex-direction: row;
   align-items: center;
   align-self: flex-end;
@@ -176,6 +181,7 @@ const Tag2 = styled.div`
   width: fit-content;
   margin: 1rem;
   cursor: pointer;
+  color: white; 
   p {
     color: #fff;
     font-size: 1rem;
@@ -193,6 +199,7 @@ const Tag3 = styled.div`
   padding: 0.1rem 0.5rem;
   width: fit-content;
   margin: 1rem;
+  color: white; 
   cursor: pointer;
   p {
     color: #fff;
