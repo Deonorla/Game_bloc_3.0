@@ -30,7 +30,7 @@ const Img = styled.img`
   width: 100%;
   height: 150px;
   &:hover{
-    transform: scale(1.08);
+    transform: scale(1.01);
     cursor: pointer;
   }
 `;

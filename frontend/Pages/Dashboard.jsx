@@ -6,7 +6,7 @@ import {RiGamepadFill} from "react-icons/ri";
 import {TiHome} from "react-icons/ti";
 import user from "../assets/u.png";
 import virtual from "../assets/virtual.jpg";
-import {  useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginModal from "../Components/Popup/LoginModal";
 
 
@@ -48,10 +48,12 @@ const Dashboard = ({ userName, isSignedIn, wallet }) => {
 
         <Enclosed>
           <MenuBox>
+            <Link to="/">
             <div>
               <h4>Home</h4>
               <Homeicon />
             </div>
+            </Link>
             <div>
               <h4>Tournaments</h4>
               <Library />
