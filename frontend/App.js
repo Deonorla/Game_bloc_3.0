@@ -41,7 +41,7 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
         />
       </>
       <div className="app">
-        <Dashboard userName={userName} />
+        <Dashboard userName={userName} isSignedIn={isSignedIn} wallet={wallet} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/chatbox" element={<Chat />} />

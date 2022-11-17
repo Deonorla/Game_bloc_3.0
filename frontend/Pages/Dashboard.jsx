@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { HiCollection } from "react-icons/hi";
@@ -5,9 +6,17 @@ import {RiGamepadFill} from "react-icons/ri";
 import {TiHome} from "react-icons/ti";
 import user from "../assets/u.png";
 import virtual from "../assets/virtual.jpg";
-import { Link } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
+import LoginModal from "../Components/Popup/LoginModal";
 
-const Dashboard = ({ userName }) => {
+
+const Dashboard = ({ userName, isSignedIn, wallet }) => {
+  const [openModal, setOpenModal] = useState(false)
+  const navigate = useNavigate()
+  const handleSignIn = ()=> {
+    {isSignedIn ? navigate("/tournament") : setOpenModal(true)}
+  }
+
   return (
     <Wrapper>
       <Nav>
@@ -29,9 +38,11 @@ const Dashboard = ({ userName }) => {
               </div> */}
             </Green>
 
-            <Link to="/tournament">
-              <button>Start a Tournament</button>
-            </Link>
+          
+              <button
+              onClick={handleSignIn}
+              >Start a Tournament</button>
+            
           </ColorContainer>
         </AvatarContainer>
 
@@ -53,18 +64,13 @@ const Dashboard = ({ userName }) => {
         </Enclosed>
       </Nav>
 
-      {/* <Container>
-   
-         <HomeSlider/>
-         <SearchBox/>
-         <CardView/>
-         <Hub/>
-        </Container> */}
-
-      {/* 
-       <Chathome>
-        <Chat/>
-       </Chathome> */}
+     
+        {openModal && 
+            <LoginModal
+             modal={setOpenModal}
+             wallet={wallet}
+            />
+         }
     </Wrapper>
   );
 };

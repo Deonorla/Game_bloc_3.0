@@ -56,8 +56,8 @@ const Header =({wallet, isSignedIn})=>{
 
                <Profile>
                { isSignedIn ? <button onClick={signOut} > <p>Sign Out</p></button> : <button onClick={signIn} > <p>Sign In</p></button>}
-                <Message/>
-                <img src={user} alt=""/>
+                {/* <Message/>
+                <img src={user} alt=""/> */}
                </Profile>
                  
               <Hamenu onClick={() => setNavbar}   />

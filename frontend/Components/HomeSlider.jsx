@@ -303,7 +303,7 @@ display: none;
 @media (min-width: 1000px){
  margin: 0 0 0 .5rem;
  display: flex;
- width: 35%;
+ width: 47%;
  max-height: 220px;
  box-shadow: rgb(0 0 0 / 69%) 0px 26px 36px -10px,
  rgb(0 0 0 / 73%) 0px 16px 10px -10px;
