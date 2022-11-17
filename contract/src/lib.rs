@@ -164,25 +164,44 @@ impl GameBloc {
     }
 
     pub fn join_tournament(&self,user_id: AccountId,tournament_id: String){
-        // assert_eq!(
-        //     env::predecessor_account_id(),
-        //     self.owner_id,
-        //     "Only the owner may call this method"
-        // );
-        let hashed_input = env::sha256(tournament_id.as_bytes());
-        let hashed_input_hex = hex::encode(&hashed_input);
+        let public_keys = self.open_tournaments.to_vec();
+        let mut open_tournaments: Vec<String>  = vec![];
+        for pk in public_keys {
+            let mut tournament = self
+                .tournaments
+                .get(&pk)
+                .unwrap_or_else(|| env::panic_str("ERR_LOADING_PUZZLE"));
+            // let `mut tournament = JsonTournament {
+            //     owner_id: tournament.owner_id,
+            //     tournament_id_hash: pk,
+            //     status: tournament.status,  // ⟵ An enum we'll get to soon
+            //     user: tournament.user, // ⟵ Another struct we've defined
+            //     total_prize: tournament.total_prize,
+            // };
+            tournament.user.push(user_id);
+            break;
+        }
 
-
-        let mut tournament = self
-            .tournaments
-            .get(&hashed_input_hex)
-            .expect("ERR_NOT_CORRECT_USER");
-        // assert_eq!(
-        //     env::predecessor_account_id(),
-        //     tournament.owner_id,
-        //     "Tournament owner cannot join this tournament"
-        // );
-       tournament.user.push(user_id);
+       //
+       //  // assert_eq!(
+       //  //     env::predecessor_account_id(),
+       //  //     self.owner_id,
+       //  //     "Only the owner may call this method"
+       //  // );
+       //  // let hashed_input = env::sha256(tournament_id.as_bytes());
+       //  // let hashed_input_hex = hex::encode(&hashed_input);
+       //  let s: String = "01GJ16DF22SGRBP58WRZMNZDQ4".to_owned();
+       //
+       //  let mut tournament = self
+       //      .tournaments
+       //      .get(&s)
+       //      .expect("ERR_NOT_CORRECT_USER");
+       //  // assert_eq!(
+       //  //     env::predecessor_account_id(),
+       //  //     tournament.owner_id,
+       //  //     "Tournament owner cannot join this tournament"
+       //  // );
+       // tournament.user.push(user_id);
     }
 
     pub fn end_tournament(&mut self, users: Vec<User>, tournament_id: String,) {
