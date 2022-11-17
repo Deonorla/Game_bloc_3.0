@@ -43,7 +43,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
  position: fixed;
 inset: 0;
-background-color: 	rgba(128,128,128, 0.3);
+background-color: 	rgba(128,128,128, 0.2);
 `;
 
 const Container2 = styled.div`
@@ -70,7 +70,7 @@ overflow: hidden;
 `;
 
 const Modal = styled.div`
-background-color: #6365bf;
+background-color: #35356b;
 padding: 1rem;
 display: flex;
 flex-direction: column;
@@ -83,10 +83,10 @@ h3{
 `;
 
 const Button = styled.div`
- background-color: white;
+ background-color: #41417c;
  border-radius: 9999px;
  padding: 1rem 2rem;
- color: #a53f3f;
+ color: white;
  font-size: 16px;
  border: none;
  margin: 1rem 0rem;
@@ -94,6 +94,7 @@ const Button = styled.div`
 
  &:hover{
      scale: 1.03;
+     background-color: #6365bf;
  }
 `;
 

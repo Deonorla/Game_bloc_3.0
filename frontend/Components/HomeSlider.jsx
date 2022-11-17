@@ -128,7 +128,7 @@ box-shadow: rgb(0 0 0 / 69%) 0px 26px 36px -10px,
 rgb(0 0 0 / 73%) 0px 16px 10px -10px; 
 border-radius: 20px;
 max-height: 220px;
-width: 95%;
+width: 90%;
 
 
 @media (max-width: 376px ){
@@ -259,7 +259,7 @@ margin:6rem 2rem 2rem 0;
 
 }
 @media (min-width: 1000px){
- margin: 4.5rem 0rem 2rem 1rem;
+ margin: 4.5rem 0rem 2rem 0;
 
 }
 `;
@@ -268,7 +268,6 @@ const Background = styled.div`
  position: relative;
  z-index: -1; 
  border-radius: 15px;
-
 
 `;
 
@@ -302,9 +301,9 @@ flex-direction: row;
 const Wrap = styled.div`
 display: none;
 @media (min-width: 1000px){
- margin: 0 0 0 1.5rem;
+ margin: 0 0 0 .5rem;
  display: flex;
- width: 37%;
+ width: 47%;
  max-height: 220px;
  box-shadow: rgb(0 0 0 / 69%) 0px 26px 36px -10px,
  rgb(0 0 0 / 73%) 0px 16px 10px -10px;

@@ -23,7 +23,7 @@ const Header =({wallet, isSignedIn})=>{
    const itemVariants = {
       closed:{
         width: 0,
-       
+
       },
       open:{
         width: "12rem",
@@ -40,7 +40,7 @@ const Header =({wallet, isSignedIn})=>{
         x: -500,
         opacity: 0
       },
-  
+
     open:{
       x: 0,
       opacity: 1
@@ -56,7 +56,7 @@ const Header =({wallet, isSignedIn})=>{
               </Img>
 
                <Profile>
-               { isSignedIn ? <button onClick={()=> { signOut; navigate("/")} } > <p>Sign Out</p></button> : <button onClick={signIn} > <p>Sign In</p></button>}
+               { isSignedIn ? <button onClick={signOut} > <p>Sign Out</p></button> : <button onClick={signIn} > <p>Sign In</p></button>}
                 {/* <Message/>
                 <img src={user} alt=""/> */}
                </Profile>
