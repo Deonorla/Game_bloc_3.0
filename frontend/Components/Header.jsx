@@ -1,6 +1,7 @@
 import React from "react";
 // import { useState } from "react";
 import { motion, useCycle, AnimatePresence } from "framer-motion";
+import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { HiChat } from "react-icons/hi";
 import user from "../assets/u.png";
@@ -18,7 +19,7 @@ const Header =({wallet, isSignedIn})=>{
    const [navbar, setNavbar] = useCycle(false, true);
     const signIn = () => { wallet.signIn() }
     const signOut = () => { wallet.signOut() }
-
+    const navigate = useNavigate();
    const itemVariants = {
       closed:{
         width: 0,
@@ -55,9 +56,9 @@ const Header =({wallet, isSignedIn})=>{
               </Img>
 
                <Profile>
-               { isSignedIn ? <button onClick={signOut} > <p>Sign Out</p></button> : <button onClick={signIn} > <p>Sign In</p></button>}
-                <Message/>
-                <img src={user} alt=""/>
+               { isSignedIn ? <button onClick={()=> { signOut; navigate("/")} } > <p>Sign Out</p></button> : <button onClick={signIn} > <p>Sign In</p></button>}
+                {/* <Message/>
+                <img src={user} alt=""/> */}
                </Profile>
                  
               <Hamenu onClick={() => setNavbar}   />
