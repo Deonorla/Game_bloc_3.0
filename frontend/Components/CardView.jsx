@@ -6,17 +6,11 @@ import { NavLink } from "react-router-dom";
 import { GiRoundStar } from "react-icons/gi";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { HiChat } from "react-icons/hi";
-import {  showDetails } from "../Features/cardSlice";
-import { useDispatch } from "react-redux";
-
+import { Data } from "../Features/Data";
 const CardView = () =>{
      const [width, setWidth] = useState(0);
      const Layout = useRef()
-     const dispatch = useDispatch();
-     const { Data, ...item } = useSelector((state)=> state.card)
- 
 
-   
 
      useEffect(() => {
          setWidth(Layout.current.scrollWidth - Layout.current.offsetWidth)
@@ -38,7 +32,7 @@ const CardView = () =>{
                      return(
                          
                         <Card  key={list.id}>
-                              <NavLink to={'/details/' + list.id}  key={list.id}>
+                          
                            <Img>
                           
                               <img src={list.img} alt="img" />
@@ -54,16 +48,16 @@ const CardView = () =>{
                               </Summary>
 
                            </Description>
-                                    </NavLink>
+                              
 
                            <Interactions>
                               <Trend>{list.trend}</Trend>
                               <Container>
                                  <div>
                                     
-                                    <Star onClick={()=>{dispatch(showDetails(list.img))}} /> 
+                                    <Star onClick={()=>{list.img}} /> 
                                  
-                                    <p>{item.Star}</p>
+                                    <p>4</p>
                                  </div>
                                  <div>
                                  < Send  />
@@ -71,7 +65,7 @@ const CardView = () =>{
                                  </div>
                                     <div>
                                     <Message />
-                                    <p>{item.Comment}</p>
+                                    <p>0</p>
                                     </div>
                               </Container>
                            </Interactions>
@@ -101,7 +95,7 @@ const CardContainer = styled.div`
 
    @media (min-width: 1000px){
     margin-left: 7px;
-    margin-right: 17rem;
+    
    }
 `;
 

@@ -10,7 +10,7 @@ const Home = () => {
     <Container>
       <HomeSlider />
       <SearchBox />
-      {/* <CardView /> */}
+      <CardView />
       <Hub />
     </Container>
   );
