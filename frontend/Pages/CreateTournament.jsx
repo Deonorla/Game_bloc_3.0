@@ -46,6 +46,7 @@ const CreateTournament = ({ gamebloc }) => {
   const setTournament = async () => {
     setLoading(true)
     try {
+//       await gamebloc.startTournament();
       gamebloc.getAllTournaments().then(e =>console.log(e));
       await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
       console.log("Success");
