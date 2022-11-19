@@ -14,7 +14,7 @@
     "postinstall": "cd frontend && npm install && cd .. && cd integration-tests && npm install && cd .. && cd contract && npm install"
   },
   "devDependencies": {
-    "near-cli": "^3.3.0"
+    "near-cli": "^3.4.2"
   },
   "dependencies": {
     "env-cmd": "^10.1.0",
