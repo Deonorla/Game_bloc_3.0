@@ -48,7 +48,7 @@ import { RiSendPlaneFill } from "react-icons/ri";
 
  const Container = styled.div`
     padding: .5rem;
-    margin: 2rem 0;
+    /* margin: 2rem 0; */
     width: 100%;
 
     `;
@@ -68,6 +68,7 @@ const Heading = styled.div`
      background: #35356b;
      border-radius: 12px;
      padding: .5rem 0 1rem .5rem;
+     margin-top: 4rem;
 
  `;
 

@@ -48,7 +48,7 @@ const Dashboard = ({ userName, isSignedIn, wallet }) => {
 
         <Enclosed>
           <MenuBox>
-            <Link to="/">
+            <Link style={{textDecoration: 'none'}} to="/">
             <div>
               <h4>Home</h4>
               <Homeicon />

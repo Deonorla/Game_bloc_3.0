@@ -1,19 +1,28 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, CSSProperties } from "react";
 import { useParams } from "react-router-dom";
 import { ulid } from "ulid";
 import styled from "styled-components";
 import { UserContext } from "../Context/UserContext";
 import near_logo from "../assets/near-logo.png";
 import user from "../assets/user.png";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const CreateTournament = ({ gamebloc }) => {
   const { id } = useParams();
   const [tournamentID, setTournamentID] = useState("");
+  let [loading, setLoading] = useState(false);
+  let [color, setColor] = useState("#ffffff");
   const [prize, setPrize] = useState("");
   const [noOfUsers, setNoOfUsers] = useState("");
   const tournamentImg = useContext(UserContext);
   const [userID, setUserID] = useState("");
   const account = localStorage.getItem("near_app_wallet_auth_key");
+
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "white",
+  };
 
   useEffect(() => {
     accountJSON = JSON.parse(account);
@@ -35,13 +44,17 @@ const CreateTournament = ({ gamebloc }) => {
   };
 
   const setTournament = async () => {
+    setLoading(true)
     try {
+//       await gamebloc.startTournament();
       gamebloc.getAllTournaments().then(e =>console.log(e));
       await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
       console.log("Success");
+      setLoading(false)
     } catch (error) {
       console.log(error);
       console.log("Failed");
+      setLoading(false)
     }
   };
 
@@ -97,9 +110,18 @@ const CreateTournament = ({ gamebloc }) => {
           <Submit
             onClick={() => {
               generateId(); setTournament();
+              setLoading(!loading)
             }}
           >
-            Create Tournament
+          { loading ?
+          <ClipLoader
+            color={color}
+            loading={loading}
+            cssOverride={override}
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          /> : "Create Tournament"}
           </Submit>
         </TournamentContainer>
       </div>

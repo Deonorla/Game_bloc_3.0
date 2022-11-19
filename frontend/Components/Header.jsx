@@ -1,6 +1,7 @@
 import React from "react";
 // import { useState } from "react";
 import { motion, useCycle, AnimatePresence } from "framer-motion";
+import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { HiChat } from "react-icons/hi";
 import user from "../assets/u.png";
@@ -18,11 +19,11 @@ const Header =({wallet, isSignedIn})=>{
    const [navbar, setNavbar] = useCycle(false, true);
     const signIn = () => { wallet.signIn() }
     const signOut = () => { wallet.signOut() }
-
+    const navigate = useNavigate();
    const itemVariants = {
       closed:{
         width: 0,
-       
+
       },
       open:{
         width: "12rem",
@@ -39,7 +40,7 @@ const Header =({wallet, isSignedIn})=>{
         x: -500,
         opacity: 0
       },
-  
+
     open:{
       x: 0,
       opacity: 1
