@@ -67,6 +67,9 @@ class GameBloc:
             lobby_players_full.append(resp.json()['data'])
         kds
 
+    def close(self):
+        pass
+
     
 
 
