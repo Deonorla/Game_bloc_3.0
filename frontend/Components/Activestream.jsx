@@ -1,15 +1,20 @@
+import { useState } from "react";
 import styled from "styled-components";
 import {AiOutlineEye} from "react-icons/ai";
 import {AiOutlineSound} from "react-icons/ai";
 import {MdBattery80} from "react-icons/md";
 import {BsMicMute} from "react-icons/bs";
 import Activeapi from "../Features/Activeapi";
+import SoonPopUP from "./Popup/SoonPopUp";
 const Activestream = ( ) =>{
+  const [openModal, setOpenModal] = useState(false)
     return(
         <Container>
              {   Activeapi.map((data,id) => {
                   return(
-                    <Wrap key={id}>
+                    <Wrap key={id}
+                    onClick={()=> setOpenModal(true)}
+                    >
         
                     <video autoPlay loop muted >
                         <source src={data.link} type="video/mp4" />
@@ -45,7 +50,12 @@ const Activestream = ( ) =>{
 
                     })
               
-}
+                 }
+                 {openModal && 
+                  <SoonPopUP
+                   modal={setOpenModal}
+                  />
+                 }
         </Container>
     )
 }

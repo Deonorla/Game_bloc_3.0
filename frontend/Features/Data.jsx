@@ -1,10 +1,12 @@
 
+ 
+ 
  export const  Data = [
    
     {
     id: 1,
     img:'https://images7.alphacoders.com/327/thumb-1920-327601.jpg',
-    logo:'playstation.png',
+    logo:`../assets/playstation.png`,
     title:'Six upcoming games to watch out for',
     Description:'Sueha yodashi talks about six games ...',
     trend:'new'
