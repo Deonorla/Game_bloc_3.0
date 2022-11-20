@@ -91,11 +91,8 @@ const Dashboard = ({ userName, isSignedIn, wallet }) => {
                            
                              <Img style={{backgroundImage:`url(${item.background})`}}>
                                     <Seen>
-                                       <img 
-                                       src={item.background}
-                                       alt=""
-                                       /> 
-                                       <h4>{item.title}</h4>
+                                   
+                                       <p>{item.view}</p> 
                                    </Seen>
                                   {/* <h4>{item.title}</h4> */}
                                  
@@ -168,6 +165,7 @@ const Imgslide = styled.div`
 const Img = styled.div`
 display: flex;
 flex-direction: column;
+padding: 0 0 0 .5rem;
 background-size: 190px 140px;
 border-radius: 12px;
 width: 190px;
@@ -188,21 +186,15 @@ background: rgba(255, 255, 255, 0.34);
 box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 backdrop-filter: blur(5px);
 /* border-radius: 9999px; */
-border-bottom-left-radius: 12px;
-border-bottom-right-radius: 12px;
-width: 100%;
-height: 3.5rem;
-margin-top: 45%;
+padding: .1rem .5rem;
+width: 80%;
+margin-top: 60%;
 
-img{
-width: 30px;
-height: 30px;
-border-radius: 8px;
- margin-left: 8px;
-}
-h4{
-  font-size: 16px;
-  margin-left: 1rem;
+p{
+ color: #fff;
+ font-size: 1rem;
+ margin: 0 0 0 8px;
+
 }
 
 `;

@@ -8,27 +8,19 @@ import user from "../assets/u.png";
 import virtual from "../assets/virtual.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import LoginModal from "../Components/Popup/LoginModal";
-import Portaldata from "../Features/Portaldata";
-import ReactPaginate from "react-paginate";
-import "../Features/Pagination.css"
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
-
+import Hubdata from "../Features/Hubdata";
+import Pagination from "../Features/Pagination";
 
 const Dashboard = ({ userName, isSignedIn, wallet }) => {
   const [openModal, setOpenModal] = useState(false)
-  const [pageNumber, setPageNumber] = useState(0);
-	const postPerPage = 1;
-	const postViewed = pageNumber * postPerPage;
+  const [Data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage, setPostsPerPage] = useState(3)
   const navigate = useNavigate()
 
-  const currentPosts = Portaldata.slice(postViewed, postViewed + postPerPage);
-
- 
-	const pageCount = Math.ceil(Portaldata.length / postPerPage);
-	const changePage = ({ selected }) => {
-		setPageNumber(selected);
-	};
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = Hubdata.slice(firstPostIndex, lastPostIndex);
  console.log(currentPosts)
 
   const handleSignIn = ()=> {
@@ -91,32 +83,23 @@ const Dashboard = ({ userName, isSignedIn, wallet }) => {
                            
                              <Img style={{backgroundImage:`url(${item.background})`}}>
                                     <Seen>
-                                       <img 
-                                       src={item.background}
-                                       alt=""
-                                       /> 
-                                       <h4>{item.title}</h4>
+                                   
+                                       <p>{item.view}</p> 
                                    </Seen>
-                                  {/* <h4>{item.title}</h4> */}
+                                  <h4>{item.title}</h4>
                                  
                              </Img>
    
                             </Imgslide>
                         ))
            }
-          <ReactPaginate
-                  previousLabel={<MdKeyboardArrowLeft />}
-                  nextLabel={<MdKeyboardArrowRight />}
-                  pageCount={pageCount}
-                  pageClassName="page-item-none"
-                  breakClassName="page-item-none"
-                  onPageChange={changePage}
-                  containerClassName={"paginationBttns"}
-                  previousLinkClassName={""}
-                  nextLinkClassName={""}
-                  disabledClassName={""}
-                  activeClassName={"activeBttn"}
-                />
+
+          <Pagination
+                totalPosts={Hubdata.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            />
 
 
         </Portal>
@@ -133,14 +116,10 @@ const Dashboard = ({ userName, isSignedIn, wallet }) => {
 };
 
 const Portal = styled.div`
-  margin: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+margin: 1rem 0;
   h4{
     color: #df78e3;
-    font-size: 20px;
+    font-size: 16px;
   }
 `;
 
@@ -162,15 +141,17 @@ const Imgslide = styled.div`
  display: flex;
  flex-direction: row;
  gap: 1rem;
- margin: 0rem 1rem;
+ margin-right: 1rem;
 `;
 
 const Img = styled.div`
 display: flex;
 flex-direction: column;
-background-size: 190px 140px;
+justify-content: space-between;
+padding: 0 0 0 .5rem;
+background-size: 180px 140px;
 border-radius: 12px;
-width: 190px;
+width: 180px;
 height: 140px;
 h4{
  color: #fff;
@@ -187,22 +168,16 @@ align-items: center;
 background: rgba(255, 255, 255, 0.34);
 box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 backdrop-filter: blur(5px);
-/* border-radius: 9999px; */
-border-bottom-left-radius: 12px;
-border-bottom-right-radius: 12px;
-width: 100%;
-height: 3.5rem;
-margin-top: 45%;
+border-radius: 9999px;
+padding: .1rem .5rem;
+width: fit-content;
+margin-top: 1rem;
 
-img{
-width: 30px;
-height: 30px;
-border-radius: 8px;
- margin-left: 8px;
-}
-h4{
-  font-size: 16px;
-  margin-left: 1rem;
+p{
+ color: #fff;
+ font-size: 1rem;
+ margin: 0 0 0 8px;
+
 }
 
 `;
@@ -359,14 +334,6 @@ const Games = styled(RiGamepadFill)`
 `;
 const Homeicon = styled(TiHome)`
   font-size: 21px;
-  color:white;
-`;
-const MdKeyboardArrowLeft = styled(MdKeyboardArrowLeft)`
-  font-size: 28px;
-  color:white;
-`;
-const MdKeyboardArrowRight = styled(MdKeyboardArrowRight)`
-  font-size: 28px;
   color:white;
 `;
 

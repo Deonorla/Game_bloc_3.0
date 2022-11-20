@@ -91,11 +91,8 @@ const Dashboard = ({ userName, isSignedIn, wallet }) => {
                            
                              <Img style={{backgroundImage:`url(${item.background})`}}>
                                     <Seen>
-                                       <img 
-                                       src={item.background}
-                                       alt=""
-                                       /> 
-                                       <h4>{item.title}</h4>
+                                   
+                                       <p>{item.view}</p> 
                                    </Seen>
                                   {/* <h4>{item.title}</h4> */}
                                  
@@ -191,18 +188,13 @@ backdrop-filter: blur(5px);
 border-bottom-left-radius: 12px;
 border-bottom-right-radius: 12px;
 width: 100%;
-height: 3.5rem;
-margin-top: 45%;
+margin-top: 30%;
 
-img{
-width: 30px;
-height: 30px;
-border-radius: 8px;
- margin-left: 8px;
-}
-h4{
-  font-size: 16px;
-  margin-left: 1rem;
+p{
+ color: #fff;
+ font-size: 1rem;
+
+
 }
 
 `;

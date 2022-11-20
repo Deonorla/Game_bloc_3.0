@@ -191,7 +191,7 @@ backdrop-filter: blur(5px);
 border-bottom-left-radius: 12px;
 border-bottom-right-radius: 12px;
 width: 100%;
-height: 3.5rem;
+height: 3rem;
 margin-top: 45%;
 
 img{
