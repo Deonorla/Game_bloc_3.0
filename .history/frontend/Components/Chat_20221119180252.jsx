@@ -34,9 +34,6 @@ import { RiSendPlaneFill } from "react-icons/ri";
                   <img src={logo} alt="logo" />
                 </Img>
                 <h3>What is GameBloc ?</h3>
-                <h3>Site Rules</h3>
-                <h3>Gamebloc FAQs</h3>
-                <h3>About Near Protocol</h3>
               </Heading>
                 
                     
@@ -64,7 +61,6 @@ const Heading = styled.div`
    h3{
        font-size: 14px;
        color: #fff;
-       margin: 1rem 0;
     }
     `;
  

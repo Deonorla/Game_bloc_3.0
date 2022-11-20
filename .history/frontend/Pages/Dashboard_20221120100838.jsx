@@ -243,7 +243,7 @@ const ColorContainer = styled(motion.div)`
   display: flex;
   background: transparent;
   border: 1px solid #6365bf;
-  color: #6365bf;
+  color: white;
   margin-top: 2rem;
   border-radius: 9999px;
   height: 30px;

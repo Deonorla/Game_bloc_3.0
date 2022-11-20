@@ -64,7 +64,6 @@ const Heading = styled.div`
    h3{
        font-size: 14px;
        color: #fff;
-       margin: 1rem 0;
     }
     `;
  

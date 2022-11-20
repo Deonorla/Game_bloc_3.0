@@ -39,7 +39,7 @@ const CardView = () =>{
                            </Img>
                            <Description>
                                  <Title>
-                                    <img src={list.img} alt=""/>
+                                    <img src={list.logo} alt=""/>
                                     <p>{list.title}</p>
                                  </Title>
                                  <Bar></Bar>

@@ -238,15 +238,13 @@ const ColorContainer = styled(motion.div)`
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-
+  
   button{
   display: flex;
   background: transparent;
   border: 1px solid #6365bf;
-  color: #6365bf;
-  margin-top: 2rem;
   border-radius: 9999px;
-  height: 30px;
+  height: 25px;
   padding: .3rem 1rem;
   cursor: pointer;
   &:hover {

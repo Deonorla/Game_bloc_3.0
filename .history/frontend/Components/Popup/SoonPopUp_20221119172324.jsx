@@ -21,7 +21,7 @@ const SoonPopUP = ({modal}) => {
                         <Button
                         onClick={()=> modal(false)}
                         >
-                                Close
+                                Cancel
                         </Button>
                         </Modal>
                     </Container4>
