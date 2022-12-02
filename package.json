@@ -10,8 +10,7 @@
     "build:contract": "cd contract && ./build.sh",
     "test": "npm run build:contract && npm run test:unit && npm run test:integration",
     "test:unit": "cd contract && npm test",
-    "test:integration": "cd integration-tests && npm test -- -- \"./contract/build/contract.wasm\"",
-    "postinstall": "cd frontend && npm install"
+    "test:integration": "cd integration-tests && npm test -- -- \"./contract/build/contract.wasm\""
   },
   "devDependencies": {
     "near-cli": "^3.4.2"
