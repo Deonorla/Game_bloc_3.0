@@ -15,9 +15,10 @@ import { FaUserFriends } from "react-icons/fa";
 import { AiFillMessage} from "react-icons/ai";
 import { AiTwotoneStar} from "react-icons/ai";
 
-const Header =({wallet, isSignedIn})=>{
+const Header =({wallet, isSignedIn, gamebloc})=>{
    const [navbar, setNavbar] = useCycle(false, true);
-    const signIn = () => { wallet.signIn() }
+    const signIn = () => { wallet.signIn(); }
+     const initializeContract = () => { gamebloc.initializeContract(); }
     const signOut = () => { wallet.signOut() }
     const navigate = useNavigate();
    const itemVariants = {

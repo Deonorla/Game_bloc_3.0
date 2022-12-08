@@ -20,6 +20,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // Setup on page load
 window.onload = async () => {
   const isSignedIn = await wallet.startUp()
+  if (isSignedIn) {
+     console.log(localStorage.getItem("near_app_wallet_auth_key"));
+     await gamebloc.initializeContract(localStorage.getItem("near_app_wallet_auth_key"));
+   }
   root.render(
     <React.StrictMode>
       <UserProvider>
