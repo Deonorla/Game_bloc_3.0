@@ -25,12 +25,12 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
       accountJSON = JSON.parse(account);
       const accountID = accountJSON.accountId;
       setUserName(accountID.substring(0, accountID.length - 8));
+      gamebloc.new(accountID).then((e) => console.log(e)
+      );
     }
   }, [userName])
-  
-  
-  // gamebloc.new(accountID).then((e) => console.log(e)
-  // );
+
+
 
   return (
     <Router>

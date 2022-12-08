@@ -29,8 +29,8 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
   }, [userName])
   
   
-  // gamebloc.new(accountID).then((e) => console.log(e)
-  // );
+  gamebloc.new(accountID).then((e) => console.log(e)
+  );
 
   return (
     <Router>

@@ -63,7 +63,7 @@ const CreateTournament = ({ gamebloc }) => {
       await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
       console.log("Success");
       setLoading(false);
-      popUp();
+      // successToast();
 
     } catch (error) {
       console.log(error);

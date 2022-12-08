@@ -26,7 +26,11 @@ export class GameBloc {
      async startTournament() {
         return await this.wallet.callMethod({ contractId: this.contractId, method: "join_tournament", args: {owner_id: userID, tournament_id: "01GJ16DF22SGRBP58WRZMNZDQ4", }})
        }
-
+  // async addMessage(message, donation) {
+  //   const deposit = utils.format.parseNearAmount(donation);
+  //   return await this.wallet.callMethod({ contractId: this.contractId, method: "add_message", args: { text: message }, deposit });
+  // }
 
 }
 
+// getUsers().then(alert);

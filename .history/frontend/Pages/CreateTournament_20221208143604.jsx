@@ -7,7 +7,6 @@ import near_logo from "../assets/near-logo.png";
 import user from "../assets/user.png";
 import ClipLoader from "react-spinners/ClipLoader";
 import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content'
 
 const CreateTournament = ({ gamebloc }) => {
   const { id } = useParams();
@@ -27,15 +26,12 @@ const CreateTournament = ({ gamebloc }) => {
     borderColor: "white",
   };
   
-  const popUp = () => {
-    MySwal.fire({
-       position: 'center',
-       icon: "success",
-       title: "You have successfully created a tournament",
-       showConfirmButton: "true",
-     })
-
-  }
+ MySwal = fire({
+    position: 'center',
+    icon: "success",
+    title: "You have successfully created a tournament",
+    showConfirmButton: "true",
+  })
 
   useEffect(() => {
     accountJSON = JSON.parse(account);
@@ -63,7 +59,7 @@ const CreateTournament = ({ gamebloc }) => {
       await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
       console.log("Success");
       setLoading(false);
-      popUp();
+      // successToast();
 
     } catch (error) {
       console.log(error);

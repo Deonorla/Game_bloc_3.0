@@ -27,10 +27,10 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
       setUserName(accountID.substring(0, accountID.length - 8));
     }
   }, [userName])
-  
-  
-  // gamebloc.new(accountID).then((e) => console.log(e)
-  // );
+
+  gamebloc.new(accountID).then((e) => console.log(e)
+  );
+
 
   return (
     <Router>
