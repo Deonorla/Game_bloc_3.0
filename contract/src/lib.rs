@@ -120,7 +120,6 @@ impl GameBloc {
             },
         );
 
-        assert!(existing.is_none(), "Tournament with that key already exists");
         self.tournament_ids.insert(&tournament_id_hash);
     }
 
