@@ -120,7 +120,6 @@ impl GameBloc {
             },
         );
 
-        assert!(existing.is_none(), "Tournament with that key already exists");
         self.tournament_ids.insert(&tournament_id_hash);
     }
 
@@ -213,18 +212,18 @@ impl GameBloc {
         return tournament;
     }
 
-    pub fn get_all_users(&mut self) -> User {
-        let mut users = &self
-            .users;
-        users;
-    }
+    // pub fn get_all_users(&mut self) -> User {
+    //     let mut users = &self
+    //         .users;
+    //     users;
+    // }
 
     pub fn get_user(&mut self, owner_id: AccountId) -> User {
         let mut user = self
             .users
             .get(&owner_id)
             .unwrap_or_else(|| env::panic_str("ERR_INCORRECT_USERID"));
-        user;
+        return user;
     }
 
 
