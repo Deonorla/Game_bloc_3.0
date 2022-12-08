@@ -44,7 +44,9 @@ const CreateTournament = ({ gamebloc }) => {
   }, []);
 
   function generateId() {
-    const id = ulid();
+  const date = new Date();
+  let day = date.getDate();
+    const id = ulid(day);
     setTournamentID(id);
   }
   function getPrize(event) {
