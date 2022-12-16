@@ -5,10 +5,7 @@ import icon from "../assets/duty_icon.png"
 import dollar from "../assets/dollar.png"
 import money from "../assets/money.png"
 import mode from "../assets/mode.png"
-import ReactPaginate from "react-paginate";
-import "../Features/Pagination.css";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
+
 
 const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    const [activeTournaments, setActiveTournaments] = useState([]);
@@ -16,32 +13,24 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    const [pageNumber, setPageNumber] = useState(false);
    const tournamentPerPage = 1;
    const tournamentViewed = pageNumber * tournamentPerPage;
-   const currentTournament = activeTournaments.slice(tournamentViewed, tournamentViewed + tournamentPerPage);
-   const pageCount = Math.ceil(activeTournaments.length / tournamentPerPage);
 
+   // const currentTournament = 
 
-   const changePage = ({ selected }) => {
-		setPageNumber(selected);
-   };
+   useEffect(() => {
+      try {
+         gamebloc.getAllTournaments().then((data) => {
+            if (data) {
+               setActiveTournaments(data);
+               setLoading(false);
+            }
+         })
+            
+      } catch(error) {
+         console.log(error)
+     }
+   }, [])
    
-   if (isSignedIn) {
-      useEffect(() => {
-         try {
-            gamebloc.getAllTournaments().then((data) => {
-               if (data) {
-                  setActiveTournaments(data.tournament);
-                  setLoading(false);
-               }
-            })
-               
-         } catch(error) {
-            console.log(error)
-        }
-      }, [])
-      
-      // console.log(activeTournaments);
-   
-}
+   console.log(activeTournaments);
 
    if (loading === true) {
       return (
@@ -50,10 +39,9 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    } else if (loading === false) {
       
       return(
-         <CardLayout >
-            {console.log(activeTournaments)}
-            {currentTournament.map((data, index) => (
-                <Card key={index}>
+          <CardLayout >
+                  
+                 <Card >
                    
                     <Img>
                    
@@ -77,7 +65,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
                        <Container>
                           <div>
                              <h4>Prize Pool</h4>
-                           <p><img src={dollar} alt="" /> {`$ ${data.total_prize}`}</p>
+                              <p><img src={dollar} alt="" /> $ 250</p>
                           </div>
    
                           <div>
@@ -97,23 +85,8 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
                        </Status>
                     </Interactions>
    
-                 </Card> 
-            ))
-            }      
-            
-              <ReactPaginate
-                  previousLabel={<MdKeyboardArrowLeft />}
-                  nextLabel={<MdKeyboardArrowRight />}
-                  pageCount={pageCount}
-                  pageClassName="page-item-none"
-                  breakClassName="page-item-none"
-                  onPageChange={changePage}
-                  containerClassName={"paginationBttns"}
-                  previousLinkClassName={""}
-                  nextLinkClassName={""}
-                  disabledClassName={""}
-                  activeClassName={"activeBttn"}
-                />
+                 </Card>            
+                 
       </CardLayout>
       )
    }
@@ -174,8 +147,8 @@ const Status = styled.div`
 
 const CardLayout = styled(motion.div)`
    display: flex;
-   flex-direction: column;
    gap: 1rem;
+   z-index: -1;
 `;
 
 const Card = styled.div`

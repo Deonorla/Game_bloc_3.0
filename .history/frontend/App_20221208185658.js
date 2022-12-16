@@ -10,7 +10,6 @@ import Tournament from './Pages/Tournament';
 import "./App.css";
 import CreateTournament from './Pages/CreateTournament';
 import SoonPopUP from './Components/Popup/SoonPopUp';
-import Try from './Components/Try';
 
 
 const App = ({ isSignedIn, wallet, gamebloc }) => {
@@ -23,6 +22,7 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
     if (account === "Username") {
       setUserName("Username")
     } else {
+      console.log(account)
       accountJSON = JSON.parse(account);
       const accountID = accountJSON.accountId;
       setUserName(accountID.substring(0, accountID.length - 8));
@@ -48,7 +48,6 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
           <Route path="/chatbox" element={<Chat />} />
           <Route path="/tournament" element={<Tournament />} />
           <Route path="/modal" element={<SoonPopUP />} />
-          <Route path="/try" element={<Try/>} />
           <Route path="/tournament/:id" element={<CreateTournament gamebloc={gamebloc} />} />
         </Routes>
 

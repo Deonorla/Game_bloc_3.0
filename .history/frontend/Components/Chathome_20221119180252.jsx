@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components"
 import Chat from "./Chat";
 import ActiveTournament from "./ActiveTournament";
-const Chathome = ({gamebloc, isSignedIn}) => {
+const Chathome = ( ) => {
     return(
         <div>
         <Chahome>
           <Chat/>
-          <ActiveTournament isSignedIn={isSignedIn} gamebloc={gamebloc}/>
-        </Chahome >
+          <ActiveTournament/>
+        </Chahome>
 
         </div>
     )

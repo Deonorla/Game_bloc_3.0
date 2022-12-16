@@ -10,7 +10,6 @@ import Tournament from './Pages/Tournament';
 import "./App.css";
 import CreateTournament from './Pages/CreateTournament';
 import SoonPopUP from './Components/Popup/SoonPopUp';
-import Try from './Components/Try';
 
 
 const App = ({ isSignedIn, wallet, gamebloc }) => {
@@ -48,11 +47,10 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
           <Route path="/chatbox" element={<Chat />} />
           <Route path="/tournament" element={<Tournament />} />
           <Route path="/modal" element={<SoonPopUP />} />
-          <Route path="/try" element={<Try/>} />
           <Route path="/tournament/:id" element={<CreateTournament gamebloc={gamebloc} />} />
         </Routes>
 
-        <Chathome isSignedIn={isSignedIn} gamebloc={gamebloc} />
+        <Chathome gamebloc={gamebloc} />
       </div>
     </Router>
   );

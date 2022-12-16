@@ -77,7 +77,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
                        <Container>
                           <div>
                              <h4>Prize Pool</h4>
-                           <p><img src={dollar} alt="" /> {`$ ${data.total_prize}`}</p>
+                           <p><img src={dollar} alt="" /> {`$${data.total_prize}`}</p>
                           </div>
    
                           <div>

@@ -9,7 +9,6 @@ import Chat from "./Components/Chat";
 import Tournament from './Pages/Tournament';
 import "./App.css";
 import CreateTournament from './Pages/CreateTournament';
-import SoonPopUP from './Components/Popup/SoonPopUp';
 import Try from './Components/Try';
 
 

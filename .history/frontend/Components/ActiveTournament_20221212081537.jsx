@@ -6,7 +6,6 @@ import dollar from "../assets/dollar.png"
 import money from "../assets/money.png"
 import mode from "../assets/mode.png"
 import ReactPaginate from "react-paginate";
-import "../Features/Pagination.css";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
@@ -16,7 +15,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    const [pageNumber, setPageNumber] = useState(false);
    const tournamentPerPage = 1;
    const tournamentViewed = pageNumber * tournamentPerPage;
-   const currentTournament = activeTournaments.slice(tournamentViewed, tournamentViewed + tournamentPerPage);
+   const currentTournament = activeTournaments.slice(tournamentViewed, tournamentViewed + postPerPage);
    const pageCount = Math.ceil(activeTournaments.length / tournamentPerPage);
 
 
@@ -53,7 +52,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
          <CardLayout >
             {console.log(activeTournaments)}
             {currentTournament.map((data, index) => (
-                <Card key={index}>
+                <Card key={index} >
                    
                     <Img>
                    
@@ -77,7 +76,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
                        <Container>
                           <div>
                              <h4>Prize Pool</h4>
-                           <p><img src={dollar} alt="" /> {`$ ${data.total_prize}`}</p>
+                              <p><img src={dollar} alt="" /> $ 250</p>
                           </div>
    
                           <div>
@@ -174,8 +173,8 @@ const Status = styled.div`
 
 const CardLayout = styled(motion.div)`
    display: flex;
-   flex-direction: column;
    gap: 1rem;
+   
 `;
 
 const Card = styled.div`

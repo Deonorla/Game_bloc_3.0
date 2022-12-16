@@ -5,10 +5,7 @@ import icon from "../assets/duty_icon.png"
 import dollar from "../assets/dollar.png"
 import money from "../assets/money.png"
 import mode from "../assets/mode.png"
-import ReactPaginate from "react-paginate";
-import "../Features/Pagination.css";
-import { MdKeyboardArrowLeft } from "react-icons/md";
-import { MdKeyboardArrowRight } from "react-icons/md";
+
 
 const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    const [activeTournaments, setActiveTournaments] = useState([]);
@@ -16,14 +13,8 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    const [pageNumber, setPageNumber] = useState(false);
    const tournamentPerPage = 1;
    const tournamentViewed = pageNumber * tournamentPerPage;
-   const currentTournament = activeTournaments.slice(tournamentViewed, tournamentViewed + tournamentPerPage);
-   const pageCount = Math.ceil(activeTournaments.length / tournamentPerPage);
-
-
-   const changePage = ({ selected }) => {
-		setPageNumber(selected);
-   };
-   
+   const test = [ {id: 89, hope: "good boy"}, {id: 34, hope: "bad boy"}];
+   // const currentTournament = 
    if (isSignedIn) {
       useEffect(() => {
          try {
@@ -51,74 +42,60 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
       
       return(
          <CardLayout >
-            {console.log(activeTournaments)}
-            {currentTournament.map((data, index) => (
-                <Card key={index}>
-                   
-                    <Img>
-                   
-                       <img src="https://assets1.ignimgs.com/2019/10/07/call-of-duty-modern-warfare1570477435828.jpg" alt="img" />
-                    </Img>
-                    <Description>
-                          <Title>
-                             <img src={icon} alt=""/>
-                             <p>Call of Duty Battle Royale</p>
-                          </Title>
-                          <Bar></Bar>
-                       {/* <Summary>
-                             <p>{}</p>
-                       </Summary> */}
-   
-                    </Description>
-                       
-   
-                    <Interactions>
-                  
-                       <Container>
-                          <div>
-                             <h4>Prize Pool</h4>
-                           <p><img src={dollar} alt="" /> {`$ ${data.total_prize}`}</p>
-                          </div>
-   
-                          <div>
-                              <h4>Game Mode</h4>
-                              <p><img src={mode} alt="" /> 1 vs 1</p>
-                          </div>
-   
-                          <div>
-                              <h4>Entry Fee</h4>
-                              <p><img src={money} alt="" /> $ 5</p>
-                          </div>
-                       </Container>
-   
-                       <Status>
-                          <h4>0/50</h4>
-                          <button> Join</button>
-                       </Status>
-                    </Interactions>
-   
-                 </Card> 
-            ))
-            }      
-            
-              <ReactPaginate
-                  previousLabel={<MdKeyboardArrowLeft />}
-                  nextLabel={<MdKeyboardArrowRight />}
-                  pageCount={pageCount}
-                  pageClassName="page-item-none"
-                  breakClassName="page-item-none"
-                  onPageChange={changePage}
-                  containerClassName={"paginationBttns"}
-                  previousLinkClassName={""}
-                  nextLinkClassName={""}
-                  disabledClassName={""}
-                  activeClassName={"activeBttn"}
-                />
+            {console.log(activeTournaments[0])}
+            {test.map((data, index) => {
+               <p>good boy</p>
+            })
+             }      
       </CardLayout>
       )
    }
 
 }
+
+
+//  <Card key={index} >
+                   
+//                     <Img>
+                   
+//                        <img src="https://assets1.ignimgs.com/2019/10/07/call-of-duty-modern-warfare1570477435828.jpg" alt="img" />
+//                     </Img>
+//                     <Description>
+//                           <Title>
+//                              <img src={icon} alt=""/>
+//                              <p>Call of Duty Battle Royale</p>
+//                           </Title>
+//                           <Bar></Bar>
+            
+//                     </Description>
+                       
+   
+//                     <Interactions>
+                  
+//                        <Container>
+//                           <div>
+//                              <h4>Prize Pool</h4>
+//                               <p><img src={dollar} alt="" /> $ 250</p>
+//                           </div>
+   
+//                           <div>
+//                               <h4>Game Mode</h4>
+//                               <p><img src={mode} alt="" /> 1 vs 1</p>
+//                           </div>
+   
+//                           <div>
+//                               <h4>Entry Fee</h4>
+//                               <p><img src={money} alt="" /> $ 5</p>
+//                           </div>
+//                        </Container>
+   
+//                        <Status>
+//                           <h4>0/50</h4>
+//                           <button> Join</button>
+//                        </Status>
+//                     </Interactions>
+   
+//                  </Card> 
 
 const CardContainer = styled.div`
    margin: 1rem;
@@ -174,8 +151,8 @@ const Status = styled.div`
 
 const CardLayout = styled(motion.div)`
    display: flex;
-   flex-direction: column;
    gap: 1rem;
+   z-index: -1;
 `;
 
 const Card = styled.div`

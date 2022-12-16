@@ -51,9 +51,9 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
       
       return(
          <CardLayout >
-            {console.log(activeTournaments)}
+            {console.log(activeTournaments[0].owner_id)}
             {currentTournament.map((data, index) => (
-                <Card key={index}>
+                <Card key={index} >
                    
                     <Img>
                    
@@ -77,7 +77,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
                        <Container>
                           <div>
                              <h4>Prize Pool</h4>
-                           <p><img src={dollar} alt="" /> {`$ ${data.total_prize}`}</p>
+                              <p><img src={dollar} alt="" /> $ 250</p>
                           </div>
    
                           <div>

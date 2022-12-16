@@ -35,7 +35,7 @@ const CreateTournament = ({ gamebloc }) => {
        title: "You have successfully created a tournament",
       showConfirmButton: "true",
       background: '#41417c',
-      color:'#fff'
+      text:'#ffffff'
     }).then((result) => {
       if (result.isConfirmed) {
           navigate("/")
@@ -76,11 +76,11 @@ const CreateTournament = ({ gamebloc }) => {
   const setTournament = async () => {
     setLoading(true)
     try {
+      gamebloc.getAllTournaments().then(e =>console.log(e));
       await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
       console.log("Success");
       setLoading(false);
       popUp();
-      gamebloc.getAllTournaments().then(e =>console.log(e));
 
     } catch (error) {
       console.log(error);
