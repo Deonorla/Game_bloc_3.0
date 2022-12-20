@@ -30,7 +30,7 @@ pub struct GameBloc {
 pub struct Tournament {
     owner_id: AccountId,
     status: TournamentStatus,
-    // ⟵ An enum we'll get to soon
+    game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
     total_prize: U128,
@@ -54,9 +54,8 @@ pub struct JsonTournament {
     owner_id: AccountId,
     tournament_id_hash: String,
     status: TournamentStatus,
-    // ⟵ An enum we'll get to soon
+    game: String,
     user: Vec<AccountId>,
-    // ⟵ Another struct we've defined
     total_prize: U128,
 }
 
@@ -100,7 +99,7 @@ impl GameBloc {
     }
 
 
-    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, no_of_users_input: U128, prize_input: U128) {
+    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U128) {
         let no_of_users: U128 = no_of_users_input;
         //.unwrap();
         let prize: U128 = prize_input;
@@ -115,6 +114,7 @@ impl GameBloc {
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
+                game: game_name,
                 user: Vec::with_capacity(8.try_into().unwrap()),
                 total_prize: prize,
             },
@@ -191,6 +191,7 @@ impl GameBloc {
                 .unwrap_or_else(|| env::panic_str("ERR_LOADING_PUZZLE"));
             let tournament = JsonTournament {
                 owner_id: tournament.owner_id,
+                game: tournament.game,
                 tournament_id_hash: pk,
                 status: tournament.status,  // ⟵ An enum we'll get to soon
                 user: tournament.user, // ⟵ Another struct we've defined
@@ -227,7 +228,7 @@ impl GameBloc {
     }
 
 
-    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<AccountId>, prize: U128) {
+    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U128) {
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
@@ -239,6 +240,7 @@ impl GameBloc {
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
+                game: game_name,
                 user: users,
                 total_prize: prize,
             },
