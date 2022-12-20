@@ -13,7 +13,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import Loader from "./Loader/Loader";
-import { Link } from "react-router-dom";
 
 const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    const [activeTournaments, setActiveTournaments] = useState([]);
@@ -118,9 +117,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
             </Imgslide>
             ))
             }      
-            <Link to='/all-tournaments' style={{textDecoration: 'none'}}>
-               <Viewall>View All</Viewall>
-            </Link>
+               <h4>View All</h4>
             
       </CardLayout>
 
@@ -148,13 +145,6 @@ const TitleContainer = styled.div`
    font-size: 16px;
    margin: 0;
  }
-`;
-
-const Viewall = styled.h4`
-  color: #df78e3;
-   font-size: 16px;
-   margin: 0;
-   cursor: pointer;
 `;
 
 const Column = styled.div`

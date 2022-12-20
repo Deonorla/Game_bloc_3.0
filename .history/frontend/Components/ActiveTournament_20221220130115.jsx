@@ -118,7 +118,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
             </Imgslide>
             ))
             }      
-            <Link to='/all-tournaments' style={{textDecoration: 'none'}}>
+            <Link to='/all-tournaments'>
                <Viewall>View All</Viewall>
             </Link>
             

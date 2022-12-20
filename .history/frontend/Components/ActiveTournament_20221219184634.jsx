@@ -13,7 +13,6 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import Loader from "./Loader/Loader";
-import { Link } from "react-router-dom";
 
 const ActiveTournament = ({ gamebloc, isSignedIn }) => {
    const [activeTournaments, setActiveTournaments] = useState([]);
@@ -35,6 +34,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
             gamebloc.getAllTournaments().then((data) => {
                if (data) {
                   setActiveTournaments(data.tournament);
+                  console.log(data.tournament)
                   setLoading(false);
                }
             })
@@ -61,7 +61,6 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
       return(
          <CardLayout >
             <TitleContainer>
-               <Column>
                <Title>
                   Active Tournaments
                </Title>
@@ -78,8 +77,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
                   nextLinkClassName={""}
                   disabledClassName={""}
                   activeClassName={"activeBttn"}
-               />
-               </Column>
+                />
             </TitleContainer>
 
              
@@ -118,9 +116,6 @@ const ActiveTournament = ({ gamebloc, isSignedIn }) => {
             </Imgslide>
             ))
             }      
-            <Link to='/all-tournaments' style={{textDecoration: 'none'}}>
-               <Viewall>View All</Viewall>
-            </Link>
             
       </CardLayout>
 
@@ -139,32 +134,11 @@ justify-content: center;
 
 const TitleContainer = styled.div`
  display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- margin: .3rem 0;
- h4{
-   color: #df78e3;
-   font-size: 16px;
-   margin: 0;
- }
-`;
-
-const Viewall = styled.h4`
-  color: #df78e3;
-   font-size: 16px;
-   margin: 0;
-   cursor: pointer;
-`;
-
-const Column = styled.div`
- display: flex;
  flex-direction: row;
  justify-content: space-between;
  align-items: center;
  margin: .3rem 0;
 `;
-
 
 const Title = styled.h2`
 color: #df78e3;
@@ -194,7 +168,7 @@ flex-direction: column;
 background-size: 100% 60%;
 border-radius: 12px;
 width: 14rem;
-height: 17rem;
+height: 20rem;
 
 `;
 

@@ -26,6 +26,6 @@ display: none;
   align-items: center;
   right: 0;
   /* top: 2.5rem; */
-  /* height: 100vh; */
+  height: 100vh;
 }
 `;

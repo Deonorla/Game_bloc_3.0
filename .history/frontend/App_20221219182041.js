@@ -33,7 +33,7 @@ const App = ({ isSignedIn, wallet, gamebloc }) => {
           <Route path="/chatbox" element={<Chat />} />
           <Route path="/tournament" element={<Tournament />} />
           <Route path="/modal" element={<SoonPopUP />} />
-          <Route path="/all-tournaments" element={<AllTournaments gamebloc={gamebloc} isSigned={isSignedIn} />} />
+          <Route path="/try" element={<AllTournaments/>} />
           <Route path="/tournament/:id" element={<CreateTournament gamebloc={gamebloc} />} />
         </Routes>
 

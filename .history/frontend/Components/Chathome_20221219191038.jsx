@@ -21,7 +21,7 @@ display: none;
 @media (min-width: 1200px){
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
   justify-content: center;
   align-items: center;
   right: 0;

@@ -4,13 +4,13 @@ import Chat from "./Chat";
 import ActiveTournament from "./ActiveTournament";
 const Chathome = ({gamebloc, isSignedIn}) => {
     return(
-        <div>
+        
         <Chahome>
           <Chat/>
           <ActiveTournament isSignedIn={isSignedIn} gamebloc={gamebloc}/>
         </Chahome >
 
-        </div>
+        
     )
 }
 
@@ -26,6 +26,5 @@ display: none;
   align-items: center;
   right: 0;
   /* top: 2.5rem; */
-  /* height: 100vh; */
 }
 `;
