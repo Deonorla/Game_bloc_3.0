@@ -9,9 +9,9 @@ use near_sdk::{
 };
 use std::collections::HashMap;
 
-const TOURNAMENT_NUMBER: u8 = 1;
-// 5 Ⓝ in yoctoNEAR
-const PRIZE_AMOUNT: u128 = 5_000_000_000_000_000_000_000_000;
+// const TOURNAMENT_NUMBER: u8 = 1;
+// // 5 Ⓝ in yoctoNEAR
+// const PRIZE_AMOUNT: U128 = near_sdk::json_types::U128(5_000_000_000_000_000_000_000_000);
 
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
@@ -30,10 +30,10 @@ pub struct GameBloc {
 pub struct Tournament {
     owner_id: AccountId,
     status: TournamentStatus,
-    // ⟵ An enum we'll get to soon
+    game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
-    total_prize: u128,
+    total_prize: U128,
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
@@ -54,10 +54,9 @@ pub struct JsonTournament {
     owner_id: AccountId,
     tournament_id_hash: String,
     status: TournamentStatus,
-    // ⟵ An enum we'll get to soon
+    game: String,
     user: Vec<AccountId>,
-    // ⟵ Another struct we've defined
-    total_prize: u128,
+    total_prize: U128,
 }
 
 #[derive(Serialize)]
@@ -100,10 +99,10 @@ impl GameBloc {
     }
 
 
-    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, no_of_users_input: U128, prize_input: U128) {
-        let no_of_users: u128 = u128::from(no_of_users_input);
+    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U128) {
+        let no_of_users: U128 = no_of_users_input;
         //.unwrap();
-        let prize: u128 = u128::from(prize_input);
+        let prize: U128 = prize_input;
         // assert_eq!(
         //     env::predecessor_account_id(),
         //     self.owner_id,
@@ -115,6 +114,7 @@ impl GameBloc {
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
+                game: game_name,
                 user: Vec::with_capacity(8.try_into().unwrap()),
                 total_prize: prize,
             },
@@ -177,7 +177,7 @@ impl GameBloc {
     );
 
         // Transfer the prize money to the winner
-        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize);
+        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
 
 
@@ -191,6 +191,7 @@ impl GameBloc {
                 .unwrap_or_else(|| env::panic_str("ERR_LOADING_PUZZLE"));
             let tournament = JsonTournament {
                 owner_id: tournament.owner_id,
+                game: tournament.game,
                 tournament_id_hash: pk,
                 status: tournament.status,  // ⟵ An enum we'll get to soon
                 user: tournament.user, // ⟵ Another struct we've defined
@@ -227,7 +228,7 @@ impl GameBloc {
     }
 
 
-    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<AccountId>, prize: u128) {
+    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U128) {
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
@@ -239,6 +240,7 @@ impl GameBloc {
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
+                game: game_name,
                 user: users,
                 total_prize: prize,
             },
@@ -323,6 +325,6 @@ impl GameBloc {
     );
 
         // Transfer the prize money to the winner
-        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize);
+        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
 }
