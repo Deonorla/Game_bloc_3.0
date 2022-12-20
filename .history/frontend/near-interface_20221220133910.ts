@@ -1,18 +1,15 @@
 /* Talking with a contract often involves transforming data, we recommend you to encapsulate that logic into a class */
 
 import { utils } from 'near-api-js';
-import React from 'react';
 
-// interface Props {
-//   contractId: any,
-//   walletToUse: any
-// }
+interface Props {
+  contractId: any,
+  walletToUse: any
+}
 
 export class GameBloc {
-  // contractId: any;
-  // wallet: any;
 
-  constructor({ contractId, walletToUse }) {
+  constructor({ contractId, walletToUse }: Props) {
     this.contractId = contractId;
     this.wallet = walletToUse
   }
