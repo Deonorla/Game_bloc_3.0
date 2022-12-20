@@ -9,9 +9,9 @@ use near_sdk::{
 };
 use std::collections::HashMap;
 
-const TOURNAMENT_NUMBER: u8 = 1;
-// 5 Ⓝ in yoctoNEAR
-const PRIZE_AMOUNT: u128 = 5_000_000_000_000_000_000_000_000;
+// const TOURNAMENT_NUMBER: u8 = 1;
+// // 5 Ⓝ in yoctoNEAR
+// const PRIZE_AMOUNT: U128 = near_sdk::json_types::U128(5_000_000_000_000_000_000_000_000);
 
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
@@ -33,7 +33,7 @@ pub struct Tournament {
     // ⟵ An enum we'll get to soon
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
-    total_prize: u128,
+    total_prize: U128,
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
@@ -57,7 +57,7 @@ pub struct JsonTournament {
     // ⟵ An enum we'll get to soon
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
-    total_prize: u128,
+    total_prize: U128,
 }
 
 #[derive(Serialize)]
@@ -101,9 +101,9 @@ impl GameBloc {
 
 
     pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, no_of_users_input: U128, prize_input: U128) {
-        let no_of_users: u128 = u128::from(no_of_users_input);
+        let no_of_users: U128 = no_of_users_input;
         //.unwrap();
-        let prize: u128 = u128::from(prize_input);
+        let prize: U128 = prize_input;
         // assert_eq!(
         //     env::predecessor_account_id(),
         //     self.owner_id,
@@ -177,7 +177,7 @@ impl GameBloc {
     );
 
         // Transfer the prize money to the winner
-        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize);
+        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
 
 
@@ -227,7 +227,7 @@ impl GameBloc {
     }
 
 
-    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<AccountId>, prize: u128) {
+    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, users: Vec<AccountId>, prize: U128) {
         assert_eq!(
             env::predecessor_account_id(),
             self.owner_id,
@@ -323,6 +323,6 @@ impl GameBloc {
     );
 
         // Transfer the prize money to the winner
-        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize);
+        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
 }
