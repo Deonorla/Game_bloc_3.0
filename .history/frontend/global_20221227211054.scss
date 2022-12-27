@@ -127,8 +127,6 @@
 //   margin-left: 1rem;
 // }
 
-
-
 $color: #41417c;
 $colorRight: darken(#6365bf, 15%);
 $colorLeft: darken(#6365bf, 5%);
@@ -252,4 +250,15 @@ $shadow: #41417c;
     }
 }
 
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: border-box;
+    &:before,
+    &:after {
+        box-sizing: border-box;
+    }
+}
 
