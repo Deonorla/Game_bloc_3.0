@@ -14,9 +14,9 @@ use std::collections::HashMap;
 // const PRIZE_AMOUNT: U128 = near_sdk::json_types::U128(5_000_000_000_000_000_000_000_000);
 
 #[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, PanicOnDefault)]
+#[derive(BorshDeserialize, BorshSerialize)]
 pub struct GameBloc {
-    owner_id: AccountId,
+    pub accounts: UnorderedMap<AccountId, UnorderedSet<String>>,
     users: LookupMap<AccountId, User>,
     tournaments: LookupMap<String, Tournament>,
     tournament_ids: UnorderedSet<String>,
@@ -30,7 +30,7 @@ pub struct GameBloc {
 pub struct Tournament {
     owner_id: AccountId,
     status: TournamentStatus,
-    // game: String,
+    game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
     total_prize: U128,
@@ -63,7 +63,6 @@ pub struct JsonTournament {
 #[serde(crate = "near_sdk::serde")]
 pub struct OpenTournament {
     tournament: Vec<JsonTournament>,
-    creator_account: AccountId,
 }
 
 
@@ -83,13 +82,26 @@ pub enum TournamentStatus {
     GameCompleted,
 }
 
+impl Default for GameBloc {
+    fn default() -> Self {
+        Self {
+            accounts: UnorderedMap::new(b"t"),
+            tournaments: LookupMap::new(b"c"),
+            users: LookupMap::new(b"c"),
+            tournament_ids: UnorderedSet::new(b"u"),
+            crowd_funded_tournaments: LookupMap::new(b"c"),
+            crowd_funded_tournament_ids: UnorderedSet::new(b"u"),
+        }
+    }
+}
+
 
 #[near_bindgen]
 impl GameBloc {
     #[init]
-    pub fn new(owner_id: AccountId) -> Self {
+    pub fn new() -> Self {
         Self {
-            owner_id,
+            accounts: UnorderedMap::new(b"t"),
             tournaments: LookupMap::new(b"c"),
             users: LookupMap::new(b"c"),
             tournament_ids: UnorderedSet::new(b"u"),
@@ -114,7 +126,7 @@ impl GameBloc {
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
-                // game: game_name,
+                game: game_name,
                 user: Vec::with_capacity(8.try_into().unwrap()),
                 total_prize: prize,
             },
@@ -201,7 +213,6 @@ impl GameBloc {
         }
         OpenTournament {
             tournament: tournament_ids,
-            creator_account: self.owner_id.clone(),
         }
     }
 
@@ -229,18 +240,13 @@ impl GameBloc {
 
 
     pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U128) {
-        assert_eq!(
-            env::predecessor_account_id(),
-            self.owner_id,
-            "Only the owner may call this method"
-        );
 
         let existing = self.tournaments.insert(
             &tournament_id_hash,
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
-                // game: game_name,
+                game: game_name,
                 user: users,
                 total_prize: prize,
             },
@@ -275,11 +281,7 @@ impl GameBloc {
     }
 
     pub fn join_crowd_funded_tournament(&self, user_id: AccountId, tournament_id: String) {
-        assert_eq!(
-            env::predecessor_account_id(),
-            self.owner_id,
-            "Only the owner may call this method"
-        );
+
         let hashed_input = env::sha256(tournament_id.as_bytes());
         let hashed_input_hex = hex::encode(&hashed_input);
 
