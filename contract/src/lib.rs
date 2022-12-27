@@ -30,7 +30,7 @@ pub struct GameBloc {
 pub struct Tournament {
     owner_id: AccountId,
     status: TournamentStatus,
-    game: String,
+    // game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
     total_prize: U128,
@@ -54,7 +54,7 @@ pub struct JsonTournament {
     owner_id: AccountId,
     tournament_id_hash: String,
     status: TournamentStatus,
-    game: String,
+    // game: String,
     user: Vec<AccountId>,
     total_prize: U128,
 }
@@ -114,7 +114,7 @@ impl GameBloc {
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
-                game: game_name,
+                // game: game_name,
                 user: Vec::with_capacity(8.try_into().unwrap()),
                 total_prize: prize,
             },
@@ -191,7 +191,7 @@ impl GameBloc {
                 .unwrap_or_else(|| env::panic_str("ERR_LOADING_PUZZLE"));
             let tournament = JsonTournament {
                 owner_id: tournament.owner_id,
-                game: tournament.game,
+                // game: tournament.game,
                 tournament_id_hash: pk,
                 status: tournament.status,  // ⟵ An enum we'll get to soon
                 user: tournament.user, // ⟵ Another struct we've defined
@@ -240,7 +240,7 @@ impl GameBloc {
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
-                game: game_name,
+                // game: game_name,
                 user: users,
                 total_prize: prize,
             },
