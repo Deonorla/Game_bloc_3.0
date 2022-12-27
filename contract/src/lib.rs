@@ -47,6 +47,12 @@ pub struct User {
     username: String,
 }
 
+#[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct Tokens {
+    token: UnorderedSet<String>,
+}
+
 #[derive(Serialize, Deserialize)]
 #[serde(crate = "near_sdk::serde")]
 pub struct JsonTournament {
@@ -110,7 +116,7 @@ impl GameBloc {
         }
     }
 
-    pub fn get_tokens(&self, account_id: &AccountId) -> UnorderedSet<String> {
+    pub fn get_tokens(&self, account_id: &AccountId) -> Tokens {
         let tokens = self.accounts.get(account_id).unwrap_or_else(|| {
             // Constructing a unique prefix for a nested UnorderedSet from a concatenation
             // of a prefix and a hash of the account id.
@@ -121,7 +127,9 @@ impl GameBloc {
                 .concat();
             UnorderedSet::new(prefix)
         });
-        tokens
+        Tokens{
+            token:tokens,
+        }
     }
 
     pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U128) {
