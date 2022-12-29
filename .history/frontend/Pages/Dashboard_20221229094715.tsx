@@ -199,6 +199,7 @@ align-items: center;
 background: rgba(255, 255, 255, 0.34);
 box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 backdrop-filter: blur(5px);
+/* border-radius: 9999px; */
 border-bottom-left-radius: 12px;
 border-bottom-right-radius: 12px;
 width: 100%;
@@ -207,6 +208,7 @@ margin-top: 45%;
 @media screen and (min-width: 686px) and (max-width: 840px){
   margin-top: 50%;
   h4{
+    font-size: .7rem;
     margin-left: .5rem;
   }
 }
@@ -217,8 +219,14 @@ border-radius: 8px;
  margin-left: 8px;
 }
 h4{
-  font-size: .8rem;
+  font-size: 1rem;
   margin-left: 1rem;
+  @media screen and (min-width: 686px) and (max-width: 840px){
+  h4{
+    font-size: .7rem;
+    margin-left: .5rem;
+  }
+}
 }
 
 `;
@@ -263,12 +271,8 @@ const ColorContainer = styled(motion.div)`
   margin-top: 2rem;
   border-radius: 9999px;
   height: 30px;
-  padding: .3rem .4rem;
+  padding: .3rem 1rem;
   cursor: pointer;
-
-  @media (min-width: 840px){
-    padding: .3rem 1rem;
-  }
   &:hover {
       transform: scale(1.05);
       translate: 5s ease in;

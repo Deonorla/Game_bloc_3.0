@@ -263,12 +263,8 @@ const ColorContainer = styled(motion.div)`
   margin-top: 2rem;
   border-radius: 9999px;
   height: 30px;
-  padding: .3rem .4rem;
+  padding: .3rem 1rem;
   cursor: pointer;
-
-  @media (min-width: 840px){
-    padding: .3rem 1rem;
-  }
   &:hover {
       transform: scale(1.05);
       translate: 5s ease in;

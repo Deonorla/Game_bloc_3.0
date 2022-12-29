@@ -257,10 +257,6 @@ const Category = styled.div`
 
       margin: 0 0 0 1rem;
     }
-    @media (min-width: 686px) and (max-width: 999px){
-
-      margin: 0 0 0 2rem;
-    }
   }
 `;
 

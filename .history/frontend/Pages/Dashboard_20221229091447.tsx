@@ -147,7 +147,7 @@ const Portal = styled.div`
   justify-content: center;
   h4{
     color: #df78e3;
-    font-size: 1.1rem;
+    font-size: 20px;
   }
 `;
 
@@ -176,14 +176,10 @@ const Imgslide = styled.div`
 const Img = styled.div`
 display: flex;
 flex-direction: column;
-background-size: 11rem 8rem;
+background-size: 190px 140px;
 border-radius: 12px;
-width: 11rem;
-height: 8rem;
-
-@media screen and (min-width: 686px) and (max-width: 840px){
-  width: 9rem;
-}
+width: 190px;
+height: 140px;
 h4{
  color: #fff;
  font-size: 1.2rem;
@@ -199,17 +195,13 @@ align-items: center;
 background: rgba(255, 255, 255, 0.34);
 box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 backdrop-filter: blur(5px);
+/* border-radius: 9999px; */
 border-bottom-left-radius: 12px;
 border-bottom-right-radius: 12px;
 width: 100%;
 height: 3.5rem;
 margin-top: 45%;
-@media screen and (min-width: 686px) and (max-width: 840px){
-  margin-top: 50%;
-  h4{
-    margin-left: .5rem;
-  }
-}
+
 img{
 width: 30px;
 height: 30px;
@@ -217,7 +209,7 @@ border-radius: 8px;
  margin-left: 8px;
 }
 h4{
-  font-size: .8rem;
+  font-size: 16px;
   margin-left: 1rem;
 }
 
@@ -263,12 +255,8 @@ const ColorContainer = styled(motion.div)`
   margin-top: 2rem;
   border-radius: 9999px;
   height: 30px;
-  padding: .3rem .4rem;
+  padding: .3rem 1rem;
   cursor: pointer;
-
-  @media (min-width: 840px){
-    padding: .3rem 1rem;
-  }
   &:hover {
       transform: scale(1.05);
       translate: 5s ease in;

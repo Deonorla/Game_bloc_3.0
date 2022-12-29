@@ -249,10 +249,10 @@ const PreOrder =styled.button`
 `;
 
 const SliderContainer = styled.div`
-margin: 4rem 2rem 1rem 2rem;
+margin: 4rem 1rem 1rem 2rem;
 
 @media  (max-width: 375px){
-margin:4rem 1rem 1rem 1rem;
+margin:4rem 2rem 1rem 1rem;
 
 }
 @media (min-width: 686px) and  (max-width: 999px){

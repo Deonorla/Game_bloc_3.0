@@ -199,6 +199,7 @@ align-items: center;
 background: rgba(255, 255, 255, 0.34);
 box-shadow: 0 4px 30px rgba(0,0,0,0.1);
 backdrop-filter: blur(5px);
+/* border-radius: 9999px; */
 border-bottom-left-radius: 12px;
 border-bottom-right-radius: 12px;
 width: 100%;
@@ -263,12 +264,8 @@ const ColorContainer = styled(motion.div)`
   margin-top: 2rem;
   border-radius: 9999px;
   height: 30px;
-  padding: .3rem .4rem;
+  padding: .3rem 1rem;
   cursor: pointer;
-
-  @media (min-width: 840px){
-    padding: .3rem 1rem;
-  }
   &:hover {
       transform: scale(1.05);
       translate: 5s ease in;
