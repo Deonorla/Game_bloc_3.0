@@ -26,7 +26,6 @@ const CreateTournament = ({ gamebloc }: Props) => {
   const account = localStorage.getItem("near_app_wallet_auth_key");
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
-  const gameName = "Call of duty"
 
   const override = {
     display: "block",
@@ -84,7 +83,7 @@ const CreateTournament = ({ gamebloc }: Props) => {
   const setTournament = async () => {
     setLoading(true)
     try {
-      await gamebloc.new_tournament(userID, tournamentID, gameName, noOfUsers, prize);
+      await gamebloc.new_tournament(userID, tournamentID, noOfUsers, prize);
       console.log("Success");
       setLoading(false);
       popUp();

@@ -6,6 +6,8 @@ import React from 'react';
 
 
 export class GameBloc {
+  // contractId: any;
+  // wallet: any;
 
   constructor({ contractId, walletToUse }) {
     this.contractId = contractId;

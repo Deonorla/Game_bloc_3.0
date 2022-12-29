@@ -88,7 +88,7 @@ const CreateTournament = ({ gamebloc }: Props) => {
       console.log("Success");
       setLoading(false);
       popUp();
-      gamebloc.getAllTournaments().then((e :any) =>console.log(e));
+      // gamebloc.getAllTournaments().then((e :any) =>console.log(e));
 
     } catch (error) {
       console.log(error);
