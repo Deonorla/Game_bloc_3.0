@@ -44,7 +44,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
     return (
         <Container>
         <Heading>
-          {/* <img src={fence} alt='' /> */}
+          <img src={fence} alt='' />
           <h3>All  Tournaments</h3>
         </Heading>
 
@@ -119,9 +119,8 @@ height: 5rem;
 }
 
 h3{
-margin-left: 10px;
 color: #df78e3;
-font-size: 2rem;
+font-size: 23px;
 }
 `;
 
@@ -138,7 +137,6 @@ const ImgWrapper = styled.div`
 `;
 
 const Imgslide = styled.div`
- position: relative;
  display: flex;
  flex-direction: row;
  gap: 1rem;
@@ -234,9 +232,9 @@ const Status = styled.div`
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: .5rem 1rem;
+   padding: 1rem 2rem;
    color: white;
-   font-size: 1rem;
+   font-size: 16px;
    border: none;
    width: fit-content;
   

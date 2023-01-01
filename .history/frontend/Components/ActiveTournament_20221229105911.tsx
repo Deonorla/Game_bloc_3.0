@@ -53,13 +53,6 @@ const ActiveTournament = ({ gamebloc, isSignedIn }: Props) => {
          getTournaments();
       }, [])       
    } 
-
-   useEffect(() => {
-      const interval = setInterval(() => {
-         getTournaments();
-      }, 10000)
-      return () => clearInterval(interval);
-   })
    
    
    

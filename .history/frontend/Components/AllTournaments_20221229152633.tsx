@@ -119,9 +119,8 @@ height: 5rem;
 }
 
 h3{
-margin-left: 10px;
 color: #df78e3;
-font-size: 2rem;
+font-size: 23px;
 }
 `;
 

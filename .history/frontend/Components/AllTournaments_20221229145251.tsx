@@ -44,7 +44,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
     return (
         <Container>
         <Heading>
-          {/* <img src={fence} alt='' /> */}
+          <img src={fence} alt='' />
           <h3>All  Tournaments</h3>
         </Heading>
 
@@ -119,9 +119,8 @@ height: 5rem;
 }
 
 h3{
-margin-left: 10px;
 color: #df78e3;
-font-size: 2rem;
+font-size: 23px;
 }
 `;
 

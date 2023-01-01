@@ -42,6 +42,10 @@ const Dashboard = ({ isSignedIn, wallet }: Props) => {
     {isSignedIn ? navigate("/tournament") : setOpenModal(true)}
   }
 
+  const handleViewTournament = ()=> {
+    {isSignedIn ? navigate("/tournament-view") : setOpenModal(true)}
+  }
+
   return (
     <Wrapper>
       <Nav>
@@ -79,10 +83,14 @@ const Dashboard = ({ isSignedIn, wallet }: Props) => {
               <Homeicon />
             </div>
             </Link>
-            <div>
+
+            
+            <div onClick={handleViewTournament}>
               <h4>Tournaments</h4>
               <Library />
             </div>
+            
+
             <div>
               <h4> Games</h4>
               <Games />

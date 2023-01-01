@@ -44,7 +44,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
     return (
         <Container>
         <Heading>
-          {/* <img src={fence} alt='' /> */}
+          <img src={fence} alt='' />
           <h3>All  Tournaments</h3>
         </Heading>
 
@@ -55,7 +55,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
               <ImgWrapper>
                 
                     <Img style={{backgroundImage:`url(https://w0.peakpx.com/wallpaper/376/39/HD-wallpaper-ghost-lejendario-call-of-duty-mobile.jpg)`}}/>                 
-                      
+                      <Seen>
                           <Wrapper>
                             <Avatar 
                             src="https://w0.peakpx.com/wallpaper/376/39/HD-wallpaper-ghost-lejendario-call-of-duty-mobile.jpg"
@@ -77,7 +77,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
                             <button> Join</button>
                           </Status>
                           
-                        
+                        </Seen>
               </ImgWrapper>
     
               </Imgslide>
@@ -119,9 +119,8 @@ height: 5rem;
 }
 
 h3{
-margin-left: 10px;
 color: #df78e3;
-font-size: 2rem;
+font-size: 23px;
 }
 `;
 
@@ -133,12 +132,9 @@ gap: 1rem;
 
 const ImgWrapper = styled.div`
  position: relative;
- display: flex;
- flex-direction: column;
 `;
 
 const Imgslide = styled.div`
- position: relative;
  display: flex;
  flex-direction: row;
  gap: 1rem;
@@ -173,7 +169,6 @@ margin-top: 60%;
 `;
 
 const Wrapper = styled.div`
-z-index: 1; 
 display: flex;
 flex-direction: row;
 `;
@@ -183,45 +178,43 @@ display: flex;
 flex-direction: column;
 margin-left: 8px;
 padding: 10px;
-h4{
-  color: #fff;
-  font-size: 14px;
-  margin: 0;
-}
+   h4{
+      color: #fff;
+     font-size: 14px;
+     margin: 0;
+   }
 `;
 
 const Profile = styled.div`
 display: flex;
 flex-direction: row;
-h3{
-  color: #fff;
-  font-size: 14px;
-  margin: 0;
-}
+ h3{
+      color: #fff;
+     font-size: 14px;
+     margin: 0;
+   }
 `;
 
 const Avatar = styled.img`
 width: 40px;
 height: 40px;
 border-radius: 8px;
-margin: 10px 0 0 8px;
+ margin: 10px 0 0 8px;
 `;
 
 const Check = styled.img`
  margin-left: 4px;
  width: 20px;
  height: 20px;
- `;
+`;
 
 const Status = styled.div`
  display: flex;
  flex-direction: row;
  justify-content: space-between;
  width: 100%;
- margin-top: 100%;
  align-items: center;
  padding: 1rem ;
- z-index: 1; 
  h4{
     color: white;
     @media (max-width: 400px){
@@ -234,9 +227,9 @@ const Status = styled.div`
    display: flex;
    justify-content: space-between;
    align-items: center;
-   padding: .5rem 1rem;
+   padding: 1rem 2rem;
    color: white;
-   font-size: 1rem;
+   font-size: 16px;
    border: none;
    width: fit-content;
   

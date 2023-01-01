@@ -170,11 +170,13 @@ const CreateTournament = ({ gamebloc }: Props) => {
 };
 
 const Container = styled.div`
-  margin-top: 4rem;
+  margin-top: 4.5rem;
   width: 100%;
   flex-grow: 1;
   flex-shrink: 1;
   background-color: #35356b;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px; 
   @media (min-width: 1200px) {
     width: 60vw;
   }
@@ -188,7 +190,7 @@ const Img = styled.div`
   padding: 0 0 0 0.5rem;
   /* background-repeat: no-repeat; */
   background-size: 100% 100%;
-  width: 99%;
+  width: 99.1%;
   height: 20rem;
   border-radius: 12px;
 `;
@@ -319,6 +321,7 @@ const Input = styled.input`
   margin: 10px;
   background: #393963;
   border: none;
+  outline: none;
   padding-left: 50px;
   border-radius: 8px;
   ::placeholder {
