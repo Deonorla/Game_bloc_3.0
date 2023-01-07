@@ -189,6 +189,9 @@ const Title = styled.h2`
 color: #df78e3;
 font-size: 18px;
 margin-left: 1rem;
+/* @media  (min-width: 1200px) and (max-width: 1450px){
+   margin-left: 3rem;
+    } */
 `;
 
 const CardLayout = styled.div`
@@ -196,11 +199,7 @@ const CardLayout = styled.div`
    justify-content: center;
    align-items: center;
    flex-direction: column;
-   gap: 1rem;   
-    @media  (min-width: 1200px) and (max-width: 1450px){
-       width: 60%; 
-      /* margin: 0 0 0 5rem; */
-    }
+   gap: 1rem;
 `;
 
 const Imgslide = styled.div`
@@ -218,9 +217,6 @@ background-size: 100% 60%;
 border-radius: 12px;
 width: 14rem;
 height: 17rem;
-@media  (min-width: 1200px) and (max-width: 1450px){
-   width: 12rem; 
-}
 
 `;
 

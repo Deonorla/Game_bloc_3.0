@@ -218,9 +218,6 @@ background-size: 100% 60%;
 border-radius: 12px;
 width: 14rem;
 height: 17rem;
-@media  (min-width: 1200px) and (max-width: 1450px){
-   width: 12rem; 
-}
 
 `;
 
