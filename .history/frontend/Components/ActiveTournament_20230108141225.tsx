@@ -81,7 +81,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }: Props) => {
             <TitleContainer>
                <Column>
                <Title>
-                   Tournaments
+                  Active Tournaments
                </Title>
 
                  <ReactPaginate
@@ -199,7 +199,7 @@ const CardLayout = styled.div`
    gap: 1rem;   
     @media  (min-width: 1200px) and (max-width: 1450px){
        width: 70%; 
-      margin-left: 4rem;
+      /* margin: 0 0 0 5rem; */
     }
 `;
 
