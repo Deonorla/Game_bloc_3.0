@@ -16,7 +16,7 @@ interface Props {
 
 const CreateTournament = ({ gamebloc }: Props) => {
   const { id } = useParams();
-  const [tournamentID, setTournamentID] = useState("");
+  const [tournamentID, setTournamentID] = useState();
   let [loading, setLoading] = useState(false);
   let [color, setColor] = useState("#ffffff");
   const [prize, setPrize] = useState("");
@@ -64,7 +64,6 @@ const CreateTournament = ({ gamebloc }: Props) => {
    let accountJSON = JSON.parse(account!);
     const accountID = accountJSON.accountId;
     setUserID(accountID); 
-    generateId(); 
   }, []);
 
   function generateId() {
@@ -86,6 +85,7 @@ const CreateTournament = ({ gamebloc }: Props) => {
   const setTournament = async () => {
     setLoading(true)
     try {
+      generateId(); 
       await gamebloc.new_tournament(userID, tournamentID, gameName, noOfUsers, prize);
       console.log("Success");
       setLoading(false);

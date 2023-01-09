@@ -64,7 +64,6 @@ const CreateTournament = ({ gamebloc }: Props) => {
    let accountJSON = JSON.parse(account!);
     const accountID = accountJSON.accountId;
     setUserID(accountID); 
-    generateId(); 
   }, []);
 
   function generateId() {
@@ -72,7 +71,6 @@ const CreateTournament = ({ gamebloc }: Props) => {
   let day = date.getDate();
     const id = ulid(day);
     setTournamentID(id);
-    console.log(id)
   }
   function getPrize(event: any) {
     event.preventDefault()
@@ -86,6 +84,7 @@ const CreateTournament = ({ gamebloc }: Props) => {
   const setTournament = async () => {
     setLoading(true)
     try {
+      generateId(); 
       await gamebloc.new_tournament(userID, tournamentID, gameName, noOfUsers, prize);
       console.log("Success");
       setLoading(false);
