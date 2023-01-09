@@ -2,7 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../assets/logo.png"
 import { RiSendPlaneFill } from "react-icons/ri";
- 
+ import back from "../assets/scifi.jpg";
+ import u1 from "../assets/u.png";
+ import u2 from "../assets/u2.png";
+ import u3 from "../assets/u3.png";
+ import u4 from "../assets/u4.png";
+ import u5 from "../assets/u5.png";
+ import u6 from "../assets/u6.png";
+ import u7 from "../assets/u7.png";
 
 
  const Chat =()=>{
@@ -45,11 +52,8 @@ import { RiSendPlaneFill } from "react-icons/ri";
  const Container = styled.div`
     padding: .5rem;
     /* margin: 2rem 0; */
-    width: 100%; 
-    @media  (min-width: 1200px) and (max-width: 1450px){
-       width: 80%; 
-      margin: 0 0 0 5rem;
-    }
+    width: 100%;
+  
     `;
 
 const Heading = styled.div`
@@ -69,6 +73,10 @@ const Heading = styled.div`
      border-radius: 12px;
      padding: .5rem 0 1rem .5rem;
      margin-top: 4rem;
+
+    @media screen (min-width: 1200px) and (max-width: 1450px){
+      width: 60%
+    }
  `;
 
 const Avatar = styled.div`

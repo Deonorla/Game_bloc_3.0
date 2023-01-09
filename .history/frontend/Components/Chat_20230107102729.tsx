@@ -45,10 +45,10 @@ import { RiSendPlaneFill } from "react-icons/ri";
  const Container = styled.div`
     padding: .5rem;
     /* margin: 2rem 0; */
-    width: 100%; 
-    @media  (min-width: 1200px) and (max-width: 1450px){
-       width: 80%; 
-      margin: 0 0 0 5rem;
+    width: 100%;
+    
+     @media  (min-width: 1200px) and (max-width: 1450px){
+      margin: 0 0 0 4rem;
     }
     `;
 

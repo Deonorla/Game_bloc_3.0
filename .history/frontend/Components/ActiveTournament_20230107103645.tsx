@@ -81,7 +81,7 @@ const ActiveTournament = ({ gamebloc, isSignedIn }: Props) => {
             <TitleContainer>
                <Column>
                <Title>
-                   Tournaments
+                  Active Tournaments
                </Title>
 
                  <ReactPaginate
@@ -187,7 +187,7 @@ const Column = styled.div`
 
 const Title = styled.h2`
 color: #df78e3;
-font-size: 1rem;
+font-size: 18px;
 margin-left: 1rem;
 `;
 
@@ -198,8 +198,8 @@ const CardLayout = styled.div`
    flex-direction: column;
    gap: 1rem;   
     @media  (min-width: 1200px) and (max-width: 1450px){
-       width: 70%; 
-      margin-left: 4rem;
+       width: 80%; 
+      /* margin: 0 0 0 5rem; */
     }
 `;
 
@@ -218,9 +218,6 @@ background-size: 100% 60%;
 border-radius: 12px;
 width: 14rem;
 height: 17rem;
-@media  (min-width: 1200px) and (max-width: 1450px){
-   width: 12rem; 
-}
 
 `;
 

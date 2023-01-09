@@ -24,7 +24,7 @@ export default Chathome;
 
 const Chahome = styled.div`
 display: none;
-@media (min-width: 1201px){
+@media (min-width: 1280px){
   display: flex;
   flex-direction: column;
   position: fixed;
