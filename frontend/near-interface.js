@@ -13,9 +13,7 @@ export class GameBloc {
   }
 
   async new_tournament(userID, tournamentID, gameName, users, prize) {
-   const new_user = utils.format.parseNearAmount(users.toString())
-   const no_price = utils.format.parseNearAmount(prize.toString())
-    return await this.wallet.callMethod({ contractId: this.contractId, method: "new_tournament",  args: {owner_id: userID, tournament_id_hash: tournamentID, game_name: gameName, no_of_users_input: new_user, prize_input: no_price }  })
+    return await this.wallet.callMethod({ contractId: this.contractId, method: "new_tournament",  args: {owner_id: userID, tournament_id_hash: tournamentID, game_name: gameName, no_of_users_input: users, prize_input: prize }  })
   }
 
    async getAllTournaments() {

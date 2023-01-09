@@ -1,6 +1,6 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{LazyOption, LookupMap, LookupSet, UnorderedMap, UnorderedSet};
-use near_sdk::json_types::{Base64VecU8, U128};
+use near_sdk::json_types::{Base64VecU8, U128,U64};
 use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::{serde_json, Gas};
 use near_sdk::{
@@ -33,7 +33,7 @@ pub struct Tournament {
     game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
-    total_prize: U128,
+    total_prize: U64,
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
@@ -56,7 +56,7 @@ pub struct JsonTournament {
     status: TournamentStatus,
     // game: String,
     user: Vec<AccountId>,
-    total_prize: U128,
+    total_prize: U64,
 }
 
 #[derive(Serialize)]
@@ -111,10 +111,10 @@ impl GameBloc {
     }
 
 
-    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U128) {
+    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U64) {
         let no_of_users: U128 = no_of_users_input;
         //.unwrap();
-        let prize: U128 = prize_input;
+        let prize: U64 = prize_input;
         // assert_eq!(
         //     env::predecessor_account_id(),
         //     self.owner_id,
@@ -132,6 +132,7 @@ impl GameBloc {
             },
         );
 
+        assert!(existing.is_none(), "Tournament with that key already exists");
         self.tournament_ids.insert(&tournament_id_hash);
     }
 
@@ -189,7 +190,7 @@ impl GameBloc {
     );
 
         // Transfer the prize money to the winner
-        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
+        // Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
 
 
@@ -239,7 +240,7 @@ impl GameBloc {
     }
 
 
-    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U128) {
+    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U64) {
 
         let existing = self.tournaments.insert(
             &tournament_id_hash,
@@ -327,6 +328,6 @@ impl GameBloc {
     );
 
         // Transfer the prize money to the winner
-        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
+        // Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
 }
