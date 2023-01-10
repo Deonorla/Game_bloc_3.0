@@ -3,7 +3,6 @@ import styled from "styled-components";
 import fence from "../assets/fencing.png";
 import Loader from './Loader/Loader';
 import check from "../assets/check.png";
-import CodImgData from "../Features/ImageData/CodImg/CodImgData";
 
 interface Props{
   gamebloc: any,
@@ -13,6 +12,7 @@ interface Props{
 const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
   const [allTournaments, setAllTournaments] = useState([] as any[]);
   const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
      try {
@@ -30,6 +30,8 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
     },[])
   
 
+  
+ 
   if (loading) {
     return (
          <Layout>
@@ -52,11 +54,11 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
             <Imgslide key={index}>
               <ImgWrapper>
                 
-                    <Img style={{backgroundImage:`url(${CodImgData[Math.floor(Math.random() * CodImgData.length)]})`}}/>                 
+                    <Img style={{backgroundImage:`url(https://w0.peakpx.com/wallpaper/376/39/HD-wallpaper-ghost-lejendario-call-of-duty-mobile.jpg)`}}/>                 
                       
                           <Wrapper>
                             <Avatar 
-                            src={CodImgData[Math.floor(Math.random() * CodImgData.length)]}
+                            src="https://w0.peakpx.com/wallpaper/376/39/HD-wallpaper-ghost-lejendario-call-of-duty-mobile.jpg"
                             alt=""
                             /> 
 
@@ -149,7 +151,7 @@ position: absolute;
 flex-direction: column;
 background-size: 100% 100%;
 border-radius: 12px;
-width: 100%;
+/* width: 14rem; */
 height: 20rem;
 opacity: 0.7;
 `;
@@ -215,6 +217,7 @@ const Status = styled.div`
  display: flex;
  flex-direction: row;
  justify-content: space-between;
+ width: 100%;
  margin-top: 100%;
  align-items: center;
  padding: 1rem ;

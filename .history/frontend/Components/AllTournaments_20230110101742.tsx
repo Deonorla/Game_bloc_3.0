@@ -13,6 +13,7 @@ interface Props{
 const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
   const [allTournaments, setAllTournaments] = useState([] as any[]);
   const [loading, setLoading] = useState(true);
+  let ImgData = CodImgData[Math.floor(Math.random() * CodImgData.length)];
 
     useEffect(() => {
      try {
@@ -52,11 +53,11 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
             <Imgslide key={index}>
               <ImgWrapper>
                 
-                    <Img style={{backgroundImage:`url(${CodImgData[Math.floor(Math.random() * CodImgData.length)]})`}}/>                 
+                    <Img style={{backgroundImage:`url(${ImgData.img})`}}/>                 
                       
                           <Wrapper>
                             <Avatar 
-                            src={CodImgData[Math.floor(Math.random() * CodImgData.length)]}
+                            src={ImgData.img}
                             alt=""
                             /> 
 
