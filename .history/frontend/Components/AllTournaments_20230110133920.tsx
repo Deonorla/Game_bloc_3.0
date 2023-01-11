@@ -69,7 +69,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
                             </Details>
                             
                           </Wrapper>
-                 
+
                           <Status>
                             <h4>0/50</h4>
                             <button> Join</button>
@@ -103,7 +103,7 @@ const Container = styled.div`
  margin-top: 5rem;
  width: 100%;
  background-color: #35356b;
- height: fit-content;
+ height: 100vh;
  border-top-right-radius: 10px;
  border-top-left-radius: 10px;
 `;
@@ -182,9 +182,9 @@ width: 8.5rem;
 @media (min-width: 371px){
   width: 100%;
 }
-/* @media (min-width: 1200px){
+@media (min-width: 750px){
   width: 120%;
-} */
+}
 `;
 
 const Seen = styled.div`
@@ -212,7 +212,7 @@ flex-direction: row;
 const Details = styled.div`
 display: flex;
 flex-direction: column;
-margin-left: 3px;
+margin-left: 8px;
 padding: 10px;
 h4{
   color: #fff;
@@ -275,7 +275,6 @@ const Status = styled.div`
    font-size: 1rem;
    border: none;
    width: fit-content;
-   margin-left: 2rem;
   
    cursor: pointer;
    &:hover{

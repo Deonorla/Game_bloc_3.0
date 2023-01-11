@@ -182,9 +182,9 @@ width: 8.5rem;
 @media (min-width: 371px){
   width: 100%;
 }
-/* @media (min-width: 1200px){
+@media (min-width: 1200px){
   width: 120%;
-} */
+}
 `;
 
 const Seen = styled.div`
@@ -212,7 +212,7 @@ flex-direction: row;
 const Details = styled.div`
 display: flex;
 flex-direction: column;
-margin-left: 3px;
+margin-left: 8px;
 padding: 10px;
 h4{
   color: #fff;

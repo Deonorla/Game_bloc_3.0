@@ -63,13 +63,13 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
                             <Details>
                                 <h4>Call of Duty</h4>
                                 <Profile>
-                                  <Check src={check}  alt=""/>
                                   <h3>{ data.owner_id.substring(0, data.owner_id.length - 8) }</h3>
+                                  <Check src={check}  alt=""/>
                                 </Profile>
                             </Details>
                             
                           </Wrapper>
-                 
+
                           <Status>
                             <h4>0/50</h4>
                             <button> Join</button>
@@ -103,7 +103,7 @@ const Container = styled.div`
  margin-top: 5rem;
  width: 100%;
  background-color: #35356b;
- height: fit-content;
+ height: 100vh;
  border-top-right-radius: 10px;
  border-top-left-radius: 10px;
 `;
@@ -173,18 +173,12 @@ position: absolute;
 flex-direction: column;
 background-size: 100% 100%;
 border-radius: 12px;
+width: 100%;
 height: 20rem;
 opacity: 0.7;
-width: 8.5rem;
-@media (min-width: 370px){
-  width: 10rem;
+@media (max-width: ){
+  width: 30%;
 }
-@media (min-width: 371px){
-  width: 100%;
-}
-/* @media (min-width: 1200px){
-  width: 120%;
-} */
 `;
 
 const Seen = styled.div`
@@ -198,7 +192,7 @@ backdrop-filter: blur(5px); */
 /* border-radius: 9999px; */
 border-bottom-left-radius: 12px;
 border-bottom-right-radius: 12px;
-width: 100%2;
+width: 100%;
 height: 50%;
 margin-top: 60%;
 `;
@@ -212,7 +206,7 @@ flex-direction: row;
 const Details = styled.div`
 display: flex;
 flex-direction: column;
-margin-left: 3px;
+margin-left: 8px;
 padding: 10px;
 h4{
   color: #fff;
@@ -223,18 +217,11 @@ h4{
 
 const Profile = styled.div`
 display: flex;
-align-items: center;
-flex-wrap: wrap;
 flex-direction: row;
-margin-top: 4px;
 h3{
   color: #fff;
   font-size: 14px;
-  margin:  0 0 0 4px;
-  @media (max-width: 320px){
-   font-size: 12px;
-  }
-
+  margin: 0;
 }
 `;
 
@@ -246,6 +233,7 @@ margin: 10px 0 0 8px;
 `;
 
 const Check = styled.img`
+ margin-left: 4px;
  width: 20px;
  height: 20px;
  `;
@@ -275,7 +263,6 @@ const Status = styled.div`
    font-size: 1rem;
    border: none;
    width: fit-content;
-   margin-left: 2rem;
   
    cursor: pointer;
    &:hover{

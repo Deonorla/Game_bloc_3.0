@@ -46,7 +46,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
           <h3>All  Tournaments</h3>
         </Heading>
 
-        <GridLayout>
+        <FlexLayout>
            
           {allTournaments.map((data, index) => (
             <Imgslide key={index}>
@@ -80,7 +80,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
     
               </Imgslide>
           ))}
-        </GridLayout>
+        </FlexLayout>
          
   
       </Container>
@@ -103,7 +103,7 @@ const Container = styled.div`
  margin-top: 5rem;
  width: 100%;
  background-color: #35356b;
- height: fit-content;
+ height: 100vh;
  border-top-right-radius: 10px;
  border-top-left-radius: 10px;
 `;
@@ -123,28 +123,12 @@ font-size: 1.5rem;
 }
 `;
 
-const GridLayout = styled.div`
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 1rem;
+const FlexLayout = styled.div`
+display: flex;
+scroll-snap-type: x mandatory;
+scroll-padding: 25px;
+column-gap: 20px; 
 
-
-/* @media  (max-width: 390px){
-  grid-template-columns: repeat(1, 1fr);
-  
-} */
-@media (min-width: 900px) and (max-width: 1729px){
-  grid-template-columns: repeat(3, 1fr);
-  
-}
-@media (min-width: 1730px) and (max-width: 2350px){
-  grid-template-columns: repeat(4, 1fr);
-  
-}
-@media (min-width: 2350px){
-  grid-template-columns: repeat(5, 1fr);
-  
-}
 `;
 
 const ImgWrapper = styled.div`
@@ -156,14 +140,9 @@ const ImgWrapper = styled.div`
 const Imgslide = styled.div`
  position: relative;
  display: flex;
- flex-direction: row;
- gap: 1rem;
- margin: 0rem .2rem;
- 
- @media (min-width: 430px){
-   margin: 0rem 1rem;
-
-}
+ flex: 0 0 100%;
+ padding: 30px;
+ scroll-snap-align: start;
 
 `;
 
@@ -182,9 +161,9 @@ width: 8.5rem;
 @media (min-width: 371px){
   width: 100%;
 }
-/* @media (min-width: 1200px){
+@media (min-width: 1200px){
   width: 120%;
-} */
+}
 `;
 
 const Seen = styled.div`
@@ -212,7 +191,7 @@ flex-direction: row;
 const Details = styled.div`
 display: flex;
 flex-direction: column;
-margin-left: 3px;
+margin-left: 8px;
 padding: 10px;
 h4{
   color: #fff;
