@@ -182,9 +182,9 @@ width: 8.5rem;
 @media (min-width: 371px){
   width: 100%;
 }
-@media (min-width: 500px){
+/* @media (min-width: 1200px){
   width: 120%;
-}
+} */
 `;
 
 const Seen = styled.div`

@@ -154,9 +154,9 @@ const FlexLayout = styled.div`
 &:hover::-webkit-scrollbar-thumb{
     visibility: visible;
 }
-/* @media (max-width: 500px){
+@media (max-width: 500px){
  margin-left: 1rem;
-} */
+}
 `;
 
 const ImgWrapper = styled.div`
@@ -168,7 +168,7 @@ const ImgWrapper = styled.div`
 const Imgslide = styled.div`
  position: relative;
  display: flex; 
-
+ ga
 `;
 
 const Img = styled.div`

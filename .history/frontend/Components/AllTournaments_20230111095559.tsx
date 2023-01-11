@@ -180,11 +180,11 @@ width: 8.5rem;
   width: 10rem;
 }
 @media (min-width: 371px){
-  width: 100%;
-}
-@media (min-width: 500px){
   width: 120%;
 }
+/* @media (min-width: 1200px){
+  width: 120%;
+} */
 `;
 
 const Seen = styled.div`

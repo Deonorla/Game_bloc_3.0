@@ -66,10 +66,10 @@ const TournamentList = ({gamebloc}: props) => {
                                         
                                     </Wrapper>
                             
-                                    {/* <Status>
+                                    <Status>
                                         <h4>0/50</h4>
                                         <button> Join</button>
-                                    </Status> */}
+                                    </Status>
                                     
                                     
                         </ImgWrapper>
@@ -137,7 +137,6 @@ const FlexLayout = styled.div`
  flex-direction: row;
  margin: 2rem 0 0 0;
  overflow-x: scroll;
- height: 330px;
  gap: 2rem;
  
  
@@ -154,9 +153,9 @@ const FlexLayout = styled.div`
 &:hover::-webkit-scrollbar-thumb{
     visibility: visible;
 }
-/* @media (max-width: 500px){
+@media (max-width: 500px){
  margin-left: 1rem;
-} */
+}
 `;
 
 const ImgWrapper = styled.div`
@@ -168,7 +167,7 @@ const ImgWrapper = styled.div`
 const Imgslide = styled.div`
  position: relative;
  display: flex; 
-
+ ga
 `;
 
 const Img = styled.div`
@@ -232,7 +231,7 @@ flex-direction: row;
 margin-top: 4px;
 h3{
   color: #fff;
-  width: 100px;
+  width: 50px;
   font-size: 14px;
   margin:  0 0 0 4px;
   text-overflow: ellipsis;

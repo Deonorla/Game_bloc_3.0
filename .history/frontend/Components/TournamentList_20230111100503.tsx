@@ -168,7 +168,7 @@ const ImgWrapper = styled.div`
 const Imgslide = styled.div`
  position: relative;
  display: flex; 
-
+ ga
 `;
 
 const Img = styled.div`
