@@ -3,17 +3,14 @@ import styled from "styled-components";
 import Loader from './Loader/Loader';
 import CodImgData from '../Features/ImageData/CodImg/CodImgData';
 import check from "../assets/check.png";
-import { useNavigate } from 'react-router-dom';
 
 interface props {
     gamebloc: any
 }
 
 const TournamentList = ({gamebloc}: props) => {
-  const [allTournaments, setAllTournaments] = useState([] as any[]);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-  
+    const [allTournaments, setAllTournaments] = useState([] as any[]);
+    const [loading, setLoading] = useState(true);
     
      useEffect(() => {
      try {
@@ -42,7 +39,7 @@ const TournamentList = ({gamebloc}: props) => {
             <CardContainer>
                  <Heading>
                     <h4> Active Tournaments </h4> 
-                    <h4 onClick={()=> navigate('/all-tournaments')} >View All</h4>
+                    <h4>View All</h4>
                 </Heading>
                 
                  <FlexLayout>
@@ -71,7 +68,7 @@ const TournamentList = ({gamebloc}: props) => {
                             
                                     <Status>
                                         <h4></h4>
-                                        <button onClick = {()=> navigate('/tournament-view') }>Details</button>
+                                        <button>Details</button>
                                     </Status>
                                     
                                     

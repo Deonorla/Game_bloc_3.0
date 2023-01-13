@@ -249,6 +249,7 @@ const Category = styled.div`
   h3{
     color: #df78e3;
     cursor: pointer;
+    margin-left: 2rem;
     @media (max-width: 400px){
      font-size: 13px;
     }

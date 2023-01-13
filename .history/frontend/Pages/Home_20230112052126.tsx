@@ -14,6 +14,7 @@ const Home = ({gamebloc}: Props) => {
   return (
     <Container>
       <HomeSlider />
+      <SearchBox />
       <TournamentList gamebloc={gamebloc} />
       <CardView />
       <Hub />

@@ -42,7 +42,7 @@ const TournamentList = ({gamebloc}: props) => {
             <CardContainer>
                  <Heading>
                     <h4> Active Tournaments </h4> 
-                    <h4 onClick={()=> navigate('/all-tournaments')} >View All</h4>
+                    <h4>View All</h4>
                 </Heading>
                 
                  <FlexLayout>

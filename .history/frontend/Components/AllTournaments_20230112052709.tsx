@@ -5,8 +5,6 @@ import fence from "../assets/fencing.png";
 import Loader from './Loader/Loader';
 import check from "../assets/check.png";
 import CodImgData from "../Features/ImageData/CodImg/CodImgData";
-import { IoIosArrowRoundBack } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
 
 interface Props{
   gamebloc: any,
@@ -16,7 +14,6 @@ interface Props{
 const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
   const [allTournaments, setAllTournaments] = useState([] as any[]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
     useEffect(() => {
      try {
@@ -44,8 +41,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
   else {
     
     return (
-      <Container>
-        <Back onClick={()=> navigate(-1)} />
+        <Container>
         <Heading>
           {/* <img src={fence} alt='' /> */}
           <h3>All  Tournaments</h3>
@@ -101,16 +97,7 @@ const Layout = styled.div`
  justify-content: center;
  align-items: center;
  width: 100%;
- margin-top: 10rem;
-`;
-
-const Back = styled(IoIosArrowRoundBack)`
- margin: 1rem 1rem 0 1rem;
- color: #df78e3;
- font-size: 2rem;
- &:hover{
-  scale: 1.01;
- }
+margin-top: 10rem;
 `;
 
 const Container = styled.div`
@@ -125,15 +112,13 @@ const Container = styled.div`
 const Heading = styled.div`
 display: flex;
 flex-direction: row;
-justify-content: center;
-align-items: center;
 img{
 width: 7rem;
 height: 5rem;
 }
 
 h3{
-margin-left: 2.3rem;
+margin-left: 10px;
 color: #df78e3;
 font-size: 1.5rem;
 }

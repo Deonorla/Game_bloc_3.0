@@ -6,7 +6,6 @@ import Loader from './Loader/Loader';
 import check from "../assets/check.png";
 import CodImgData from "../Features/ImageData/CodImg/CodImgData";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
 
 interface Props{
   gamebloc: any,
@@ -16,7 +15,6 @@ interface Props{
 const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
   const [allTournaments, setAllTournaments] = useState([] as any[]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
     useEffect(() => {
      try {
@@ -45,7 +43,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
     
     return (
       <Container>
-        <Back onClick={()=> navigate(-1)} />
+        <Back />
         <Heading>
           {/* <img src={fence} alt='' /> */}
           <h3>All  Tournaments</h3>
@@ -107,7 +105,7 @@ const Layout = styled.div`
 const Back = styled(IoIosArrowRoundBack)`
  margin: 1rem 1rem 0 1rem;
  color: #df78e3;
- font-size: 2rem;
+ font-size: 1.7rem;
  &:hover{
   scale: 1.01;
  }
@@ -125,8 +123,6 @@ const Container = styled.div`
 const Heading = styled.div`
 display: flex;
 flex-direction: row;
-justify-content: center;
-align-items: center;
 img{
 width: 7rem;
 height: 5rem;

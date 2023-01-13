@@ -160,7 +160,7 @@ const FilterBox = styled(motion.div)``;
 const Box = styled(motion.div)``;
 
 const SearchContainer = styled.div`
-  margin: 0  2rem 2.5rem 2rem ;
+  margin: 2rem  2rem 1rem 2rem ;
   display: flex;
   flex-direction: row; 
   justify-content: space-between;

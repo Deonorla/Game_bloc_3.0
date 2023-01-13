@@ -255,7 +255,7 @@ const Category = styled.div`
 
     @media (min-width: 686px){
 
-      margin: 0 0 0 1rem;
+      margin: 0 0 0 2rem;
     }
     @media (min-width: 686px) and (max-width: 999px){
 
