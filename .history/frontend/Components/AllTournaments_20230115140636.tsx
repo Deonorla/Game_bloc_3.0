@@ -76,9 +76,10 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
                           </Wrapper>
                  
                           <Status>
-                           
+                            <h4>0/50</h4>
                             
-                            <button onClick={()=> navigate('/tournament-view')}> Details</button>
+                            <button onClick={()=> navigate('/')
+                        }> Join</button>
                           </Status>
                           
                         
