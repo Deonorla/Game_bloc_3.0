@@ -32,7 +32,14 @@ const TournamentView = () => {
   useEffect(() => {
     fetchData();
     console.log(`id: ${id}`)
-
+    //  console.log(tournamentDetail)
+    //   tournamentDetail
+    //     .filter((list: any) => list.tournament_id_hash == id)
+    //    .map((list: any) => (
+    //         console.log(list.tournament_id_hash)
+    //       ))
+        
+      
    }, [])
   
   if (loading) {
@@ -123,6 +130,13 @@ const TournamentView = () => {
     } 
 
 }
+
+
+
+//  <Container>
+
+  
+//       </Container>
 
 const Layout = styled.div`
  display: flex;

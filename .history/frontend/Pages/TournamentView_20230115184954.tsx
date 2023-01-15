@@ -10,29 +10,37 @@ import { gamebloc } from '..';
 
 
 const TournamentView = () => {
-  const {id} = useParams();
-  
+  const id = useParams();
   const [tournamentDetail, setTournamentDetails] = useState([] as any[]);
   const [loading, setLoading] = useState<boolean>(true);
-  
+
   const fetchData = () => {
     try {
-      gamebloc.getAllTournaments().then((data: any) => {
-        if (data) {
-          setTournamentDetails(data.tournament);
-          setLoading(false);
+            gamebloc.getAllTournaments().then((data: any) => {
+              if (data) {
+                console.log(data)
+                let _tournaments = data.tournament
+                  setTournamentDetails(_tournaments);
+                  setLoading(false);
+                  console.log(tournamentDetail)
+               }
+            })
+               
+         } catch(error) {
+            console.log(error)
         }
-      })
-      
-    } catch(error) {
-      console.log(error)
-    }
   }
-  
-  useEffect(() => {
-    fetchData();
-    console.log(`id: ${id}`)
 
+   useEffect(() => {
+     fetchData();
+    //  console.log(tournamentDetail)
+    //   tournamentDetail
+    //     .filter((list: any) => list.tournament_id_hash == id)
+    //    .map((list: any) => (
+    //         console.log(list.tournament_id_hash)
+    //       ))
+        
+      
    }, [])
   
   if (loading) {
@@ -44,10 +52,11 @@ const TournamentView = () => {
   } else {
     return (
       <div>
-        
-        {tournamentDetail
+      {tournamentDetail
         .filter((list: any) => list.tournament_id_hash == id)
-          .map((list: any) => (      
+          .map((list: any) => (
+            
+            
             <Container>
               <GameImg>
                 <Img style={{ backgroundImage: `url(https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg)` }} />
@@ -123,6 +132,13 @@ const TournamentView = () => {
     } 
 
 }
+
+
+
+//  <Container>
+
+  
+//       </Container>
 
 const Layout = styled.div`
  display: flex;

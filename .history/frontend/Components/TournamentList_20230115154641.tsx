@@ -20,7 +20,7 @@ const TournamentList = ({gamebloc}: props) => {
             gamebloc.getAllTournaments().then((data: any) => {
                if (data) {
                   setAllTournaments(data.tournament);
-                  // console.log(data.tournament)
+                  console.log(data.tournament)
                   setLoading(false);
                }
             })
@@ -71,7 +71,7 @@ const TournamentList = ({gamebloc}: props) => {
                             
                                     <Status>
                                         <h4></h4>
-                                        <Link to={`/tournament-view/${data.tournament_id_hash}`} style={{textDecoration: "none"}}>
+                                        <Link to={'/tournament-view' + data.tournament_id_hash}>
                                             <button >Details</button>
                                         </Link>
                                     </Status>

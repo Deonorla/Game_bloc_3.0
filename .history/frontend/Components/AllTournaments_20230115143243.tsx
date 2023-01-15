@@ -251,10 +251,6 @@ h3{
   font-size: 14px;
   margin:  0 0 0 4px;
   @media (max-width: 374px){
-    width: 100px;
-   text-overflow: ellipsis;
-   overflow: hidden;
-   white-space: nowrap;
     width: 60px;
    font-size: 12px;
   }

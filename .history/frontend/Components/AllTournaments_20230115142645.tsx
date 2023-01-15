@@ -250,12 +250,7 @@ h3{
   color: #fff;
   font-size: 14px;
   margin:  0 0 0 4px;
-  @media (max-width: 374px){
-    width: 100px;
-   text-overflow: ellipsis;
-   overflow: hidden;
-   white-space: nowrap;
-    width: 60px;
+  @media (max-width: 320px){
    font-size: 12px;
   }
 
@@ -270,6 +265,7 @@ margin: 10px 0 0 8px;
 @media (max-width: 374px){
   width: 20px;
   height: 20px;
+
 }
 `;
 
@@ -310,9 +306,6 @@ const Status = styled.div`
       scale: 1.03;
       background-color: #6365bf;
    }
-   @media (max-width: 374px){
-   font-size: .8rem;
-}
  }
 `;
 

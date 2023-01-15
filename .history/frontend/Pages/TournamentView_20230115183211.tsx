@@ -10,29 +10,27 @@ import { gamebloc } from '..';
 
 
 const TournamentView = () => {
-  const {id} = useParams();
-  
+  const id = useParams();
   const [tournamentDetail, setTournamentDetails] = useState([] as any[]);
   const [loading, setLoading] = useState<boolean>(true);
-  
+
   const fetchData = () => {
     try {
-      gamebloc.getAllTournaments().then((data: any) => {
-        if (data) {
-          setTournamentDetails(data.tournament);
-          setLoading(false);
+            gamebloc.getAllTournaments().then((data: any) => {
+               if (data) {
+                  setTournamentDetails(data.tournament);
+                  console.log(data.tournament)
+                  setLoading(false);
+               }
+            })
+               
+         } catch(error) {
+            console.log(error)
         }
-      })
-      
-    } catch(error) {
-      console.log(error)
-    }
   }
-  
-  useEffect(() => {
-    fetchData();
-    console.log(`id: ${id}`)
 
+   useEffect(() => {
+      fetchData();
    }, [])
   
   if (loading) {
@@ -44,10 +42,9 @@ const TournamentView = () => {
   } else {
     return (
       <div>
-        
-        {tournamentDetail
-        .filter((list: any) => list.tournament_id_hash == id)
-          .map((list: any) => (      
+      {tournamentDetail.
+        filter((tournamentId: any) => tournamentId.tournament_id_hash == id)
+        .map((tournament: any) => (
             <Container>
               <GameImg>
                 <Img style={{ backgroundImage: `url(https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg)` }} />
@@ -58,7 +55,7 @@ const TournamentView = () => {
                          <h4>Call of Duty War-zone</h4>
                          <UserName>
                              <img src={check} alt="" />
-                        <h3> {list.owner_id.substring(0, list.owner_id.length - 8)} </h3>
+                        <h3> {tournament.owner_id.substring(0, tournament.owner_id.length - 8)} </h3>
                           </UserName>
                         </Details>
                     </AvatarWrapper>
@@ -123,6 +120,13 @@ const TournamentView = () => {
     } 
 
 }
+
+
+
+//  <Container>
+
+  
+//       </Container>
 
 const Layout = styled.div`
  display: flex;

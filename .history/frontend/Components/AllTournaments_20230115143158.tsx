@@ -240,22 +240,17 @@ h4{
 const Profile = styled.div`
 display: flex;
 align-items: center;
-width: 100px;
-text-overflow: ellipsis;
-overflow: hidden;
-white-space: nowrap;
 flex-direction: row;
 margin-top: 4px;
 h3{
+  white-space: nowrap;
+  width: 100px;
+ text-overflow: ellipsis;
+ overflow: hidden;
   color: #fff;
   font-size: 14px;
   margin:  0 0 0 4px;
-  @media (max-width: 374px){
-    width: 100px;
-   text-overflow: ellipsis;
-   overflow: hidden;
-   white-space: nowrap;
-    width: 60px;
+  @media (max-width: 320px){
    font-size: 12px;
   }
 

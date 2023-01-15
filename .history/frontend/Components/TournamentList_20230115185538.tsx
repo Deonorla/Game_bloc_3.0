@@ -20,7 +20,7 @@ const TournamentList = ({gamebloc}: props) => {
             gamebloc.getAllTournaments().then((data: any) => {
                if (data) {
                   setAllTournaments(data.tournament);
-                  // console.log(data.tournament)
+                  console.log(allTournaments)
                   setLoading(false);
                }
             })

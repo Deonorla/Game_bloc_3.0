@@ -6,35 +6,44 @@ import money from "../assets/money.png";
 import mode from "../assets/mode.png";
 import { useParams } from 'react-router-dom';
 import Loader from '../Components/Loader/Loader';
-import { gamebloc } from '..';
 
+type Props = {
+  gamebloc: any
+}
 
-const TournamentView = () => {
-  const {id} = useParams();
-  
+export const TournamentInfo = () => {
+  const [tournamentDetail, setTournamentDetails] = useState([] as any[]);
+
+   const fetchData = () => {
+    try {
+            gamebloc.getAllTournaments().then((data: any) => {
+               if (data) {
+                  setTournamentDetails(data.tournament);
+                  console.log(data.tournament)
+                  setLoading(false);
+               }
+            })
+               
+         } catch(error) {
+            console.log(error)
+        }
+  }
+
+   useEffect(() => {
+    //  fetchData();
+     try {
+       gamebloc.getAllTournaments();
+     } catch (err) {
+       console.log(err)
+     }
+   }, [])
+}
+
+const TournamentView = ({gamebloc}: Props) => {
+  const id = useParams();
   const [tournamentDetail, setTournamentDetails] = useState([] as any[]);
   const [loading, setLoading] = useState<boolean>(true);
-  
-  const fetchData = () => {
-    try {
-      gamebloc.getAllTournaments().then((data: any) => {
-        if (data) {
-          setTournamentDetails(data.tournament);
-          setLoading(false);
-        }
-      })
-      
-    } catch(error) {
-      console.log(error)
-    }
-  }
-  
-  useEffect(() => {
-    fetchData();
-    console.log(`id: ${id}`)
-
-   }, [])
-  
+ 
   if (loading) {
       return (
          <Layout>
@@ -43,12 +52,11 @@ const TournamentView = () => {
       )
   } else {
     return (
-      <div>
-        
-        {tournamentDetail
-        .filter((list: any) => list.tournament_id_hash == id)
-          .map((list: any) => (      
-            <Container>
+      <Container>
+        {tournamentDetail.
+          filter((tournamentId: any) => tournamentId.tournament_id_hash == id)
+          .map((tournament: any) => (
+            <div>
               <GameImg>
                 <Img style={{ backgroundImage: `url(https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg)` }} />
                 <AvatarContainer>
@@ -58,7 +66,7 @@ const TournamentView = () => {
                          <h4>Call of Duty War-zone</h4>
                          <UserName>
                              <img src={check} alt="" />
-                        <h3> {list.owner_id.substring(0, list.owner_id.length - 8)} </h3>
+                        <h3> {tournament.owner_id.substring(0, tournament.owner_id.length - 8)} </h3>
                           </UserName>
                         </Details>
                     </AvatarWrapper>
@@ -113,16 +121,23 @@ const TournamentView = () => {
                 </Info>
   
             </About>
-          </Container>
-           ))
+            </div>
+          ))
           
          }
-            </div>
+      </Container>
     )
     
     } 
 
 }
+
+
+
+//  <Container>
+
+  
+//       </Container>
 
 const Layout = styled.div`
  display: flex;

@@ -1,136 +1,83 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from "styled-components";
 import check from "../assets/check.png";
 import dollar from "../assets/dollar.png";
 import money from "../assets/money.png";
 import mode from "../assets/mode.png";
 import { useParams } from 'react-router-dom';
-import Loader from '../Components/Loader/Loader';
-import { gamebloc } from '..';
-
 
 const TournamentView = () => {
-  const {id} = useParams();
-  
-  const [tournamentDetail, setTournamentDetails] = useState([] as any[]);
-  const [loading, setLoading] = useState<boolean>(true);
-  
-  const fetchData = () => {
-    try {
-      gamebloc.getAllTournaments().then((data: any) => {
-        if (data) {
-          setTournamentDetails(data.tournament);
-          setLoading(false);
-        }
-      })
-      
-    } catch(error) {
-      console.log(error)
-    }
-  }
-  
-  useEffect(() => {
-    fetchData();
-    console.log(`id: ${id}`)
+  const id = useParams();
+  return (
+      <Container>
+          <GameImg>
+              <Img style={{ backgroundImage: `url(https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg)` }} />
+              <AvatarContainer>
+                  <AvatarWrapper>
+                      <Avatar src="https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg" alt=""/>
+                      <Details>
+                       <h4>Call of Duty War-zone</h4>
+                       <UserName>
+                           <img src={check} alt="" />
+                           <h3> Deonatricks </h3>
+                        </UserName>
+                      </Details>
+                  </AvatarWrapper>
+                  <SideDetails></SideDetails>
+              </AvatarContainer>
+          </GameImg>
 
-   }, [])
-  
-  if (loading) {
-      return (
-         <Layout>
-           <Loader />
-        </Layout>
-      )
-  } else {
-    return (
-      <div>
-        
-        {tournamentDetail
-        .filter((list: any) => list.tournament_id_hash == id)
-          .map((list: any) => (      
-            <Container>
-              <GameImg>
-                <Img style={{ backgroundImage: `url(https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg)` }} />
-                <AvatarContainer>
-                    <AvatarWrapper>
-                        <Avatar src="https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg" alt=""/>
-                        <Details>
-                         <h4>Call of Duty War-zone</h4>
-                         <UserName>
-                             <img src={check} alt="" />
-                        <h3> {list.owner_id.substring(0, list.owner_id.length - 8)} </h3>
-                          </UserName>
-                        </Details>
-                    </AvatarWrapper>
-                    <SideDetails></SideDetails>
-                </AvatarContainer>
-            </GameImg>
-  
-            <GameMode>
-               <ModeContainer>
-                  <img src={mode} alt="" />
-                 <div>
-                    <p>Game Mode</p>
-                    <p>$200</p>
-                 </div>
-               </ModeContainer>
-  
-               <ModeContainer>
-                  <img src={money} alt="" />
-                  <div>
-                    <p>Pool prize </p>
-                    <p>$200</p>
-                  </div>
-               </ModeContainer>
-  
-               <ModeContainer>
-                  <img src={dollar} alt="" />
-                  <div>
-                   <p> Entry prize </p>
-                    <p>$20</p>
-                  </div>
-               </ModeContainer>
-  
-                <Button>
-                     Join
-                </Button>
-            </GameMode>
-  
-            <About>
-               <Heading>About</Heading>
-  
-                <Tags>
-                  <Tag1>Shooting</Tag1>
-                  <Tag2>Adventure</Tag2>
-                  <Tag3>Action</Tag3>
-                </Tags>
-  
-                <Info>
-                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                 sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </Info>
-  
-            </About>
-          </Container>
-           ))
-          
-         }
-            </div>
-    )
-    
-    } 
+          <GameMode>
+             <ModeContainer>
+                <img src={mode} alt="" />
+               <div>
+                  <p>Game Mode</p>
+                  <p>$200</p>
+               </div>
+             </ModeContainer>
 
+             <ModeContainer>
+                <img src={money} alt="" />
+                <div>
+                  <p>Pool prize </p>
+                  <p>$200</p>
+                </div>
+             </ModeContainer>
+
+             <ModeContainer>
+                <img src={dollar} alt="" />
+                <div>
+                 <p> Entry prize </p>
+                  <p>$20</p>
+                </div>
+             </ModeContainer>
+
+              <Button>
+                   Join
+              </Button>
+          </GameMode>
+
+          <About>
+             <Heading>About</Heading>
+
+              <Tags>
+                <Tag1>Shooting</Tag1>
+                <Tag2>Adventure</Tag2>
+                <Tag3>Action</Tag3>
+              </Tags>
+
+              <Info>
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+               dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+               sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Info>
+
+          </About>
+
+    </Container>
+  )
 }
-
-const Layout = styled.div`
- display: flex;
- justify-content: center;
- align-items: center;
- width: 100%;
- height: 10rem;
-`;
 
 const Container = styled.div`
 margin-top: 4.5rem;
