@@ -64,7 +64,7 @@ const TournamentView = () => {
                     </AvatarWrapper>
                     <SideDetails>
                     Status: 
-                    <h4>{ list.status }</h4>
+                    <h4>Tournament Ended</h4>
                     </SideDetails>
                 </AvatarContainer>
             </GameImg>

@@ -63,8 +63,7 @@ const TournamentView = () => {
                         </Details>
                     </AvatarWrapper>
                     <SideDetails>
-                    Status: 
-                    <h4>{ list.status }</h4>
+                        0/50
                     </SideDetails>
                 </AvatarContainer>
             </GameImg>
@@ -209,17 +208,9 @@ const UserName = styled.div`
 `;
 
 
-const SideDetails = styled.div`
-position: flex;
-flex-direction: row; 
-padding: .5rem;
-color: white;
-font-size: 1rem;
-font-weight: 700;
-h4{
-    font-size: .8rem;
-    color: white;
-  }
+const SideDetails = styled.p`
+ font-size: 1rem; 
+ color: #ffffff;
 `;
 
 const GameMode = styled.div`
