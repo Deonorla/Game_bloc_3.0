@@ -63,7 +63,7 @@ const TournamentView = () => {
                         </Details>
                     </AvatarWrapper>
                     <SideDetails>
-                     Status:
+                    Status: 
                     <h4>{ list.status }</h4>
                     </SideDetails>
                 </AvatarContainer>
@@ -213,14 +213,13 @@ const SideDetails = styled.div`
 position: flex;
 flex-direction: row; 
 padding: .5rem;
-font-size: 1rem;
 color: white;
+font-size: 1rem;
 font-weight: 700;
-margin: .5rem;
+margin-top: .5rem;
 h4{
     font-size: .8rem;
     color: white;
-    margin: .5rem 0 0 0;
   }
 `;
 
