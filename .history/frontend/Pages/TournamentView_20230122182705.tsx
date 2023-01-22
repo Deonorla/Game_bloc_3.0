@@ -218,7 +218,7 @@ color: white;
 font-weight: 700;
 margin: .5rem;
 h4{
-    font-size: .8rem;
+    font-size: .5rem;
     color: white;
     margin: .5rem 0 0 0;
   }

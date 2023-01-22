@@ -6,7 +6,7 @@ import Loader from './Loader/Loader';
 import check from "../assets/check.png";
 import CodImgData from "../Features/ImageData/CodImg/CodImgData";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface Props{
   gamebloc: any,
@@ -76,8 +76,10 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
                           </Wrapper>
                  
                           <Status>
-                            <h4></h4>
-                           <button onClick={()=> navigate('/tournament-view')}> Details</button>
+                          <h4></h4>
+                          <Link to={`/tournament-view/${data.tournament_id_hash}`} style={{textDecoration: "none"}}>
+                           <button> Details</button>
+                          </Link>
                           </Status>
                           
                         
