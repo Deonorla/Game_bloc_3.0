@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="555166f5-0049-44ad-84c8-46237a68a5ea" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/contract.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/blake2-81634ccb03fb6fa5/lib-blake2" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/blake2-81634ccb03fb6fa5/lib-blake2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/block-buffer-24a142277cd11d32/lib-block-buffer" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/block-buffer-24a142277cd11d32/lib-block-buffer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/block-buffer-4d8ecb628233488e/lib-block-buffer" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/block-buffer-4d8ecb628233488e/lib-block-buffer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/borsh-369064cde0ebe195/lib-borsh" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/borsh-369064cde0ebe195/lib-borsh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/c2-chacha-c54736999af63d11/lib-c2-chacha" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/c2-chacha-c54736999af63d11/lib-c2-chacha" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/chrono-6e675f953f3d26e8/lib-chrono" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/chrono-6e675f953f3d26e8/lib-chrono" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/cipher-6334556e9f547400/lib-cipher" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/cipher-6334556e9f547400/lib-cipher" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/crypto-common-fdefcf81a93e1c99/lib-crypto-common" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/crypto-common-fdefcf81a93e1c99/lib-crypto-common" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/crypto-mac-cf339e7f0c44d99e/lib-crypto-mac" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/crypto-mac-cf339e7f0c44d99e/lib-crypto-mac" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/curve25519-dalek-c6c6125562c55316/lib-curve25519-dalek" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/curve25519-dalek-c6c6125562c55316/lib-curve25519-dalek" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/digest-0b3ed78c76d9b61b/lib-digest" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/digest-0b3ed78c76d9b61b/lib-digest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/digest-4efac2eff35a9e35/lib-digest" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/digest-4efac2eff35a9e35/lib-digest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/ed25519-dalek-5bd27e085e73fbf7/lib-ed25519-dalek" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/ed25519-dalek-5bd27e085e73fbf7/lib-ed25519-dalek" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/fixed-hash-07eadb26f59eb86a/lib-fixed-hash" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/fixed-hash-07eadb26f59eb86a/lib-fixed-hash" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/hashbrown-7effd9ccb6343835/lib-hashbrown" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/hashbrown-7effd9ccb6343835/lib-hashbrown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/impl-codec-78397f7d5a4a03b0/lib-impl-codec" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/impl-codec-78397f7d5a4a03b0/lib-impl-codec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/near-account-id-07820d1a253b7a77/lib-near-account-id" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/near-account-id-07820d1a253b7a77/lib-near-account-id" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/near-primitives-core-3432e5e8e1b57280/lib-near-primitives-core" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/near-primitives-core-3432e5e8e1b57280/lib-near-primitives-core" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/near-vm-errors-13946d45ffee4b9f/lib-near-vm-errors" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/near-vm-errors-13946d45ffee4b9f/lib-near-vm-errors" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/num-bigint-e2a4c18a7686a1f8/lib-num-bigint" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/num-bigint-e2a4c18a7686a1f8/lib-num-bigint" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/num-rational-aa9010906b85536d/lib-num-rational" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/num-rational-aa9010906b85536d/lib-num-rational" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/parity-secp256k1-548d930d1a700c82/lib-secp256k1" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/parity-secp256k1-548d930d1a700c82/lib-secp256k1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/primitive-types-b4c5651ba9cd667a/lib-primitive-types" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/primitive-types-b4c5651ba9cd667a/lib-primitive-types" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/rand-23afebd70cd11529/lib-rand" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/rand-23afebd70cd11529/lib-rand" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/rand-290a70921a73a248/lib-rand" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/rand-290a70921a73a248/lib-rand" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/rand_chacha-7b752236db2b91df/lib-rand_chacha" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/rand_chacha-7b752236db2b91df/lib-rand_chacha" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/rand_chacha-e6c8dc42c7f31ceb/lib-rand_chacha" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/rand_chacha-e6c8dc42c7f31ceb/lib-rand_chacha" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/rand_core-40f3b7667374e8a1/lib-rand_core" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/rand_core-40f3b7667374e8a1/lib-rand_core" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/reed-solomon-erasure-0fb0eba14bf2c823/lib-reed-solomon-erasure" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/reed-solomon-erasure-0fb0eba14bf2c823/lib-reed-solomon-erasure" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/ripemd-5de0f58aeb77db79/lib-ripemd" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/ripemd-5de0f58aeb77db79/lib-ripemd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/sha2-3bb6afc28f3e5199/lib-sha2" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/sha2-3bb6afc28f3e5199/lib-sha2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/sha2-fcb20ced4016a46f/lib-sha2" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/sha2-fcb20ced4016a46f/lib-sha2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/sha3-ff5055ab8ed00c1d/lib-sha3" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/sha3-ff5055ab8ed00c1d/lib-sha3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/.fingerprint/wee_alloc-deec0dbc73dbf347/lib-wee_alloc" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/.fingerprint/wee_alloc-deec0dbc73dbf347/lib-wee_alloc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libborsh_derive-ea638eb41cd35f51.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libborsh_derive-ea638eb41cd35f51.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libderive_more-66f4e380f5b90e3e.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libderive_more-66f4e380f5b90e3e.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libimpl_trait_for_tuples-ecd0a3465460e85d.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libimpl_trait_for_tuples-ecd0a3465460e85d.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libnear_rpc_error_macro-75bfa434c4438709.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libnear_rpc_error_macro-75bfa434c4438709.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libnear_sdk_macros-6d783991cf2164dd.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libnear_sdk_macros-6d783991cf2164dd.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libparity_scale_codec_derive-a31d95b38823e9af.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libparity_scale_codec_derive-a31d95b38823e9af.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/librustversion-0f3198ca5e786429.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/librustversion-0f3198ca5e786429.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libsecp256k1-9d43ff5d2e0e6ff0.rlib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libsecp256k1-9d43ff5d2e0e6ff0.rlib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libserde_derive-25888f8c6541cfdb.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libserde_derive-25888f8c6541cfdb.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libsmart_default-6569fb6387d7de02.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libsmart_default-6569fb6387d7de02.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libstrum_macros-cc2495fdf580e52c.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libstrum_macros-cc2495fdf580e52c.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libthiserror_impl-e19ddc9371e03c41.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libthiserror_impl-e19ddc9371e03c41.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/debug/deps/libzeroize_derive-9b0e59a9b31dc6d0.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/debug/deps/libzeroize_derive-9b0e59a9b31dc6d0.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/release/deps/libborsh_derive-c78258aa6413beb0.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/release/deps/libborsh_derive-c78258aa6413beb0.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/release/deps/libnear_sdk_macros-6841d0f08e220edf.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/release/deps/libnear_sdk_macros-6841d0f08e220edf.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/release/deps/libserde_derive-ecd2fbcb5ec17dd2.dylib" beforeDir="false" afterPath="$PROJECT_DIR$/target/release/deps/libserde_derive-ecd2fbcb5ec17dd2.dylib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/.fingerprint/hello_near-00ca379cccdf6430/lib-hello_near" beforeDir="false" afterPath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/.fingerprint/hello_near-00ca379cccdf6430/lib-hello_near" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/.fingerprint/hello_near-00ca379cccdf6430/lib-hello_near.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/.fingerprint/hello_near-00ca379cccdf6430/lib-hello_near.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/.fingerprint/hello_near-00ca379cccdf6430/output-lib-hello_near" beforeDir="false" afterPath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/.fingerprint/hello_near-00ca379cccdf6430/output-lib-hello_near" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/deps/hello_near.d" beforeDir="false" afterPath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/deps/hello_near.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/deps/hello_near.wasm" beforeDir="false" afterPath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/deps/hello_near.wasm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/hello_near.d" beforeDir="false" afterPath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/hello_near.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/hello_near.wasm" beforeDir="false" afterPath="$PROJECT_DIR$/target/wasm32-unknown-unknown/release/hello_near.wasm" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="3swc4g58" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2KhCFFV1t71rXVnYESkNhMt8WK1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ola/Documents/Github/Game_bloc/contract&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.cargo.project.model.PROJECT_DISCOVERY&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RustProjectSettings">
+    <option name="runExternalLinterOnTheFly" value="true" />
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
+  </component>
+  <component name="RustfmtProjectSettings">
+    <option name="runRustfmtOnSave" value="true" />
+    <option name="useRustfmt" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="555166f5-0049-44ad-84c8-46237a68a5ea" name="Changes" comment="" />
+      <created>1674417321885</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674417321885</updated>
+      <workItem from="1674420612404" duration="292000" />
+      <workItem from="1674420916104" duration="174000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

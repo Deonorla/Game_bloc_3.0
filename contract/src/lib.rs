@@ -1,13 +1,14 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
-use near_sdk::collections::{LazyOption, LookupMap, LookupSet, UnorderedMap, UnorderedSet};
-use near_sdk::json_types::{Base64VecU8, U128,U64};
+use near_sdk::collections::{LookupMap, UnorderedMap, UnorderedSet};
+use near_sdk::json_types::{U128};
 use near_sdk::serde::{Deserialize, Serialize};
-use near_sdk::{serde_json, Gas};
 use near_sdk::{
-    env, near_bindgen, require, AccountId, Balance, BorshStorageKey, CryptoHash, PanicOnDefault,
-    Promise, PromiseOrValue, log,
+    env, near_bindgen, AccountId, log,
 };
-use std::collections::HashMap;
+use near_sdk::Promise;
+
+
+mod token_transfer;
 
 // const TOURNAMENT_NUMBER: u8 = 1;
 // // 5 Ⓝ in yoctoNEAR
@@ -16,7 +17,9 @@ use std::collections::HashMap;
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct GameBloc {
-    pub accounts: UnorderedMap<AccountId, UnorderedSet<String>>,
+    pub beneficiary: AccountId,
+    pub payments: UnorderedMap<AccountId, u128>,
+    accounts: UnorderedMap<AccountId, UnorderedSet<String>>,
     users: LookupMap<AccountId, User>,
     tournaments: LookupMap<String, Tournament>,
     tournament_ids: UnorderedSet<String>,
@@ -33,7 +36,7 @@ pub struct Tournament {
     game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
-    total_prize: U64,
+    total_prize: U128,
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
@@ -56,7 +59,7 @@ pub struct JsonTournament {
     status: TournamentStatus,
     // game: String,
     user: Vec<AccountId>,
-    total_prize: U64,
+    total_prize: U128,
 }
 
 #[derive(Serialize)]
@@ -85,6 +88,8 @@ pub enum TournamentStatus {
 impl Default for GameBloc {
     fn default() -> Self {
         Self {
+            beneficiary: "v1.faucet.nonofficial.testnet".parse().unwrap(),
+            payments: UnorderedMap::new(b"d"),
             accounts: UnorderedMap::new(b"t"),
             tournaments: LookupMap::new(b"c"),
             users: LookupMap::new(b"c"),
@@ -101,6 +106,8 @@ impl GameBloc {
     #[init]
     pub fn new() -> Self {
         Self {
+            beneficiary: "v1.faucet.nonofficial.testnet".parse().unwrap(),
+            payments: UnorderedMap::new(b"d"),
             accounts: UnorderedMap::new(b"t"),
             tournaments: LookupMap::new(b"c"),
             users: LookupMap::new(b"c"),
@@ -110,11 +117,21 @@ impl GameBloc {
         }
     }
 
+    // Public - beneficiary getter
+    pub fn get_beneficiary(&self) -> AccountId {
+        self.beneficiary.clone()
+    }
 
-    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U64) {
-        let no_of_users: U128 = no_of_users_input;
+    // Public - but only callable by env::current_account_id(). Sets the beneficiary
+    #[private]
+    pub fn change_beneficiary(&mut self, beneficiary: AccountId) {
+        self.beneficiary = beneficiary;
+    }
+
+    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U128) {
+        let _no_of_users: U128 = no_of_users_input;
         //.unwrap();
-        let prize: U64 = prize_input;
+        let prize: U128 = prize_input;
         // assert_eq!(
         //     env::predecessor_account_id(),
         //     self.owner_id,
@@ -190,7 +207,7 @@ impl GameBloc {
     );
 
         // Transfer the prize money to the winner
-        // Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
+        Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
 
 
@@ -218,7 +235,7 @@ impl GameBloc {
     }
 
     pub fn get_tournaments(&mut self, tournament_id: String) -> Tournament {
-        let mut tournament = self
+        let tournament = self
             .tournaments
             .get(&tournament_id)
             .unwrap_or_else(|| env::panic_str("ERR_INCORRECT_TOURNAMENTID"));
@@ -232,7 +249,7 @@ impl GameBloc {
     // }
 
     pub fn get_user(&mut self, owner_id: AccountId) -> User {
-        let mut user = self
+        let user = self
             .users
             .get(&owner_id)
             .unwrap_or_else(|| env::panic_str("ERR_INCORRECT_USERID"));
@@ -240,7 +257,7 @@ impl GameBloc {
     }
 
 
-    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U64) {
+    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U128) {
 
         let existing = self.tournaments.insert(
             &tournament_id_hash,
@@ -298,7 +315,7 @@ impl GameBloc {
         tournament.user.push(user_id);
     }
 
-    pub fn end_crowd_funded_tournament(&mut self, users: Vec<User>, tournament_id: String) {
+    pub fn end_crowd_funded_tournament(&mut self, _users: Vec<User>, tournament_id: String) {
         let hashed_input = env::sha256(tournament_id.as_bytes());
         let hashed_input_hex = hex::encode(&hashed_input);
         let mut tournament = self
