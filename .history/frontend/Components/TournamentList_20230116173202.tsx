@@ -6,19 +6,17 @@ import check from "../assets/check.png";
 import { Link, useNavigate } from 'react-router-dom';
 
 interface props {
-  gamebloc: any,
-  isSignedIn: any
+    gamebloc: any
 }
 
-const TournamentList = ({gamebloc, isSignedIn}: props) => {
+const TournamentList = ({gamebloc}: props) => {
   const [allTournaments, setAllTournaments] = useState([] as any[]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   
     
-  useEffect(() => {
-    if (isSignedIn) {
-      try {
+     useEffect(() => {
+     try {
             gamebloc.getAllTournaments().then((data: any) => {
                if (data) {
                   setAllTournaments(data.tournament);
@@ -30,9 +28,6 @@ const TournamentList = ({gamebloc, isSignedIn}: props) => {
          } catch(error) {
             console.log(error)
         }
-    } else {
-        
-       }
     },[])
   
 

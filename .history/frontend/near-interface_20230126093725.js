@@ -25,7 +25,7 @@ export class GameBloc {
        }
 
      async joinTournament(userID, id) {
-        return await this.wallet.callMethod({ contractId: this.contractId, method: "join_tournament", args: {user_id: userID, tournament_id: id }})
+        return await this.wallet.callMethod({ contractId: this.contractId, method: "join_tournament", args: {owner_id: userID, tournament_id: id }})
        }
 
 

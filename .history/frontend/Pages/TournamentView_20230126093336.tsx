@@ -37,7 +37,7 @@ const TournamentView = () => {
     let accountJSON = JSON.parse(account!);
     const accountID = accountJSON.accountId;
     setUserID(accountID); 
-    console.log(`this is the user id : ${userID}`)
+    console.log(`this is the user is : ${userID}`)
    }, [])
 
   const join_Tournament = async () => {

@@ -30,6 +30,14 @@ const TournamentView = () => {
       console.log(error)
     }
   }
+
+  const joinTournament = async () => {
+    try {
+      await gamebloc.startTournament()
+    } catch (err) {
+      console.log(err)
+    }
+  }
   
   useEffect(() => {
     fetchData();
@@ -37,18 +45,8 @@ const TournamentView = () => {
     let accountJSON = JSON.parse(account!);
     const accountID = accountJSON.accountId;
     setUserID(accountID); 
-    console.log(`this is the user id : ${userID}`)
-   }, [])
 
-  const join_Tournament = async () => {
-    try {
-      await gamebloc.joinTournament(userID, id);
-      console.log("Success");
-    } catch (err) {
-      console.log("Failed");
-      console.log(err)
-    }
-  }
+   }, [])
   
   if (loading) {
       return (
@@ -63,7 +61,7 @@ const TournamentView = () => {
         {tournamentDetail
         .filter((list: any) => list.tournament_id_hash == id)
           .map((list: any) => (      
-            <Container key={list.tournament_id_hash}>
+            <Container>
               <GameImg>
                 <Img style={{ backgroundImage: `url(https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg)` }} />
                 <AvatarContainer>
@@ -109,7 +107,7 @@ const TournamentView = () => {
                   </div>
                </ModeContainer>
   
-                <Button onClick={()=> {join_Tournament();}}>
+                <Button>
                      Join
                 </Button>
             </GameMode>

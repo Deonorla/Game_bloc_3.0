@@ -63,7 +63,7 @@ const Header =({wallet, isSignedIn, gamebloc}: Props)=>{
               </Img>
 
                <Profile>
-            {isSignedIn ? <button onClick={() => { navigate('/'); signOut()}} > <p>Sign Out</p></button> : <button onClick={signIn} > <p>Sign In</p></button>}
+            {isSignedIn ? <button onClick={() => { signOut; navigate('/')}} > <p>Sign Out</p></button> : <button onClick={signIn} > <p>Sign In</p></button>}
                 {/* <Message/>
                 <img src={user} alt=""/> */}
                </Profile>

@@ -37,10 +37,10 @@ const TournamentView = () => {
     let accountJSON = JSON.parse(account!);
     const accountID = accountJSON.accountId;
     setUserID(accountID); 
-    console.log(`this is the user id : ${userID}`)
+
    }, [])
 
-  const join_Tournament = async () => {
+  const joinTournament = async () => {
     try {
       await gamebloc.joinTournament(userID, id);
       console.log("Success");
@@ -109,7 +109,7 @@ const TournamentView = () => {
                   </div>
                </ModeContainer>
   
-                <Button onClick={()=> {join_Tournament();}}>
+                <Button onClick={()=> joinTournament()}>
                      Join
                 </Button>
             </GameMode>

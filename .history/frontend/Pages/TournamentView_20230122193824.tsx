@@ -37,7 +37,7 @@ const TournamentView = () => {
     let accountJSON = JSON.parse(account!);
     const accountID = accountJSON.accountId;
     setUserID(accountID); 
-    console.log(`this is the user id : ${userID}`)
+
    }, [])
 
   const join_Tournament = async () => {
@@ -109,7 +109,7 @@ const TournamentView = () => {
                   </div>
                </ModeContainer>
   
-                <Button onClick={()=> {join_Tournament();}}>
+                <Button onClick={()=> join_Tournament()}>
                      Join
                 </Button>
             </GameMode>

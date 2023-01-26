@@ -42,7 +42,7 @@ const TournamentView = () => {
 
   const join_Tournament = async () => {
     try {
-      await gamebloc.joinTournament(userID, id);
+      await gamebloc.joinTournament(id);
       console.log("Success");
     } catch (err) {
       console.log("Failed");
