@@ -41,10 +41,10 @@ const TournamentView = () => {
 
   const join_Tournament = async () => {
     try {
-      setloading2(true);
+      setloading2(false);
       await gamebloc.joinTournament(userID, id);
       console.log("Success");
-      setloading2(false);
+      setloading2(true);
     } catch (err) {
       console.log("Failed");
       console.log(err);
