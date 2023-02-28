@@ -331,11 +331,11 @@ const Button = styled.button`
   cursor: pointer;
   &:hover {
     scale: 1.03;
-    background-color: #6365bf;
+    background-color: #63bf71;
   }
 `;
 const Joined = styled.p`
-  background-color: #63bf71;
+  background-color: #41417c;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -346,6 +346,10 @@ const Joined = styled.p`
   border: none;
   width: fit-content;
   cursor: pointer;
+  &:hover {
+    scale: 1.03;
+    background-color: #6365bf;
+  }
 `;
 
 const About = styled.div`
