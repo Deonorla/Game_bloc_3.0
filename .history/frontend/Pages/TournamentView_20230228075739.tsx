@@ -64,6 +64,10 @@ const TournamentView = () => {
       showCancelButton: true,
       background: "#41417c",
       color: "#ffffff",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/tournament-view/:id");
+      }
     });
   };
 

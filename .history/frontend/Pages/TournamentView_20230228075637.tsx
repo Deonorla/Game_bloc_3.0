@@ -51,7 +51,6 @@ const TournamentView = () => {
       popUp();
     } catch (err) {
       console.log("Failed");
-      errorPopUp();
       console.log(err);
     }
   };
@@ -64,17 +63,10 @@ const TournamentView = () => {
       showCancelButton: true,
       background: "#41417c",
       color: "#ffffff",
-    });
-  };
-
-  const errorPopUp = () => {
-    MySwal.fire({
-      position: "center",
-      icon: "error",
-      title: "An error occured please try creating again",
-      showConfirmButton: true,
-      background: "#41417c",
-      color: "#fff",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/tournament-view/:id");
+      }
     });
   };
 
