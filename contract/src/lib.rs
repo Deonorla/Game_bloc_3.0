@@ -1,12 +1,9 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{LookupMap, UnorderedMap, UnorderedSet};
-use near_sdk::json_types::{U128};
+use near_sdk::json_types::U128;
 use near_sdk::serde::{Deserialize, Serialize};
-use near_sdk::{
-    env, near_bindgen, AccountId, log,
-};
 use near_sdk::Promise;
-
+use near_sdk::{env, log, near_bindgen, AccountId};
 
 mod token_transfer;
 
@@ -27,8 +24,7 @@ pub struct GameBloc {
     crowd_funded_tournament_ids: UnorderedSet<String>,
 }
 
-#[derive(BorshDeserialize, BorshSerialize, Debug)]
-#[derive(Serialize)]
+#[derive(BorshDeserialize, BorshSerialize, Debug, Serialize)]
 #[serde(crate = "near_sdk::serde")]
 pub struct Tournament {
     owner_id: AccountId,
@@ -68,7 +64,6 @@ pub struct OpenTournament {
     tournament: Vec<JsonTournament>,
 }
 
-
 ///enums
 #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
 #[serde(crate = "near_sdk::serde")]
@@ -100,7 +95,6 @@ impl Default for GameBloc {
     }
 }
 
-
 #[near_bindgen]
 impl GameBloc {
     #[init]
@@ -128,7 +122,14 @@ impl GameBloc {
         self.beneficiary = beneficiary;
     }
 
-    pub fn new_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, no_of_users_input: U128, prize_input: U128) {
+    pub fn new_tournament(
+        &mut self,
+        owner_id: AccountId,
+        tournament_id_hash: String,
+        game_name: String,
+        no_of_users_input: U128,
+        prize_input: U128,
+    ) {
         let _no_of_users: U128 = no_of_users_input;
         //.unwrap();
         let prize: U128 = prize_input;
@@ -144,12 +145,15 @@ impl GameBloc {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
                 game: game_name,
-                user: Vec::with_capacity(8.try_into().unwrap()),
+                user: Vec::with_capacity(50.try_into().unwrap()),
                 total_prize: prize,
             },
         );
 
-        assert!(existing.is_none(), "Tournament with that key already exists");
+        assert!(
+            existing.is_none(),
+            "Tournament with that key already exists"
+        );
         self.tournament_ids.insert(&tournament_id_hash);
     }
 
@@ -158,7 +162,6 @@ impl GameBloc {
             .tournaments
             .get(&tournament_id)
             .expect("ERR_NOT_CORRECT_USER");
-
 
         tournament.status = match tournament.status {
             TournamentStatus::AcceptingPlayers => TournamentStatus::GameInProgress,
@@ -176,7 +179,7 @@ impl GameBloc {
         let mut tournament = self
             .tournaments
             .get(&tournament_id)
-            .unwrap_or_else(|| env::panic_str("ERR_LOADING_PUZZLE"));
+            .unwrap_or_else(|| env::panic_str("ERR_JOINING_TOURNAMENT"));
 
         tournament.user.push(user_id);
         self.tournaments.insert(&tournament_id, &tournament);
@@ -189,7 +192,6 @@ impl GameBloc {
             .get(&tournament_id)
             .expect("ERR_NOT_CORRECT_USER");
 
-
         tournament.status = match tournament.status {
             TournamentStatus::GameInProgress => TournamentStatus::GameCompleted,
             _ => {
@@ -201,15 +203,11 @@ impl GameBloc {
         self.tournaments.insert(&tournament_id, &tournament);
         tournament.status;
 
-
-        log!(
-        "Tournament with tournament_id hash {} completed successfully"
-    );
+        log!("Tournament with tournament_id hash {} completed successfully");
 
         // Transfer the prize money to the winner
         Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
     }
-
 
     pub fn get_all_tournaments(&mut self) -> OpenTournament {
         let public_keys = self.tournament_ids.to_vec();
@@ -223,8 +221,8 @@ impl GameBloc {
                 owner_id: tournament.owner_id,
                 // game: tournament.game,
                 tournament_id_hash: pk,
-                status: tournament.status,  // ⟵ An enum we'll get to soon
-                user: tournament.user, // ⟵ Another struct we've defined
+                status: tournament.status, // ⟵ An enum we'll get to soon
+                user: tournament.user,     // ⟵ Another struct we've defined
                 total_prize: tournament.total_prize,
             };
             tournament_ids.push(tournament)
@@ -256,35 +254,48 @@ impl GameBloc {
         return user;
     }
 
+    pub fn new_crowd_funded_tournament(
+        &mut self,
+        owner_id: AccountId,
+        tournament_id_hash: String,
+        game_name: String,
+        no_of_users_input: U128,
+        prize_input: U128,
+    ) {
+        let _no_of_users: U128 = no_of_users_input;
+        //.unwrap();
+        let prize: U128 = prize_input;
+        // assert_eq!(
+        //     env::predecessor_account_id(),
+        //     self.owner_id,
+        //     "Only the owner may call this method"
+        // );
 
-    pub fn new_crowd_funded_tournament(&mut self, owner_id: AccountId, tournament_id_hash: String, game_name: String, users: Vec<AccountId>, prize: U128) {
-
-        let existing = self.tournaments.insert(
+        let existing = self.crowd_funded_tournaments.insert(
             &tournament_id_hash,
             &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
                 game: game_name,
-                user: users,
+                user: Vec::with_capacity(50.try_into().unwrap()),
                 total_prize: prize,
             },
         );
 
-        assert!(existing.is_none(), "Tournament with that key already exists");
-        self.tournament_ids.insert(&tournament_id_hash);
+        assert!(
+            existing.is_none(),
+            "Tournament with that key already exists"
+        );
+        self.crowd_funded_tournament_ids.insert(&tournament_id_hash);
     }
 
-    pub fn start_crowd_funded_tournament(&mut self, tournament_id: String) -> ()
-    {
-        let hashed_input = env::sha256(tournament_id.as_bytes());
-        let hashed_input_hex = hex::encode(&hashed_input);
-        let mut tournament = self
-            .tournaments
-            .get(&hashed_input_hex)
+    pub fn start_crowd_funded_tournament(&mut self, crowd_funded_tournaments_id: String) -> () {
+        let mut crowd_funded_tournaments = self
+            .crowd_funded_tournaments
+            .get(&crowd_funded_tournaments_id)
             .expect("ERR_NOT_CORRECT_USER");
 
-
-        tournament.status = match tournament.status {
+        crowd_funded_tournaments.status = match crowd_funded_tournaments.status {
             TournamentStatus::AcceptingPlayers => TournamentStatus::GameInProgress,
             _ => {
                 env::panic_str("ERR_GAME_IN_PROGRESS");
@@ -292,59 +303,49 @@ impl GameBloc {
         };
 
         // Reinsert the tournament back in after we modified the status:
-        self.tournaments.insert(&hashed_input_hex, &tournament);
-        // Remove from the list of unsolved ones
-        self.tournament_ids.remove(&hashed_input_hex);
-        tournament.status;
+        self.crowd_funded_tournaments
+            .insert(&crowd_funded_tournaments_id, &crowd_funded_tournaments);
+        crowd_funded_tournaments.status;
     }
 
-    pub fn join_crowd_funded_tournament(&self, user_id: AccountId, tournament_id: String) {
+    pub fn join_crowd_funded_tournament(
+        &mut self,
+        user_id: AccountId,
+        crowd_funded_tournament_id: String,
+    ) -> Tournament {
+        let mut crowd_funded_tournament = self
+            .crowd_funded_tournaments
+            .get(&crowd_funded_tournament_id)
+            .unwrap_or_else(|| env::panic_str("JOINING"));
 
-        let hashed_input = env::sha256(tournament_id.as_bytes());
-        let hashed_input_hex = hex::encode(&hashed_input);
-
-        let mut tournament = self
-            .tournaments
-            .get(&hashed_input_hex)
-            .expect("ERR_NOT_CORRECT_USER");
-        assert_eq!(
-            env::predecessor_account_id(),
-            tournament.owner_id,
-            "Tournament owner cannot join this tournament"
-        );
-        tournament.user.push(user_id);
+        crowd_funded_tournament.user.push(user_id);
+        self.crowd_funded_tournaments
+            .insert(&crowd_funded_tournament_id, &crowd_funded_tournament);
+        return crowd_funded_tournament;
     }
 
-    pub fn end_crowd_funded_tournament(&mut self, _users: Vec<User>, tournament_id: String) {
-        let hashed_input = env::sha256(tournament_id.as_bytes());
-        let hashed_input_hex = hex::encode(&hashed_input);
-        let mut tournament = self
-            .tournaments
-            .get(&hashed_input_hex)
+    pub fn end_crowd_funded_tournament(&mut self, crowd_funded_tournament_id: String) {
+        let mut crowd_funded_tournament = self
+            .crowd_funded_tournaments
+            .get(&crowd_funded_tournament_id)
             .expect("ERR_NOT_CORRECT_USER");
 
-        // Check to see if the hashed user is among the tournaments
-
-        // Check if the tournament is already solved. If it's unsolved, set the status to solved,
-        //   then proceed to update the tournament and pay the winner.
-        tournament.status = match tournament.status {
+        crowd_funded_tournament.status = match crowd_funded_tournament.status {
             TournamentStatus::GameInProgress => TournamentStatus::GameCompleted,
             _ => {
-                env::panic_str("ERR_TOURNAMENT_COMPLETED_ALREADY_OR_IS_CURRENTLY_ACCEPTING_PLAYERS");
+                env::panic_str("ERR_GAME_IN_PROGRESS");
             }
         };
 
         // Reinsert the tournament back in after we modified the status:
-        self.tournaments.insert(&hashed_input_hex, &tournament);
-        // Remove from the list of unsolved ones
-        self.tournament_ids.remove(&hashed_input_hex);
+        self.crowd_funded_tournaments
+            .insert(&crowd_funded_tournament_id, &crowd_funded_tournament);
+        crowd_funded_tournament.status;
 
-        log!(
-        "Tournament with tournament_id hash {} completed successfully",
-        hashed_input_hex
-    );
+        log!("Tournament with tournament_id hash {} completed successfully");
 
         // Transfer the prize money to the winner
-        // Promise::new(env::predecessor_account_id()).transfer(tournament.total_prize.into());
+        Promise::new(env::predecessor_account_id())
+            .transfer(crowd_funded_tournament.total_prize.into());
     }
 }
