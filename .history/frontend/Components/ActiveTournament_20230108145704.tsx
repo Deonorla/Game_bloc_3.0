@@ -15,7 +15,6 @@ import { UserContext } from "../Context/UserContext";
 import Loader from "./Loader/Loader";
 import { Link } from "react-router-dom";
 
-
 interface Props{
   gamebloc: any,
   isSignedIn: any

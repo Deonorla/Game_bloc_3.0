@@ -34,7 +34,7 @@ const App = ({ isSignedIn, wallet, gamebloc }: Props) => {
       <div className="app">
         <Dashboard isSignedIn={isSignedIn} wallet={wallet} />
         <Routes>
-          <Route path="/" element={<Home  gamebloc={gamebloc} isSignedIn={isSignedIn}/>} />
+          <Route path="/" element={<Home  gamebloc={gamebloc}/>} />
           <Route path="/tournament" element={<Tournament />} />
           <Route path="/all-tournaments" element={<AllTournaments gamebloc={gamebloc} isSignedIn={isSignedIn} />} />
           <Route path="/tournament/:id" element={<CreateTournament gamebloc={gamebloc} />} />

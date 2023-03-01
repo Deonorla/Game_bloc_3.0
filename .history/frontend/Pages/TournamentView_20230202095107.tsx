@@ -9,11 +9,14 @@ import Loader from '../Components/Loader/Loader';
 import { gamebloc } from '..';
 
 
+
 const TournamentView = () => {
   const {id} = useParams();
   
   const [tournamentDetail, setTournamentDetails] = useState([] as any[]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [userID, setUserID] = useState("");
+  const account = localStorage.getItem("near_app_wallet_auth_key");
   
   const fetchData = () => {
     try {
@@ -32,8 +35,21 @@ const TournamentView = () => {
   useEffect(() => {
     fetchData();
     console.log(`id: ${id}`)
-
+    let accountJSON = JSON.parse(account!);
+    const accountID = accountJSON.accountId;
+    setUserID(accountID); 
+    console.log(`this is the user id : ${userID}`)
    }, [])
+
+  const join_Tournament = async () => {
+    try {
+      await gamebloc.joinTournament(userID, id);
+      console.log("Success");
+    } catch (err) {
+      console.log("Failed");
+      console.log(err)
+    }
+  }
   
   if (loading) {
       return (
@@ -48,7 +64,7 @@ const TournamentView = () => {
         {tournamentDetail
         .filter((list: any) => list.tournament_id_hash == id)
           .map((list: any) => (      
-            <Container>
+            <Container key={list.tournament_id_hash}>
               <GameImg>
                 <Img style={{ backgroundImage: `url(https://w0.peakpx.com/wallpaper/631/321/HD-wallpaper-call-of-duty-mobile-2019.jpg)` }} />
                 <AvatarContainer>
@@ -62,7 +78,10 @@ const TournamentView = () => {
                           </UserName>
                         </Details>
                     </AvatarWrapper>
-                    <SideDetails></SideDetails>
+                    <SideDetails>
+                     Status:
+                    <h4>{ list.status }</h4>
+                    </SideDetails>
                 </AvatarContainer>
             </GameImg>
   
@@ -71,7 +90,7 @@ const TournamentView = () => {
                   <img src={mode} alt="" />
                  <div>
                     <p>Game Mode</p>
-                    <p>$200</p>
+                    <p>Multiplayer</p>
                  </div>
                </ModeContainer>
   
@@ -91,7 +110,7 @@ const TournamentView = () => {
                   </div>
                </ModeContainer>
   
-                <Button>
+                <Button onClick={()=> {join_Tournament();}}>
                      Join
                 </Button>
             </GameMode>
@@ -207,6 +226,18 @@ const UserName = styled.div`
 
 
 const SideDetails = styled.div`
+position: flex;
+flex-direction: row; 
+padding: .5rem;
+font-size: 1rem;
+color: white;
+font-weight: 700;
+margin: .5rem;
+h4{
+    font-size: .8rem;
+    color: white;
+    margin: .5rem 0 0 0;
+  }
 `;
 
 const GameMode = styled.div`

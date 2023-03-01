@@ -7,16 +7,14 @@ import Hub from "../Components/Hub";
 import TournamentList from "../Components/TournamentList";
 
 type Props = {
-  gamebloc: any,
-  isSignedIn: any
-
+  gamebloc: any
 }
 
-const Home = ({gamebloc, isSignedIn}: Props) => {
+const Home = ({gamebloc}: Props) => {
   return (
     <Container>
       <HomeSlider />
-      <TournamentList gamebloc={gamebloc} isSignedIn={isSignedIn} />
+      <TournamentList gamebloc={gamebloc} />
       <CardView />
       <Hub />
     </Container>

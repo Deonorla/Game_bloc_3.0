@@ -6,8 +6,8 @@ import { UserContext } from "../Context/UserContext";
 import near_logo from "../assets/near-logo.png";
 import user from "../assets/user.png";
 import ClipLoader from "react-spinners/ClipLoader";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { tournamentContextType } from "../@types/tournament";
 
 interface Props {
@@ -21,88 +21,81 @@ const CreateTournament = ({ gamebloc }: Props) => {
   let [color, setColor] = useState("#ffffff");
   const [prize, setPrize] = useState("");
   const [noOfUsers, setNoOfUsers] = useState("");
-  const { tournamentData } = React.useContext(
-    UserContext
-  ) as tournamentContextType;
+  const { tournamentData } = React.useContext(UserContext) as tournamentContextType;
   const [userID, setUserID] = useState("");
   const account = localStorage.getItem("near_app_wallet_auth_key");
   const MySwal = withReactContent(Swal);
   const navigate = useNavigate();
-  const gameName = "Call of duty";
+  const gameName = "Call of duty"
 
   const override = {
     display: "block",
     margin: "0 auto",
     borderColor: "white",
   };
-
+  
   const popUp = () => {
     MySwal.fire({
-      position: "center",
-      icon: "success",
-      title: "You have successfully created a tournament.",
+       position: 'center',
+       icon: "success",
+       title: "You have successfully created a tournament",
       showConfirmButton: true,
-      background: "#41417c",
-      color: "#fff",
+      background: '#41417c',
+      color:'#fff'
     }).then((result) => {
       if (result.isConfirmed) {
-        navigate("/");
-      }
-    });
-  };
+          navigate("/")
+        }
+    })
+  }
 
   const errorPopUp = () => {
     MySwal.fire({
-      position: "center",
+      position: 'center',
       icon: "error",
-      title: "An error occured please try creating again",
+      title: 'An error occured please try creating again',
       showConfirmButton: true,
-      background: "#41417c",
-      color: "#fff",
-    });
-  };
+      background: '#41417c',
+      color:'#fff'
+    })
+  }
 
   useEffect(() => {
-    let accountJSON = JSON.parse(account!);
+   let accountJSON = JSON.parse(account!);
     const accountID = accountJSON.accountId;
-    setUserID(accountID);
-    generateId();
+    setUserID(accountID); 
+    generateId(); 
   }, []);
 
   function generateId() {
-    const date = new Date();
-    let day = date.getDate();
+  const date = new Date();
+  let day = date.getDate();
     const id = ulid(day);
     setTournamentID(id);
-    console.log(id);
+    console.log(id)
   }
   function getPrize(event: any) {
-    event.preventDefault();
+    event.preventDefault()
     setPrize(event.target.value);
   }
   const getNoOfUsers = (event: any) => {
-    event.preventDefault();
+    event.preventDefault()
     setNoOfUsers(event.target.value);
   };
 
   const setTournament = async () => {
-    setLoading(true);
+    setLoading(true)
     try {
-      await gamebloc.new_tournament(
-        userID,
-        tournamentID,
-        gameName,
-        noOfUsers,
-        prize
-      );
+      await gamebloc.new_tournament(userID, tournamentID, gameName, noOfUsers, prize);
       console.log("Success");
       setLoading(false);
       popUp();
-      gamebloc.getAllTournaments().then((e: any) => console.log(e));
+      gamebloc.getAllTournaments().then((e :any) =>console.log(e));
+
     } catch (error) {
       console.log(error);
       console.log("Failed");
-      setLoading(false);
+      setLoading(false)
       errorPopUp();
     }
   };
@@ -159,21 +152,18 @@ const CreateTournament = ({ gamebloc }: Props) => {
           <Submit
             onClick={() => {
               setTournament();
-              setLoading(!loading);
+              setLoading(!loading)
             }}
           >
-            {loading ? (
-              <ClipLoader
-                color={color}
-                loading={loading}
-                cssOverride={override}
-                size={10}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
-            ) : (
-              "Create Tournament"
-            )}
+          { loading ?
+          <ClipLoader
+            color={color}
+            loading={loading}
+            cssOverride={override}
+            size={10}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          /> : "Create Tournament"}
           </Submit>
         </TournamentContainer>
       </div>
@@ -188,7 +178,7 @@ const Container = styled.div`
   flex-shrink: 1;
   background-color: #35356b;
   border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-right-radius: 12px; 
   @media (min-width: 1200px) {
     width: 60vw;
   }
@@ -229,7 +219,7 @@ const Tags = styled.div`
 
 const Tag1 = styled.div`
   display: flex;
-  color: white;
+  color: white; 
   flex-direction: row;
   align-items: center;
   align-self: flex-end;
@@ -257,7 +247,7 @@ const Tag2 = styled.div`
   width: fit-content;
   margin: 1rem;
   cursor: pointer;
-  color: white;
+  color: white; 
   p {
     color: #fff;
     font-size: 1rem;
@@ -275,7 +265,7 @@ const Tag3 = styled.div`
   padding: 0.1rem 0.5rem;
   width: fit-content;
   margin: 1rem;
-  color: white;
+  color: white; 
   cursor: pointer;
   p {
     color: #fff;

@@ -4,20 +4,17 @@ import check from "../assets/check.png";
 import dollar from "../assets/dollar.png";
 import money from "../assets/money.png";
 import mode from "../assets/mode.png";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loader from "../Components/Loader/Loader";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import { gamebloc } from "..";
 
 const TournamentView = () => {
   const { id } = useParams();
+
   const [tournamentDetail, setTournamentDetails] = useState([] as any[]);
   const [loading, setLoading] = useState<boolean>(true);
   const [loading2, setloading2] = useState<boolean>(false);
   const [userID, setUserID] = useState("");
-  const navigate = useNavigate();
-  const MySwal = withReactContent(Swal);
   const account = localStorage.getItem("near_app_wallet_auth_key");
 
   const fetchData = () => {
@@ -48,34 +45,10 @@ const TournamentView = () => {
       await gamebloc.joinTournament(userID, id);
       console.log("Success");
       setloading2(false);
-      popUp();
     } catch (err) {
       console.log("Failed");
-      errorPopUp();
       console.log(err);
     }
-  };
-
-  const popUp = () => {
-    MySwal.fire({
-      position: "center",
-      icon: "success",
-      title: "You have successfully joined this tournament.",
-      showCancelButton: true,
-      background: "#41417c",
-      color: "#ffffff",
-    });
-  };
-
-  const errorPopUp = () => {
-    MySwal.fire({
-      position: "center",
-      icon: "error",
-      title: "An error occured please try creating again",
-      showConfirmButton: true,
-      background: "#41417c",
-      color: "#fff",
-    });
   };
 
   if (loading) {
