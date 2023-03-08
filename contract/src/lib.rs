@@ -1,4 +1,4 @@
-use crate::tournaments::Tournament;
+use crate::tournaments::*;
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{LookupMap, UnorderedMap, UnorderedSet};
 use near_sdk::json_types::U128;
@@ -36,40 +36,6 @@ pub struct User {
     // ⟵ Another struct we've defined
     wins: u8,
     username: String,
-}
-
-#[derive(Serialize, Deserialize)]
-#[serde(crate = "near_sdk::serde")]
-pub struct JsonTournament {
-    /// The human-readable (not in bytes) hash of the tournament_id
-    owner_id: AccountId,
-    tournament_id_hash: String,
-    status: TournamentStatus,
-    // game: String,
-    user: Vec<AccountId>,
-    total_prize: U128,
-}
-
-#[derive(Serialize)]
-#[serde(crate = "near_sdk::serde")]
-pub struct OpenTournament {
-    tournament: Vec<JsonTournament>,
-}
-
-///enums
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
-pub enum Status {
-    Online,
-    Offline,
-}
-
-#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
-#[serde(crate = "near_sdk::serde")]
-pub enum TournamentStatus {
-    AcceptingPlayers,
-    GameInProgress,
-    GameCompleted,
 }
 
 impl Default for GameBloc {

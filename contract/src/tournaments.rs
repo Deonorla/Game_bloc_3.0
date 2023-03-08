@@ -19,6 +19,40 @@ pub_struct! (Tournament {
     total_prize: U128,
 });
 
+#[derive(Serialize, Deserialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct JsonTournament {
+    /// The human-readable (not in bytes) hash of the tournament_id
+    owner_id: AccountId,
+    tournament_id_hash: String,
+    status: TournamentStatus,
+    // game: String,
+    user: Vec<AccountId>,
+    total_prize: U128,
+}
+
+#[derive(Serialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct OpenTournament {
+    tournament: Vec<JsonTournament>,
+}
+
+///enums
+#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
+#[serde(crate = "near_sdk::serde")]
+pub enum Status {
+    Online,
+    Offline,
+}
+
+#[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
+#[serde(crate = "near_sdk::serde")]
+pub enum TournamentStatus {
+    AcceptingPlayers,
+    GameInProgress,
+    GameCompleted,
+}
+
 #[near_bindgen]
 impl GameBloc {
     pub fn new_tournament(

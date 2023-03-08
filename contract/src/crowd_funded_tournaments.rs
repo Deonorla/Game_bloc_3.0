@@ -1,3 +1,4 @@
+use crate::tournaments::TournamentStatus;
 use crate::*;
 
 #[near_bindgen]
