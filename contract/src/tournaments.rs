@@ -15,7 +15,7 @@ pub_struct! (Tournament {
     status: TournamentStatus,
     game: String,
     user: Vec<AccountId>,
-    // ⟵ Another struct we've defined
+    winers: Vec<AccountId>,
     total_prize: U128,
 });
 
@@ -74,11 +74,12 @@ impl GameBloc {
 
         let existing = self.tournaments.insert(
             &tournament_id_hash,
-            &crate::Tournament {
+            &Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
                 game: game_name,
                 user: Vec::with_capacity(50.try_into().unwrap()),
+                winers: Vec::new(),
                 total_prize: prize,
             },
         );
@@ -108,11 +109,7 @@ impl GameBloc {
         tournament.status;
     }
 
-    pub fn join_tournament(
-        &mut self,
-        user_id: AccountId,
-        tournament_id: String,
-    ) -> crate::Tournament {
+    pub fn join_tournament(&mut self, user_id: AccountId, tournament_id: String) -> Tournament {
         let mut tournament = self
             .tournaments
             .get(&tournament_id)
@@ -169,7 +166,7 @@ impl GameBloc {
         }
     }
 
-    pub fn get_tournaments(&mut self, tournament_id: String) -> crate::Tournament {
+    pub fn get_tournaments(&mut self, tournament_id: String) -> Tournament {
         let tournament = self
             .tournaments
             .get(&tournament_id)

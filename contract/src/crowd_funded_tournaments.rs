@@ -27,6 +27,7 @@ impl GameBloc {
                 status: TournamentStatus::AcceptingPlayers,
                 game: game_name,
                 user: Vec::with_capacity(50.try_into().unwrap()),
+                winers: Vec::new(),
                 total_prize: prize,
             },
         );
