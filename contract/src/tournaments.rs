@@ -1,5 +1,16 @@
 use crate::*;
 
+#[derive(BorshDeserialize, BorshSerialize, Debug, Serialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct Tournament {
+    owner_id: AccountId,
+    status: TournamentStatus,
+    game: String,
+    user: Vec<AccountId>,
+    // ⟵ Another struct we've defined
+    total_prize: U128,
+}
+
 #[near_bindgen]
 impl GameBloc {
     pub fn new_tournament(
@@ -21,7 +32,7 @@ impl GameBloc {
 
         let existing = self.tournaments.insert(
             &tournament_id_hash,
-            &Tournament {
+            &crate::Tournament {
                 owner_id,
                 status: TournamentStatus::AcceptingPlayers,
                 game: game_name,
@@ -55,7 +66,11 @@ impl GameBloc {
         tournament.status;
     }
 
-    pub fn join_tournament(&mut self, user_id: AccountId, tournament_id: String) -> Tournament {
+    pub fn join_tournament(
+        &mut self,
+        user_id: AccountId,
+        tournament_id: String,
+    ) -> crate::Tournament {
         let mut tournament = self
             .tournaments
             .get(&tournament_id)
@@ -112,7 +127,7 @@ impl GameBloc {
         }
     }
 
-    pub fn get_tournaments(&mut self, tournament_id: String) -> Tournament {
+    pub fn get_tournaments(&mut self, tournament_id: String) -> crate::Tournament {
         let tournament = self
             .tournaments
             .get(&tournament_id)

@@ -16,10 +16,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="555166f5-0049-44ad-84c8-46237a68a5ea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/crowd_funded_tournaments.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tournaments.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tournaments.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/tournaments.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
