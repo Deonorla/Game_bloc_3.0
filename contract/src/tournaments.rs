@@ -148,7 +148,7 @@ impl GameBloc {
 
     pub fn get_all_tournaments(&mut self) -> OpenTournament {
         let public_keys = self.tournament_ids.to_vec();
-        let mut tournament_ids = vec![];
+        let mut tournaments = vec![];
         for pk in public_keys {
             let tournament = self
                 .tournaments
@@ -162,10 +162,10 @@ impl GameBloc {
                 user: tournament.user,     // ⟵ Another struct we've defined
                 total_prize: tournament.total_prize,
             };
-            tournament_ids.push(tournament)
+            tournaments.push(tournament)
         }
         OpenTournament {
-            tournament: tournament_ids,
+            tournament: tournaments,
         }
     }
 
