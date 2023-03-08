@@ -82,7 +82,7 @@ impl GameBloc {
         crowd_funded_tournament.status = match crowd_funded_tournament.status {
             TournamentStatus::GameInProgress => TournamentStatus::GameCompleted,
             _ => {
-                env::panic_str("ERR_GAME_IN_PROGRESS");
+                env::panic_str("ERR_GAME_COMPLETED");
             }
         };
 
