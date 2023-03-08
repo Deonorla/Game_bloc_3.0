@@ -1,10 +1,19 @@
 use crate::*;
 
-#[serde(crate = "near_sdk::serde")]
+macro_rules! pub_struct {
+    ($name:ident {$($field:ident: $t:ty,)*}) => {
+       #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]
+       #[serde(crate = "near_sdk::serde")]
+        pub struct $name {
+            $(pub(crate) $field: $t),*
+        }
+    }
+}
+
 pub_struct! (Tournament {
-    pub(crate) owner_id: AccountId,
-    pub(crate) status: TournamentStatus,
-    pub(crate) game: String,
+    owner_id: AccountId,
+    status: TournamentStatus,
+    game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
     total_prize: U128,

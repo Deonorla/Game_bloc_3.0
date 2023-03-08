@@ -14,16 +14,6 @@ mod tournaments;
 // // 5 Ⓝ in yoctoNEAR
 // const PRIZE_AMOUNT: U128 = near_sdk::json_types::U128(5_000_000_000_000_000_000_000_000);
 
-macro_rules! pub_struct {
-    ($name:ident {$($field:ident: $t:ty,)*}) => {
-        #[derive(BorshDeserialize, BorshSerialize, Debug, Serialize)]
-        // ewww
-        pub(crate) struct $name {
-            $(pub(crate) $field: $t),*
-        }
-    }
-}
-
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct GameBloc {
