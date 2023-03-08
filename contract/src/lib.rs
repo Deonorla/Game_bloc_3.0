@@ -1,3 +1,4 @@
+use crate::tournaments::Tournament;
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{LookupMap, UnorderedMap, UnorderedSet};
 use near_sdk::json_types::U128;
@@ -13,6 +14,16 @@ mod tournaments;
 // // 5 Ⓝ in yoctoNEAR
 // const PRIZE_AMOUNT: U128 = near_sdk::json_types::U128(5_000_000_000_000_000_000_000_000);
 
+macro_rules! pub_struct {
+    ($name:ident {$($field:ident: $t:ty,)*}) => {
+        #[derive(BorshDeserialize, BorshSerialize, Debug, Serialize)]
+        // ewww
+        pub(crate) struct $name {
+            $(pub(crate) $field: $t),*
+        }
+    }
+}
+
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct GameBloc {
@@ -24,17 +35,6 @@ pub struct GameBloc {
     tournament_ids: UnorderedSet<String>,
     crowd_funded_tournaments: LookupMap<String, Tournament>,
     crowd_funded_tournament_ids: UnorderedSet<String>,
-}
-
-#[derive(BorshDeserialize, BorshSerialize, Debug, Serialize)]
-#[serde(crate = "near_sdk::serde")]
-pub struct Tournament {
-    owner_id: AccountId,
-    status: TournamentStatus,
-    game: String,
-    user: Vec<AccountId>,
-    // ⟵ Another struct we've defined
-    total_prize: U128,
 }
 
 #[derive(BorshDeserialize, BorshSerialize, Deserialize, Serialize, Debug)]

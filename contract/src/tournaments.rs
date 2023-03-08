@@ -1,15 +1,14 @@
 use crate::*;
 
-#[derive(BorshDeserialize, BorshSerialize, Debug, Serialize)]
 #[serde(crate = "near_sdk::serde")]
-pub struct Tournament {
-    owner_id: AccountId,
-    status: TournamentStatus,
-    game: String,
+pub_struct! (Tournament {
+    pub(crate) owner_id: AccountId,
+    pub(crate) status: TournamentStatus,
+    pub(crate) game: String,
     user: Vec<AccountId>,
     // ⟵ Another struct we've defined
     total_prize: U128,
-}
+});
 
 #[near_bindgen]
 impl GameBloc {
