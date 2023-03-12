@@ -1,1 +1,1 @@
-/Users/macbook/Documents/Github/Game_bloc/contract/target/wasm32-unknown-unknown/release/game_bloc.wasm: /Users/macbook/Documents/Github/Game_bloc/contract/src/lib.rs /Users/macbook/Documents/Github/Game_bloc/contract/src/token_transfer.rs
+/Users/deonorla/Documents/Github/Game_bloc/contract/target/wasm32-unknown-unknown/release/game_bloc.wasm: /Users/deonorla/Documents/Github/Game_bloc/contract/src/lib.rs /Users/deonorla/Documents/Github/Game_bloc/contract/src/token_transfer.rs
