@@ -63,7 +63,7 @@ const AllTournaments = ({ gamebloc, isSignedIn }: Props) => {
                             <Avatar 
                             src={CodImgData[Math.floor(Math.random() * CodImgData.length)]}
                             alt=""
-                            /> $
+                            /> 
 
                             <Details>
                                 <h4>Call of Duty</h4>
